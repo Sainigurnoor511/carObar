@@ -122,14 +122,8 @@ class Signup:
         lg = login.Login()
         lg.login_frame()
 
-
-
-
-
-        
+       
 if __name__ == "__main__":
 
     t = Signup()
     t.signup_frame()
-
-

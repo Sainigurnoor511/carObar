@@ -26,7 +26,6 @@ class Login:
 
         elif self.Username!='admin' and self.password!='1234':
             messagebox.showerror("Invalid", "invalid username and password")
-
         elif  self.password!='1234':
             messagebox.showerror("Invalid", "invalid password")
         elif  self.Username!='admin':
@@ -84,28 +83,21 @@ class Login:
         #------------------------------------------------------------
             
         self.b1 = Button(self.frame,width =39,pady=7,text="Sign in",bg='#57a1f8',fg='white',border=0, command=self.sign_in).place(x=35,y=204)
-        self.label = Label(self.frame, text=" Don't have an account?",fg='black', bg ='white', font=('Microsoft YaHei UI Light',9))
-        self.label.place(x=75,y=270)
 
-        self.sign_up = Button(self.frame,width=6,text='Sign up', border=0,bg='white',cursor='hand2',fg='#57a1f8',command=self.open_sign_up_window)
-        self.sign_up.place(x=215,y=270)
+    #     self.label = Label(self.frame, text=" Don't have an account?",fg='black', bg ='white', font=('Microsoft YaHei UI Light',9))
+    #     self.label.place(x=75,y=270)
 
+    #     self.sign_up = Button(self.frame,width=6,text='Sign up', border=0,bg='white',cursor='hand2',fg='#57a1f8',command=self.open_sign_up_window)
+    #     self.sign_up.place(x=215,y=270)
 
+    #     self.root.mainloop()
 
-        self.root.mainloop()
+    # def open_sign_up_window(self):
 
-    def open_sign_up_window(self):
-         
-        self.root.destroy()
-        S_up = sign_up.Signup()
-        S_up.signup_frame()
-
-
-
-        
+    #     self.root.destroy()
+    #     S_up = sign_up.Signup()
+    #     S_up.signup_frame()
 
 if __name__ == "__main__":
     t = Login()
     t.login_frame()
-
-
