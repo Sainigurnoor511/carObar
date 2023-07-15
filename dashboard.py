@@ -1,7 +1,6 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import login
-import database
 
 class Dashboard:
     def __init__(self):
@@ -21,8 +20,6 @@ class Dashboard:
         self.tmenu.add_cascade(label= 'Sell', menu = self.sell_menu)
 
         self.sell_menu.add_command(label="Sell Your Car") 
-        self.sell_menu.add_command(label="Used Car Valuation")
-        self.sell_menu.add_command(label="Sell Cars By Brands")
         #---------------------------------------------------------------
 
         self.Buy_menu = Menu(self.tmenu,tearoff =0)
@@ -36,14 +33,8 @@ class Dashboard:
         self.tmenu.add_cascade(label= 'Services', menu = self.services_menu)
 
         self.services_menu.add_command(label="Car Wash") 
-        self.services_menu.add_command(label="Rent Car") 
-        self.services_menu.add_command(label="Accessories")
-        self.services_menu.add_command(label="Book From Home") 
-
+        self.services_menu.add_command(label="Rent Car")  
         #----------------------------------------------------------------
-
-        self.About_menu = Menu(self.tmenu,tearoff =0)
-        self.tmenu.add_cascade(label= 'About', menu = self.About_menu)
 
 
         self.root.config(menu=self.tmenu)
