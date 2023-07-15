@@ -36,7 +36,7 @@ class BuyCarPage:
                                         ' Hyundai',)
 
         self.selectbrand.place(x=80, y=140)
-        self.selectbrand.current()
+        # self.selectbrand.current()
 
         #!_________________________________________________________________________________________________________
 
@@ -49,7 +49,7 @@ class BuyCarPage:
                                         'Above 7,00,000')
 
         self.selectbudget.place(x=398, y=140)
-        self.selectbudget.current()
+        # self.selectbudget.current()
 
         #!_________________________________________________________________________________________________________
 
@@ -59,10 +59,50 @@ class BuyCarPage:
         self.select_new_used = ttk.Combobox(self.root, width=27, textvariable="Select Brand")
         self.select_new_used['values'] = ('New ','Used')
         self.select_new_used.place(x=705, y=140)
-        self.select_new_used.current()
+        # self.select_new_used.current()
+
+        #!_________________________________________________________________________________________________________
+
+
+        self.divider = ttk.Label(self.frame,text= '______________________________________________________________________________________________________________', width=89, foreground='#c5d0e0', background="#1C1C1C", font=('Bahnschrift SemiBold Condensed', 20, 'normal'))
+        self.divider.place(x=10, y=180)
+
+
+        #!_______________________________________________________________________________________________________________
+
+        self.image_path = Image.open('images/car.png').resize((350,200))
+        self.imgTk = ImageTk.PhotoImage(self.image_path)
+        self.image_label = ttk.Label(self.root, image=self.imgTk)
+        self.image_label.place(x=40, y=250)
+
+        self.year = ttk.Label(self.frame,text= ' 2018  Mclaren', width=20, foreground='#c5d0e0', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
+        self.year.place(x=450, y=265)
+
+        self.y2 = ttk.Label(self.frame,text= ' Mclaren x2 | 7 Gear Transmission', width=40, foreground='#c5d0e0', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
+        self.y2.place(x=450, y=300)
+
+        self.y3 = ttk.Label(self.frame,text= ' Rs. 20,000,000 ', width=20, foreground='#c5d0e0', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
+        self.y3.place(x=450, y=335)
+
+        self.y4 = ttk.Label(self.frame,text= 'EMI Starting Rs. 833,333/Month', width=40, foreground='#c5d0e0', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
+        self.y4.place(x=450, y=370)
+        
+        #!_____________________________________________________________________________________________________________
+
+        self.km_driven = ttk.Label(self.frame,text= ' 0 km', width=10, foreground='#c5d0e0', background="#454443", font=('Bahnschrift SemiBold Condensed', 16, 'normal'))
+        self.km_driven.place(x=40, y=480)
+
+        self.ownership = ttk.Label(self.frame,text= ' Dealership', width=10, foreground='#c5d0e0', background="#454443", font=('Bahnschrift SemiBold Condensed', 16, 'normal'))
+        self.ownership.place(x=160, y=480)
+
+        self.fueltype = ttk.Label(self.frame,text= ' Petrol', width=7, foreground='#c5d0e0', background="#454443", font=('Bahnschrift SemiBold Condensed', 16, 'normal'))
+        self.fueltype.place(x=280, y=480)
+
+        self.rto = ttk.Label(self.frame,text= ' PB-07', width=7, foreground='#c5d0e0', background="#454443", font=('Bahnschrift SemiBold Condensed', 16, 'normal'))
+        self.rto.place(x=375, y=480)
 
 
 if __name__ == "__main__":
-    sell = BuyCarPage()
-    sell.buy_car_page_widgets()
-    sell.root.mainloop()
+    buy = BuyCarPage()
+    buy.buy_car_page_widgets()
+    buy.root.mainloop()
