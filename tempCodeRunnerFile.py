@@ -1,2 +1,0 @@
-
-        monthchoosen['values'] = (' January', 
