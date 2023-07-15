@@ -70,7 +70,7 @@ class BuyCarPage:
 
         #!_______________________________________________________________________________________________________________
 
-        self.image_path = Image.open('images/car.png').resize((350,200))
+        self.image_path = Image.open('images/Cars/New Cars/mclaren.png').resize((350,200))
         self.imgTk = ImageTk.PhotoImage(self.image_path)
         self.image_label = ttk.Label(self.root, image=self.imgTk)
         self.image_label.place(x=40, y=250)
