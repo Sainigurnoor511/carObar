@@ -56,7 +56,6 @@ class Dashboard:
 
         self.root.mainloop()
         
-
     #for importing the login window
 
     def open_login_window(self):
@@ -64,12 +63,7 @@ class Dashboard:
         lg = login.Login()
         lg.login_frame()
 
-       
-        
-
 if __name__=="__main__":
     t = Dashboard()
     t.dashboard_menu()
     t.dashboard_widgets()
-
-
