@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-import Sell_car_database
+import database
 from tkinter import messagebox
 
 
@@ -144,7 +144,7 @@ class Sellcar:
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
 
-            result = Sell_car_database.add_car_and_seller_details(a)
+            result = database.add_car_and_seller_details(a)
             if result:
                     messagebox.showinfo("Message","Car & Seller details added successfully")
                     self.root.destroy()

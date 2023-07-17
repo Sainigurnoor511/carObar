@@ -11,7 +11,7 @@ class Dashboard:
         self.root.title("CarOBar")
         self.root.resizable(width =False, height= False)
         self.root.configure(bg ='#fff')
-        sv_ttk.set_theme("light")
+        sv_ttk.set_theme("dark")
 
     def dashboard_menu(self):
         self.tmenu = Menu(self.root)
@@ -45,7 +45,7 @@ class Dashboard:
         #---------------------------------------------------------------
 
     def dashboard_widgets(self):
-        self.b = ttk.Button(self.root, text="Login / Sign up",width=20,pady=6, background = "#57a1f8", fg ="white",border=0, command = self.open_login_window) 
+        self.b = ttk.Button(self.root, text="Login / Sign up",width=20, command = self.open_login_window) 
         self.b.place(x=450, y=600)
 
         self.root.mainloop()
