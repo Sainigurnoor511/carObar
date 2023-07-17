@@ -102,19 +102,19 @@ class Sellcar:
         if self.car_brand_entry.get() == "":
             messagebox.showwarning("Alert!","Please enter the car brand")
 
-        elif self.car_reg_cb.get() =="":
+        elif self.car_reg_cb.get() =="Select Year":
             messagebox.showwarning("Alert!","Please select registration year")
             
         elif self.car_model_entry.get() =="":
             messagebox.showwarning("Alert!","Please enter the car model")
             
-        elif self.car_var_cb.get() =="":
+        elif self.car_var_cb.get() =="Select Variant":
             messagebox.showwarning("Alert!","Please select variant")
             
-        elif self.car_ownership_cb.get() =="":
+        elif self.car_ownership_cb.get() =="Select Ownership":
             messagebox.showwarning("Alert!","Please select car ownership")
 
-        elif self.km_driven_cb.get() =="":
+        elif self.km_driven_cb.get() =="odometer":
             messagebox.showwarning("Alert!","Please select km driven")
 
         elif self.seller_name_entry.get() =="":

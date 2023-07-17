@@ -4,7 +4,7 @@ con = mysql.connector.connect(
     host = "localhost" ,
     user = "root",
     passwd = "",
-    database = "car_details"
+    database = "carobar"
     )
 cursor = con.cursor()
 print("Database Connected")
