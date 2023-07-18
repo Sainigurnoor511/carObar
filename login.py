@@ -89,7 +89,7 @@ class Login:
     #     self.sign_up = Button(self.frame,width=6,text='Sign up', border=0,bg='white',cursor='hand2',fg='#57a1f8',command=self.open_sign_up_window)
     #     self.sign_up.place(x=215,y=270)
 
-    #     self.root.mainloop()
+        self.root.mainloop()
 
     # def open_sign_up_window(self):
 
