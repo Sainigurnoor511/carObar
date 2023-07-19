@@ -7,7 +7,7 @@ from tkinter import messagebox
 class Sellcar:
     def __init__(self):
         self.root = Tk()
-        self.root.geometry("1000x730")
+        self.root.geometry("1000x700")
         self.root.title("Sell Car") 
         self.root.configure(bg ='white')
         self.root.resizable(width =False, height= False)
@@ -89,7 +89,7 @@ class Sellcar:
 
 
         self.sign_up = Button(self.sellcar_frame,width=12,text='Register', border=0,bg='#FF8247',font=10,command=self.get_sell_car_data)
-        self.sign_up.place(x=450,y=660)
+        self.sign_up.place(x=450,y=640)
 
         self.root.mainloop()
 
