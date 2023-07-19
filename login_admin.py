@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
 # import update_password
-import Sell_car_database
+import database
 
 class Login:
     def __init__(self):
@@ -90,7 +90,7 @@ class Login:
 
                 a = (Username,password)
 
-                result = Sell_car_database.register_data(a)    
+                result = database.register_data(a)    
                 if result:
                             
                             messagebox.showinfo("Message"," Logged in")

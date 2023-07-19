@@ -145,21 +145,11 @@ class Sellcar:
             result = database.add_car_and_seller_details(a)
             if result:
                     messagebox.showinfo("Message","Car & Seller details added successfully")
-                    self.root.destroy()
+                    # self.root.destroy()
                 
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")
 
-        
-        
-
-
-
-
-
-
-
-       
-
-s = Sellcar()
-s.sellcar_widgets()
+if __name__=="__main__":
+    s = Sellcar()
+    s.sellcar_widgets()
