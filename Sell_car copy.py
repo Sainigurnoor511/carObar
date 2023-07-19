@@ -1,9 +1,15 @@
 from tkinter import *
 from tkinter import ttk
+<<<<<<< Updated upstream
 from tkinter import messagebox
 import database
 import sv_ttk
 
+=======
+import database
+from tkinter import messagebox
+import sv
+>>>>>>> Stashed changes
 
 
 class Sellcar:
@@ -14,12 +20,16 @@ class Sellcar:
         self.root.configure(bg ='white')
         self.root.resizable(width =False, height= False)
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
     def sellcar_widgets(self):
 
     ###---------------------------------/////// SELL CAR DETAILS //////------------------------------##
 
+<<<<<<< Updated upstream
         self.sellcar_frame = Frame(self.root, width=1000,height=730)
         self.sellcar_frame.place(x=0,y=0)
 
@@ -35,10 +45,28 @@ class Sellcar:
         self.car_model = ttk.Label(self.sellcar_frame,text="Enter the Car Model",font = 20)
         self.car_model.place(x=30,y=180,width=180, height=30)
         self.car_model_entry= ttk.Entry(self.sellcar_frame, font =20 )
+=======
+        self.sellcar_frame = Frame(self.root, width=1000,height=730,bg = "#191970")
+        self.sellcar_frame.place(x=0,y=0)
+
+        self.title_label = Label(self.sellcar_frame, text="------ Enter Car Details ------",bg = "#191970",fg='white',font=('Microsoft YaHei UI Light',14,'bold'))
+        self.title_label.place(x=390,y=15)
+
+        
+        self.car_brand = Label(self.sellcar_frame,text="Enter the Car Brand",font = 20,fg='white',bg = '#191970')
+        self.car_brand.place(x=30,y=90,width=180, height=30)
+        self.car_brand_entry = Entry(self.sellcar_frame, font =20 )
+        self.car_brand_entry.place(x =220,y =90,width =180,height=30)
+  
+        self.car_model = Label(self.sellcar_frame,text="Enter the Car Model",font = 20,fg='white',bg = '#191970')
+        self.car_model.place(x=30,y=180,width=180, height=30)
+        self.car_model_entry= Entry(self.sellcar_frame, font =20 )
+>>>>>>> Stashed changes
         self.car_model_entry.place(x =220,y =180,width =180,height=30)
 
         # -------------/////////  COMBOBOXES //////////----------------#
 
+<<<<<<< Updated upstream
         self.car_reg = ttk.Label(self.sellcar_frame,text="Select the Registration Year",font = 20)
         self.car_reg.place(x=500,y=90,width =200,height=30)
         year =[2023,2022,2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1995,1994,1993,1992,1991,1990]
@@ -47,6 +75,15 @@ class Sellcar:
         self.car_reg_cb.place(x =750,y =90)
         # self.car_reg_cb["state"]='readonly'
         # self.car_reg_cb.set("Select Year")
+=======
+        self.car_reg = Label(self.sellcar_frame,text="Select the Registration Year",font = 20,fg='white',bg = '#191970')
+        self.car_reg.place(x=500,y=90,width =200,height=30)
+        year =[2023,2022,2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1995,1994,1993,1992,1991,1990]
+        self.car_reg_cb = ttk.Combobox(self.sellcar_frame, values=year)
+        self.car_reg_cb.place(x =750,y =90,width =180,height=30)
+        self.car_reg_cb["state"]='readonly'
+        self.car_reg_cb.set("Select Year")
+>>>>>>> Stashed changes
 
         self.car_var = Label(self.sellcar_frame,text="Select Car Variant",font = 20,fg='white',bg = '#191970')
         self.car_var.place(x=480,y=180,width =180,height=30)
@@ -105,12 +142,17 @@ class Sellcar:
         if self.car_brand_entry.get() == "":
             messagebox.showwarning("Alert!","Please enter the car brand")
 
+<<<<<<< Updated upstream
         elif self.car_reg_cb.get() =="Select Year":
+=======
+        elif self.car_reg_cb.get() =="":
+>>>>>>> Stashed changes
             messagebox.showwarning("Alert!","Please select registration year")
             
         elif self.car_model_entry.get() =="":
             messagebox.showwarning("Alert!","Please enter the car model")
             
+<<<<<<< Updated upstream
         elif self.car_var_cb.get() =="Select Variant":
             messagebox.showwarning("Alert!","Please select variant")
             
@@ -118,6 +160,15 @@ class Sellcar:
             messagebox.showwarning("Alert!","Please select car ownership")
 
         elif self.km_driven_cb.get() =="odometer":
+=======
+        elif self.car_var_cb.get() =="":
+            messagebox.showwarning("Alert!","Please select variant")
+            
+        elif self.car_ownership_cb.get() =="":
+            messagebox.showwarning("Alert!","Please select car ownership")
+
+        elif self.km_driven_cb.get() =="":
+>>>>>>> Stashed changes
             messagebox.showwarning("Alert!","Please select km driven")
 
         elif self.seller_name_entry.get() =="":

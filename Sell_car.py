@@ -12,8 +12,6 @@ class Sellcar:
         self.root.configure(bg ='white')
         self.root.resizable(width =False, height= False)
 
-
-
     def sellcar_widgets(self):
 
     ###---------------------------------/////// SELL CAR DETAILS //////------------------------------##
