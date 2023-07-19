@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
+# import update_password
+import Sell_car_database
 
 class Login:
     def __init__(self):
@@ -9,27 +11,9 @@ class Login:
         self.root.configure(bg ='#fff')
         self.root.title("Login Page")
         self.root.resizable(width =False, height= False)
-    
-    def sign_in(self):
-        self.Username = self.user.get()
-        self.password = self.passwd.get()
 
-        if self.Username =='admin' and self.password =='1234':
-            self.screen = Toplevel(self.root)
-            self.screen.title("App")
-            self.screen.geometry("925x500+300+200")
-            self.screen.config(bg='white')
 
-            self.l = Label(self.screen,text="Hello World!",bg='#fff',font= ('Calibri(Body)',50,'bold')).pack(expand=True)
-            self.screen.mainloop()
-
-        elif self.Username!='admin' and self.password!='1234':
-            messagebox.showerror("Invalid", "invalid username and password")
-        elif  self.password!='1234':
-            messagebox.showerror("Invalid", "invalid password")
-        elif  self.Username!='admin':
-            messagebox.showerror("Invalid", "invalid username")
-
+        
         
 
     def login_frame(self):
@@ -42,8 +26,8 @@ class Login:
         self.frame = Frame(self.root,width=350,height=350,bg='white')
         self.frame.place(x=480,y=70)
 
-        self.heading = Label(self.frame,text ='sign in' , fg='#57a1f8',bg = 'white',font=('Microsoft YaHei UI Light',23,'bold'))
-        self.heading.place(x=100,y=5)
+        self.heading = Label(self.frame,text ='Log in' , fg='#57a1f8',bg = 'white',font=('Microsoft YaHei UI Light',18,'bold'))
+        self.heading.place(x=130,y=5)
         #------------------------------------------------------------
        
         def on_enter(e):
@@ -81,22 +65,56 @@ class Login:
 
         #------------------------------------------------------------
             
-        self.b1 = Button(self.frame,width =39,pady=7,text="Sign in",bg='#57a1f8',fg='white',border=0, command=self.sign_in).place(x=35,y=204)
+        self.b1 = Button(self.frame,width =39,pady=7,text="Sign in",bg='#57a1f8',fg='white',border=0, command=self.log_in).place(x=35,y=204)
+        
 
-    #     self.label = Label(self.frame, text=" Don't have an account?",fg='black', bg ='white', font=('Microsoft YaHei UI Light',9))
-    #     self.label.place(x=75,y=270)
+        self.sign_up = Button(self.frame,width=20,text='Forgot password?', border=0,bg='white',cursor='hand1',fg='#57a1f8')#,command=self. open_update_password_window
+        self.sign_up.place(x=195,y=250)
 
-    #     self.sign_up = Button(self.frame,width=6,text='Sign up', border=0,bg='white',cursor='hand2',fg='#57a1f8',command=self.open_sign_up_window)
-    #     self.sign_up.place(x=215,y=270)
+
 
         self.root.mainloop()
 
-    # def open_sign_up_window(self):
+    def log_in(self):
+            
+            if self.user.get() == "": 
+                 messagebox.showwarning("Alert!","Please enter the username")
 
+            elif self.passwd.get() =="":
+                 messagebox.showwarning("Alert!","Please enter the password")
+
+            else:
+            
+                Username = self.user.get()
+                password = self.passwd.get()
+
+                a = (Username,password)
+
+                result = Sell_car_database.register_data(a)    
+                if result:
+                            
+                            messagebox.showinfo("Message"," Logged in")
+                            self.root.destroy()
+                        
+                else:
+
+                    messagebox.showerror("Alert!", "Incorrect username & password")
+
+
+        
+
+    # def open_update_password_window(self):
+         
     #     self.root.destroy()
-    #     S_up = sign_up.Signup()
-    #     S_up.signup_frame()
+    #     up = update_password.UpdatePass()
+    #     up.update_passw_frame()
+
+
+
+        
 
 if __name__ == "__main__":
     t = Login()
     t.login_frame()
+
+

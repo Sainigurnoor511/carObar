@@ -27,3 +27,13 @@ def add_car_and_seller_details(sell_car_data):
          return True
     except:
          return False
+    
+def register_data(login_page):
+        try:
+           
+           cursor.execute("SELECT * FROM `login_page` WHERE `username`=%s AND `password`=%s",login_page)
+           return cursor.fetchone()
+           
+          
+        except:
+             return False    
