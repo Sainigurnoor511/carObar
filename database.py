@@ -28,12 +28,23 @@ def add_car_and_seller_details(sell_car_data):
     except:
          return False
     
-def register_data(login_page):
+def register_data(admin):
         try:
            
-           cursor.execute("SELECT * FROM `login_page` WHERE `username`=%s AND `password`=%s",login_page)
+           cursor.execute("SELECT * FROM `admin` WHERE `username`=%s AND `password`=%s",admin)
            return cursor.fetchone()
            
           
         except:
              return False    
+def update_passwords(previous_data, updated_data):
+    try:
+        cursor.execute("SELECT * FROM `admin` WHERE `username`=%s AND `password`=%s",previous_data)
+        if cursor.fetchone():
+            cursor.execute("UPDATE `admin` SET `password`=%s WHERE `username`=%s",updated_data)
+            con.commit()
+            return True
+        else:
+            return False
+    except:
+        return False

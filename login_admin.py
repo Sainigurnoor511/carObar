@@ -68,8 +68,8 @@ class Login:
         self.b1 = Button(self.frame,width =39,pady=7,text="Sign in",bg='#57a1f8',fg='white',border=0, command=self.log_in).place(x=35,y=204)
         
 
-        self.sign_up = Button(self.frame,width=20,text='Forgot password?', border=0,bg='white',cursor='hand1',fg='#57a1f8')#,command=self. open_update_password_window
-        self.sign_up.place(x=195,y=250)
+        # self.sign_up = Button(self.frame,width=20,text='Forgot password?', border=0,bg='white',cursor='hand1',fg='#57a1f8')#,command=self. open_update_password_window
+        # self.sign_up.place(x=195,y=250)
 
 
 
