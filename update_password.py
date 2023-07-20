@@ -47,7 +47,7 @@ class UpdatePass:
 
         Frame(self.frame,width=295,height=2,bg='black').place(x=25,y=107)
 
-        #------------------------------- ///// NEW PASSWORD ENTRY ///// -----------------------------##
+        #------------------------------- ///// OLD PASSWORD ENTRY ///// -----------------------------##
 
         def on_enter(e):
             self.old_password.delete(0,'end')
@@ -65,7 +65,7 @@ class UpdatePass:
         Frame(self.frame,width=295,height=2,bg='black').place(x=25,y=177)
 
 
-        #------------------------------- ///// CONFIRM PASSWORD ENTRY ///// -----------------------------##
+        #------------------------------- ///// NEW PASSWORD ENTRY ///// -----------------------------##
 
         def on_enter(e):
             self.new_password.delete(0,'end')

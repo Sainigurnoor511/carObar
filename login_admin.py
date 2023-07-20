@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
+import Mainpage
 # import update_password
 import database
 
@@ -56,7 +57,7 @@ class Login:
             if name=='':
                 self.passwd.insert(0,'Password')
 
-        self.passwd = Entry(self.frame,width =25,fg ='black',border=0,font=('Microsoft YaHei UI Light',11))
+        self.passwd = Entry(self.frame,width =25,fg ='black',border=0,font=('Microsoft YaHei UI Light',11),show="*")
         self.passwd.place(x=30,y=150)
         self.passwd.insert(0,'Password')
         self.passwd.bind('<FocusIn>', on_enter)
@@ -95,6 +96,8 @@ class Login:
                             
                             messagebox.showinfo("Message"," Logged in")
                             self.root.destroy()
+                            mp = Mainpage()
+                            mp.Mainpage.window()
                         
                 else:
 
@@ -116,5 +119,3 @@ class Login:
 if __name__ == "__main__":
     t = Login()
     t.login_frame()
-
-

@@ -1,0 +1,1 @@
+v.display_new_cars()
