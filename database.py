@@ -20,11 +20,13 @@ def manage_used_cars():
     return cursor.fetchall()
 
 def delete_new_cars(car_id):
+    print("Database: car id ", car_id)
     cursor.execute("DELETE FROM `new_cars_data` WHERE id=%s",car_id)
     con.commit()
     return True
 
 def delete_used_cars(car_id):
+    print("Database: car id ", car_id)
     cursor.execute("DELETE FROM `used_cars_data` WHERE id=%s",car_id)
     con.commit()
     return True

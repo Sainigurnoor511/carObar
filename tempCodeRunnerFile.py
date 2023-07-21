@@ -1,1 +1,1 @@
-v.display_new_cars()
+import sv_ttk
