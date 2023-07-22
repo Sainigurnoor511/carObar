@@ -69,3 +69,11 @@ def update_passwords(previous_data, updated_data):
             return False
     except:
         return False
+    
+def add_car_services_details(car_service_data):
+    try:
+         cursor.execute("INSERT INTO `car_services` (service_type,service_time,service_date,customer_name,customer_contact) values(%s,%s,%s,%s,%s)",car_service_data)
+         con.commit()
+         return True
+    except:
+         return False     

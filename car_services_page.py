@@ -3,10 +3,11 @@ import tkinter
 from tkinter import ttk
 from tkcalendar import DateEntry
 from tkinter import messagebox
+import database
 # from PIL import Image, ImageTk
 
 
-class CarServices:
+class CarServicePage:
 
     def __init__(self):
         self.root = tkinter.Tk()
@@ -15,7 +16,7 @@ class CarServices:
         self.root.resizable(width=False, height=False)
         sv_ttk.set_theme("light")
 
-    def car_service_page_widgets(self):
+    def car_services_page_widgets(self):
 
         self.frame = tkinter.Frame(self.root, width=1000, height=700)
         self.frame.place(x=0, y=0)
@@ -109,7 +110,15 @@ class CarServices:
             customerContact = self.customer_contact_entry.get()
 
             a = (service,time,Date_entry,customerName,customerContact)
-            print(a)
+        
+            result = database.add_car_services_details(a)
+            if result:
+                    messagebox.showinfo("Message","Car Service detail added successfully")
+                    self.root.destroy()
+                
+            else:
+                    messagebox.showerror("Alert!", "Something Went wrong")
+
 
         
 
@@ -117,6 +126,6 @@ class CarServices:
 
 
 if __name__ == "__main__":
-    sv = CarServices()
-    sv.car_service_page_widgets()
-    sv.root.mainloop()
+    cs = CarServicePage()
+    cs.car_services_page_widgets()
+    cs.root.mainloop()
