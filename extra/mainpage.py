@@ -1,70 +1,227 @@
+from pathlib import Path
+
 from tkinter import *
-from PIL import ImageTk, Image
+# Explicit imports to satisfy Flake8
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+import Sell_car
 
-class MainPage():
-    def __init__(self):
-        self.root = Tk()
-        self.root.geometry("1066x600")
-        self.root.title("CAR APP")
 
-    def mainpage_widgets(self):
-        self.frame = Frame(self.root, width=600, height=400, bg= "black")
-        self.frame.pack()
-        self.frame.place(anchor='center', relx=0.5, rely=0.5)
+OUTPUT_PATH = Path(__file__).parent
+ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\Gurnoor Singh Saini\Desktop\build\assets\frame0")
 
-        self.image = (Image.open("images/car.jpg")).resize((1066, 600))
-        self.img = ImageTk.PhotoImage(self.image)
 
-        self.label = Label(self.frame, image = self.img, bg="black")
-        self.label.pack()
+def relative_to_assets(path: str) -> Path:
+    return ASSETS_PATH / Path(path)
 
-    def tkinter_menu(self):
-                
-        self.menubar = Menu(self.root)
-        
-        # Adding File Menu and commands
-        self.file = Menu(self.menubar, tearoff = 0)
-        self.file.add_command(label ='New File', command = None)
-        self.file.add_command(label ='Open...', command = None)
-        self.file.add_command(label ='Save', command = None)
-        self.file.add_separator()
-        
-        self.menubar.add_cascade(label ='File', menu = self.file)
-        self.file.add_command(label ='Exit', command = self.root.destroy)
-        
-        # # Adding Edit Menu and commands
-        self.edit = Menu(self.menubar, tearoff = 0)
-        self.menubar.add_cascade(label ='Edit', menu = self.edit)
-        self.edit.add_command(label ='Cut', command = None)
-        self.edit.add_command(label ='Copy', command = None)
-        self.edit.add_command(label ='Paste', command = None)
-        self.edit.add_command(label ='Select All', command = None)
-        self.edit.add_separator()
-        self.edit.add_command(label ='Find...', command = None)
-        self.edit.add_command(label ='Find again', command = None)
-        
-        # # Adding Help Menu
-        self.help_ = Menu(self.menubar, tearoff = 0)
-        self.menubar.add_cascade(label ='Help', menu = self.help_)
-        self.help_.add_command(label ='Tk Help', command = None)
-        self.help_.add_command(label ='Demo', command = None)
-        self.help_.add_separator()
-        self.help_.add_command(label ='About Tk', command = None)
-        
-        # display Menu
-        self.root.config(menu = self.menubar)
-    
-        self.menu = Label(self.root, text = "")
 
-        self.photo = ImageTk.PhotoImage(Image.open("images/home_button.png"))
+window = Tk()
 
-        self.home_button = Button(self.frame, image = self.photo, width = 150, height= 40, border=0).place(x= 900, y=100)
-        
-        Button=canvas.create_image(380,400, image=self.photo)
+window.geometry("1000x700")
+window.configure(bg = "#1C1C1C")
 
-    
+def open_sell_car():
+    a = Sell_car.Sellcar()
+    a.sellcar_widgets()
 
-mp = MainPage()
-mp.mainpage_widgets()
-mp.tkinter_menu()
-mp.root.mainloop()
+canvas = Canvas(
+    window,
+    bg = "#1C1C1C",
+    height = 700,
+    width = 1000,
+    bd = 0,
+    highlightthickness = 0,
+    relief = "ridge"
+)
+
+canvas.place(x = 0, y = 0)
+canvas.create_rectangle(
+    0.0,
+    0.0,
+    230.0,
+    678.0,
+    fill="#000000",
+    outline="")
+
+button_image_1 = PhotoImage(
+    file=relative_to_assets("button_1.png"))
+button_1 = Button(
+    image=button_image_1,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_1 clicked"),
+    relief="flat"
+)
+button_1.place(
+    x=0.0,
+    y=238.0,
+    width=230.0,
+    height=54.0
+)
+
+button_image_2 = PhotoImage(
+    file=relative_to_assets("button_2.png"))
+button_2 = Button(
+    image=button_image_2,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_2 clicked"),
+    relief="flat"
+)
+button_2.place(
+    x=0.0,
+    y=186.0,
+    width=230.0,
+    height=52.0
+)
+
+button_image_3 = PhotoImage(
+    file=relative_to_assets("button_3.png"))
+button_3 = Button(
+    image=button_image_3,
+    borderwidth=0,
+    highlightthickness=0,
+    command= open_sell_car,
+    relief="flat"
+)
+button_3.place(
+    x=0.0,
+    y=138.0,
+    width=230.0,
+    height=56.0
+)
+
+
+
+button_image_4 = PhotoImage(
+    file=relative_to_assets("button_4.png"))
+button_4 = Button(
+    image=button_image_4,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_4 clicked"),
+    relief="flat"
+)
+button_4.place(
+    x=0.0,
+    y=78.0,
+    width=230.0,
+    height=60.0
+)
+
+canvas.create_text(
+    27.0,
+    21.0,
+    anchor="nw",
+    text="carObar",
+    fill="#FFFFFF",
+    font=("ArialRoundedMTBold", 36 * -1)
+)
+
+button_image_5 = PhotoImage(
+    file=relative_to_assets("button_5.png"))
+button_5 = Button(
+    image=button_image_5,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_5 clicked"),
+    relief="flat"
+)
+button_5.place(
+    x=618.0,
+    y=138.0,
+    width=330.0,
+    height=48.0
+)
+
+button_image_6 = PhotoImage(
+    file=relative_to_assets("button_6.png"))
+button_6 = Button(
+    image=button_image_6,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_6 clicked"),
+    relief="flat"
+)
+button_6.place(
+    x=261.0,
+    y=201.0,
+    width=330.0,
+    height=48.0
+)
+
+button_image_7 = PhotoImage(
+    file=relative_to_assets("button_7.png"))
+button_7 = Button(
+    image=button_image_7,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_7 clicked"),
+    relief="flat"
+)
+button_7.place(
+    x=618.0,
+    y=201.0,
+    width=330.0,
+    height=48.0
+)
+
+button_image_8 = PhotoImage(
+    file=relative_to_assets("button_8.png"))
+button_8 = Button(
+    image=button_image_8,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_8 clicked"),
+    relief="flat"
+)
+button_8.place(
+    x=262.0,
+    y=138.0,
+    width=330.0,
+    height=48.0
+)
+
+canvas.create_text(
+    262.0,
+    59.0,
+    anchor="nw",
+    text="Welcome, Administrator !",
+    fill="#FFFFFF",
+    font=("Arial BOLD", 36 * -1)
+)
+
+button_image_9 = PhotoImage(
+    file=relative_to_assets("button_9.png"))
+button_9 = Button(
+    image=button_image_9,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_9 clicked"),
+    relief="flat"
+)
+button_9.place(
+    x=14.0,
+    y=583.0,
+    width=126.0,
+    height=31.0
+)
+
+button_image_10 = PhotoImage(
+    file=relative_to_assets("button_10.png"))
+button_10 = Button(
+    image=button_image_10,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: print("button_10 clicked"),
+    relief="flat"
+)
+button_10.place(
+    x=14.0,
+    y=629.0,
+    width=126.0,
+    height=31.0
+)
+window.resizable(False, False)
+
+if __name__=="__main__":
+    window.mainloop()

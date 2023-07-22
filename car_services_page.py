@@ -120,9 +120,6 @@ class CarServicePage:
                     messagebox.showerror("Alert!", "Something Went wrong")
 
 
-        
-
-       
 
 
 if __name__ == "__main__":

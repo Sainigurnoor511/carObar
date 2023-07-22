@@ -11,25 +11,35 @@ cursor = con.cursor()
 
 print("Database Connected")
 
-def manage_new_cars():
-    cursor.execute("SELECT *FROM `new_cars_data`")
+# def manage_new_cars():
+#     cursor.execute("SELECT *FROM `new_cars_data`")
+#     return cursor.fetchall()
+
+# def manage_used_cars():
+#     cursor.execute("SELECT *FROM `used_cars_data`")
+#     return cursor.fetchall()
+
+def manage_cars():
+    cursor.execute("SELECT *FROM `cars_data`")
     return cursor.fetchall()
 
-def manage_used_cars():
-    cursor.execute("SELECT *FROM `used_cars_data`")
-    return cursor.fetchall()
-
-def delete_new_cars(car_id):
+def delete_cars(car_id):
     print("Database: car id ", car_id)
-    cursor.execute("DELETE FROM `new_cars_data` WHERE id=%s",car_id)
+    cursor.execute("DELETE FROM `cars_data` WHERE id=%s",car_id)
     con.commit()
     return True
 
-def delete_used_cars(car_id):
-    print("Database: car id ", car_id)
-    cursor.execute("DELETE FROM `used_cars_data` WHERE id=%s",car_id)
-    con.commit()
-    return True
+# def delete_new_cars(car_id):
+#     print("Database: car id ", car_id)
+#     cursor.execute("DELETE FROM `new_cars_data` WHERE id=%s",car_id)
+#     con.commit()
+#     return True
+
+# def delete_used_cars(car_id):
+#     print("Database: car id ", car_id)
+#     cursor.execute("DELETE FROM `used_cars_data` WHERE id=%s",car_id)
+#     con.commit()
+#     return True
 
 def add_car_and_seller_details(sell_car_data):
     print(sell_car_data)
@@ -72,8 +82,8 @@ def update_passwords(previous_data, updated_data):
     
 def add_car_services_details(car_service_data):
     try:
-         cursor.execute("INSERT INTO `car_services` (service_type,service_time,service_date,customer_name,customer_contact) values(%s,%s,%s,%s,%s)",car_service_data)
-         con.commit()
-         return True
+        cursor.execute("INSERT INTO `car_services` (service_type,service_time,service_date,customer_name,customer_contact) values(%s,%s,%s,%s,%s)",car_service_data)
+        con.commit()
+        return True
     except:
-         return False     
+        return False     
