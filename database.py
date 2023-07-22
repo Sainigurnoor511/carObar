@@ -51,9 +51,8 @@ def add_car_and_seller_details(sell_car_data):
         return False
 
 def update_car_and_seller_details(update_car_data):
-    print(sell_car_data)
     try:
-        cursor.execute("UPDATE `sell_car_data` (car_brand,car_registration_year,car_model,car_variant,car_ownership,car_km_driven,seller_name,seller_contact,seller_address) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",sell_car_data)
+        cursor.execute("UPDATE `sell_car_data` (car_brand,car_registration_year,car_model,car_variant,car_ownership,car_km_driven,seller_name,seller_contact,seller_address) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",update_car_data)
         con.commit()
         return True
     except:
@@ -86,4 +85,26 @@ def add_car_services_details(car_service_data):
         con.commit()
         return True
     except:
+<<<<<<< Updated upstream
         return False     
+=======
+         return False    
+
+def get_car_services_details():
+    cursor.execute("SELECT *FROM `car_services`")
+    return cursor.fetchall()
+
+def delete_car_services_data(service_id):
+    cursor.execute("DELETE FROM `car_services` WHERE id=%s", service_id)
+    con.commit()
+    return True
+
+def update_car_services_details(updated_services_data):
+    print("Database: updated student data - ", updated_services_data)
+    try:
+        cursor.execute("UPDATE `car_services` SET `service_type`=%s,`service_time`=%s,`service_date`=%s,`customer_name`=%s,`customer_contact`=%s WHERE `id`=%s",updated_services_data)
+        con.commit()
+        return True
+    except:
+        return False
+>>>>>>> Stashed changes

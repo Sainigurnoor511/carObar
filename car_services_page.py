@@ -3,26 +3,38 @@ import tkinter
 from tkinter import ttk
 from tkcalendar import DateEntry
 from tkinter import messagebox
-import database
+import database, car_services_treeview
 # from PIL import Image, ImageTk
 
 
 class CarServicePage:
 
-    def __init__(self):
+    def __init__(self,selected_Service=""):
         self.root = tkinter.Tk()
-        self.root.geometry("900x450")
-        self.root.title("CarOBar -- Services")
+        self.selectedService = selected_Service
+        self.root.geometry("950x450")
         self.root.resizable(width=False, height=False)
-        sv_ttk.set_theme("light")
+        sv_ttk.set_theme("light")    
+        
+        if self.selectedService:
+             
+             self.root.title("Update Services")
+              
+         
+        else:
+            self.root.title("CarOBar -- Services")      
 
     def car_services_page_widgets(self):
 
         self.frame = tkinter.Frame(self.root, width=1000, height=700)
         self.frame.place(x=0, y=0)
 
-        self.heading = ttk.Label(self.frame, text='Services', foreground='#57A1F8', font=('Harlow Solid Italic', 40, 'normal'))
-        self.heading.place(x=400, y=5)
+        if self.selectedService: 
+            self.heading = ttk.Label(self.frame, text=' Update Services', foreground='#57A1F8', font=('Harlow Solid Italic', 30, 'normal'))
+            self.heading.place(x=350, y=5)
+        else:
+            self.heading = ttk.Label(self.frame, text='Services', foreground='#57A1F8', font=('Harlow Solid Italic', 40, 'normal'))
+            self.heading.place(x=400, y=5)
 
         self.heading = ttk.Label(self.frame, text='* closed on Sunday', foreground='red')
         self.heading.place(x=705, y=175)
@@ -75,14 +87,28 @@ class CarServicePage:
         self.date_label = ttk.Label(self.frame,text='Select date', width=27, foreground='#57A1F8',font=('Harlow Solid Italic', 16, 'normal'))
         self.date_label.place(x=705, y=110)
 
-        #!_________________________________________________________________________________________________________
-
         self.d = DateEntry(self.root)
         self.d.place(x=705,y=140)
-        # self.d.pack()
+        
+        if self.selectedService:
+            
+            self.up = tkinter.Button(self.root,width=12,text='Update',bg="#57A1F8",fg="white",command= self.get_services_update)
+            self.up.place(x=420,y=350)
 
-        self.book = tkinter.Button(self.root,width=12,text='Book',bg="#57A1F8",fg="white",command= self.get_services_data)
-        self.book.place(x=420,y=350)
+            result = dict(self.selectedService).get("values")
+            print("Services detials - ", result)
+            
+            self.services_cb.insert(0,result[0])
+            self.time_cb.insert(0,result[1])
+            self.d.insert(0,result[2])
+            self.customer_name_entry.insert(0,result[3])
+            self.customer_contact_entry.insert(0,result[4])
+
+            
+
+        else:    
+            self.book = tkinter.Button(self.root,width=12,text='Book',bg="#57A1F8",fg="white",command= self.get_services_data)
+            self.book.place(x=420,y=350)
         
         #!_________________________________________________________________________________________________________
 
@@ -97,7 +123,7 @@ class CarServicePage:
             messagebox.showwarning("Alert!","Please Select the date") 
 
         elif self.customer_contact_entry.get()=="":
-            messagebox.showwarning("Alert!","please enter the customer name")     
+            messagebox.showwarning("Alert!","please enter the customer contact")     
 
         elif self.customer_name_entry.get()=="":
             messagebox.showwarning("Alert!","Please enter the customer name")
@@ -119,7 +145,48 @@ class CarServicePage:
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")
 
+      #!_________________________________________________________________________________________________________
 
+<<<<<<< Updated upstream
+=======
+    def get_services_update(self):
+        if self.services_cb.get() == "Select Service":
+            messagebox.showwarning("Alert!","Please select the service")
+
+        elif self.time_cb.get() == "Select Time" :
+            messagebox.showwarning("Alert!","Please select time slot")
+
+        elif self.d.get() == "":
+            messagebox.showwarning("Alert!","Please Select the date") 
+
+        elif self.customer_contact_entry.get()=="":
+            messagebox.showwarning("Alert!","please enter the customer contact")     
+
+        elif self.customer_name_entry.get()=="":
+            messagebox.showwarning("Alert!","Please enter the customer name")
+
+        else:
+            service =  self.services_cb.get()
+            time = self.time_cb.get()
+            Date_entry =  self.d.get()
+            customerName = self.customer_name_entry.get()
+            customerContact = self.customer_contact_entry.get()
+
+            b = (service,time,Date_entry,customerName,customerContact,dict(self.selectedService).get("text"))
+        
+            result = database.update_car_services_details(b)
+            if result:
+                    messagebox.showinfo("Message","Car Service detail updated successfully")
+                    self.root.destroy()
+                    v = car_services_treeview.Services()
+                    v.build_view_services_page_widgets()
+                
+            else:
+                    messagebox.showerror("Alert!", "Something Went wrong")
+    
+
+       
+>>>>>>> Stashed changes
 
 
 if __name__ == "__main__":

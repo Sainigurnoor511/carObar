@@ -211,7 +211,7 @@ class Sellcar:
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
 
-            result = database.update_car_and_seller_details(a)
+            result = database.update_car_and_seller_details(u)
             if result:
                     messagebox.showinfo("Message","Car & Seller details added successfully")
                     # self.root.destroy()
