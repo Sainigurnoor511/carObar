@@ -33,7 +33,7 @@ class BuyCarPage:
                                         ' Honda', 
                                         ' Renualt', 
                                         ' Hyundai',)
-        self.selectbrand['state'] = 'readyonly'
+        self.selectbrand['state'] = 'readonly'
         self.selectbrand.set("Select Brand")
         self.selectbrand.place(x=80, y=140)
 
@@ -46,7 +46,7 @@ class BuyCarPage:
         self.selectbudget['values'] = ( '0 - 3,00,000', 
                                         '3,00,000 - 7,00,000', 
                                         'Above 7,00,000')
-        self.selectbudget['state'] = 'readyonly'
+        self.selectbudget['state'] = 'readonly'
         self.selectbudget.set("Select Budget")
         self.selectbudget.place(x=398, y=140)
         # self.selectbudget.current()
@@ -58,7 +58,7 @@ class BuyCarPage:
 
         self.select_new_used = ttk.Combobox(self.root, width=27)
         self.select_new_used['values'] = ('New ','Used')
-        self.select_new_used['state'] = 'readyonly'
+        self.select_new_used['state'] = 'readonly'
         self.select_new_used.set("Select New/Used")
         self.select_new_used.place(x=705, y=140)
         # self.select_new_used.current()
@@ -79,13 +79,13 @@ class BuyCarPage:
 
 
         
-        self.year = ttk.Label(self.frame,text= self.car_brand, width=20, foreground='#c5d0e0', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
+        self.year = ttk.Label(self.frame,text= self.car_brand, width=20, foreground='#57A1F8', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
         self.year.place(x=450, y=265)
 
-        self.y2 = ttk.Label(self.frame,text= ' Mclaren x2 | 7 Gear Transmission', width=40, foreground='#c5d0e0', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
+        self.y2 = ttk.Label(self.frame,text= ' Mclaren x2 | 7 Gear Transmission', width=40, foreground='#57A1F8', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
         self.y2.place(x=450, y=300)
 
-        self.y3 = ttk.Label(self.frame,text= ' Rs. 20,000,000 ', width=20, foreground='#c5d0e0', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
+        self.y3 = ttk.Label(self.frame,text= ' Rs. 20,000,000 ', width=20, foreground='#57A1F8', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
         self.y3.place(x=450, y=335)
 
         self.y4 = ttk.Label(self.frame,text= 'EMI Starting Rs. 833,333/Month', width=40, foreground='#57A1F8', font=('Bahnschrift SemiBold Condensed', 15, 'normal'))
