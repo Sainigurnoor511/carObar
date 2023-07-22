@@ -85,10 +85,8 @@ def add_car_services_details(car_service_data):
         con.commit()
         return True
     except:
-<<<<<<< Updated upstream
-        return False     
-=======
-         return False    
+
+        return False        
 
 def get_car_services_details():
     cursor.execute("SELECT *FROM `car_services`")
@@ -107,4 +105,4 @@ def update_car_services_details(updated_services_data):
         return True
     except:
         return False
->>>>>>> Stashed changes
+
