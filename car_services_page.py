@@ -147,8 +147,7 @@ class CarServicePage:
 
       #!_________________________________________________________________________________________________________
 
-<<<<<<< Updated upstream
-=======
+
     def get_services_update(self):
         if self.services_cb.get() == "Select Service":
             messagebox.showwarning("Alert!","Please select the service")
@@ -186,7 +185,7 @@ class CarServicePage:
     
 
        
->>>>>>> Stashed changes
+
 
 
 if __name__ == "__main__":
