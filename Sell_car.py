@@ -5,12 +5,20 @@ from tkinter import messagebox
 
 
 class Sellcar:
-    def __init__(self):
+    def __init__(self, selected_car=""):
         self.root = Tk()
+
+        # Here we are getting the data from the parameter regarding
+        # the selected car from the display car file
+        self.selectedCar = selected_car
+
         self.root.geometry("1000x700")
-        self.root.title("Sell Car") 
-        self.root.configure(bg ='white')
         self.root.resizable(width =False, height= False)
+
+        if self.selectedCar:
+            self.root.title("Update Used Car")
+        else:
+            self.root.title("Sell Car")
 
     def sellcar_widgets(self):
 
@@ -143,6 +151,67 @@ class Sellcar:
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
 
             result = database.add_car_and_seller_details(a)
+            if result:
+                    messagebox.showinfo("Message","Car & Seller details added successfully")
+                    # self.root.destroy()
+                
+            else:
+                    messagebox.showerror("Alert!", "Something Went wrong")
+
+
+
+
+
+    
+    def get_updated_sell_car_data(self):
+
+        if self.car_brand_entry.get() == "":
+            messagebox.showwarning("Alert!","Please enter the car brand")
+
+        elif self.car_reg_cb.get() =="Select Year":
+            messagebox.showwarning("Alert!","Please select registration year")
+            
+        elif self.car_model_entry.get() =="":
+            messagebox.showwarning("Alert!","Please enter the car model")
+            
+        elif self.car_var_cb.get() =="Select Variant":
+            messagebox.showwarning("Alert!","Please select variant")
+            
+        elif self.car_ownership_cb.get() =="Select Ownership":
+            messagebox.showwarning("Alert!","Please select car ownership")
+
+        elif self.km_driven_cb.get() =="odometer":
+            messagebox.showwarning("Alert!","Please select km driven")
+
+        elif self.seller_name_entry.get() =="":
+            messagebox.showwarning("Alert!","Please enter seller name")
+
+        elif self.seller_mobile_entry.get()=="":
+            messagebox.showwarning("Alert!","Please enetr seller's contact number")
+
+        elif self.seller_address_entry.get() =="":
+            messagebox.showwarning("Alert!","Please enter seller's address")
+
+        else:
+            carBrand =  self.car_brand_entry.get()
+            registrationYear = self.car_reg_cb.get()
+            carModel =  self.car_model_entry.get()
+            carVariant = self.car_var_cb.get()
+            carOwnership = self.car_ownership_cb.get()
+            kmDriven= self.km_driven_cb.get()
+
+
+            sellerName = self.seller_name_entry.get()
+            sellerContact=self.seller_mobile_entry.get()
+            sellerAddress = self.seller_address_entry.get()
+
+            u = (carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,sellerName, sellerContact,sellerAddress)
+            dict(self.car_is)
+            print(u)
+
+            ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
+
+            result = database.update_car_and_seller_details(a)
             if result:
                     messagebox.showinfo("Message","Car & Seller details added successfully")
                     # self.root.destroy()

@@ -3,6 +3,7 @@ from tkinter import ttk
 import database
 from tkinter import messagebox
 # import sv_ttk
+import Sell_car
 
 class DisplayCars:
     def __init__(self):
@@ -14,7 +15,7 @@ class DisplayCars:
 
     def button_frame(self):
 
-        self.f = Frame(self.root)
+        self.f = Frame(self.root, background="light blue")
         self.f.place(x=20, y=10, width=1160, height=100)
 
         self.manage_new_car_database = ttk.Button(self.f, width=40, text='Manage New Cars Database', command=self.display_new_cars)
@@ -26,8 +27,8 @@ class DisplayCars:
         self.root.mainloop()
 
     def display_new_cars(self):
-        self.new_car_frame = Frame(self.root)
-        self.new_car_frame.place(x=20,y=130,width=1160,height=630)
+        self.new_car_frame = Frame(self.root, background="light blue")
+        self.new_car_frame.place(x=20,y=130,width=1160,height=550)
 
         self.tree_view1 = ttk.Treeview(self.new_car_frame,columns=("A","B","C","D","E","F","G"))
 
@@ -96,8 +97,8 @@ class DisplayCars:
 
 
     def display_used_cars(self):
-        self.used_car_frame = Frame(self.root)
-        self.used_car_frame.place(x=20,y=130,width=1160,height=630)
+        self.used_car_frame = Frame(self.root, background="light blue")
+        self.used_car_frame.place(x=20,y=130,width=1160,height=550)
 
         self.tree_view2 = ttk.Treeview(self.used_car_frame,columns=("A","B","C","D","E","F","G","H","I"))
 
@@ -167,8 +168,13 @@ class DisplayCars:
                     
                 else:
                     messagebox.showwarning("Alert!","Something went wrong")
+
         elif column_id == "#9":
-            print("You clicked on the update")
+            confirmation = messagebox.askyesno("Alert!","Do you really want to update this data?")
+            if confirmation:
+                s = Sell_car.Sellcar(self.tree_view2.item(r))
+                self.root.destroy()
+                s.sellcar_widgets()
 
 
 if __name__=="__main__":
