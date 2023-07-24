@@ -1,1 +1,1 @@
-'#fff'
+self.root.mainloop()

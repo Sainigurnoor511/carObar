@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
-import Mainpage
 # import update_password
 import database
 
@@ -12,9 +11,6 @@ class Login:
         self.root.configure(bg ='#fff')
         self.root.title("Login Page")
         self.root.resizable(width =False, height= False)
-
-
-        
         
 
     def login_frame(self):
@@ -103,18 +99,12 @@ class Login:
 
                     messagebox.showerror("Alert!", "Incorrect username & password")
 
-
-        
-
     # def open_update_password_window(self):
          
     #     self.root.destroy()
     #     up = update_password.UpdatePass()
     #     up.update_passw_frame()
 
-
-
-        
 
 if __name__ == "__main__":
     t = Login()

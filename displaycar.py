@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import database
 from tkinter import messagebox
-# import sv_ttk
+import sv_ttk
 import Sell_car
 
 class DisplayCars:
@@ -11,7 +11,7 @@ class DisplayCars:
         self.root.geometry("1200x700")
         self.root.resizable(False,False)
         self.root.title("Manage Database")
-        # sv_ttk.set_theme("dark")
+        sv_ttk.set_theme("dark")
 
     def button_frame(self):
 
@@ -96,7 +96,7 @@ class DisplayCars:
                 result = database.delete_cars(d)
                 if result:
                     messagebox.showinfo("Message","Student data deleted successfully")
-                    self.root.destroy()
+                    self.root.quit()
                     v = DisplayCars()
                     v.display_cars()
                     v.button_frame()
@@ -108,7 +108,7 @@ class DisplayCars:
             confirmation = messagebox.askyesno("Alert!","Do you really want to update this data?")
             if confirmation:
                 s = Sell_car.Sellcar(self.tree_view2.item(r))
-                self.root.destroy()
+                self.root.quit()
                 s.sellcar_widgets()
 
 
