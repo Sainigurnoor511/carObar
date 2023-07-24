@@ -22,7 +22,8 @@ class CarServicePage:
               
          
         else:
-            self.root.title("CarOBar -- Services")      
+            self.root.title("CarOBar -- Services")  
+                
 
     def car_services_page_widgets(self):
 

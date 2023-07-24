@@ -1,7 +1,14 @@
 from tkinter import *
 from tkinter import ttk
+<<<<<<< Updated upstream
 from tkinter import messagebox
 from PIL import Image, ImageTk
+=======
+# import database
+from tkinter import messagebox
+from PIL import Image, ImageTk
+# import sv_ttk
+>>>>>>> Stashed changes
 
 class HomePage:
     def __init__(self):
