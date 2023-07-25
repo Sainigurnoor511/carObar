@@ -24,12 +24,10 @@ class CarServicePage:
         sv_ttk.set_theme("light")    
         
         if self.selectedService:
-             
-             self.root.title("Update Services")
-              
-         
+            self.root.title("Update Services")
         else:
-            self.root.title("CarOBar -- Services")      
+            self.root.title("CarOBar -- Services")  
+                
 
     def car_services_page_widgets(self):
 

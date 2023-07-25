@@ -2,7 +2,9 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
+
 import buy_car_page, sell_car_page, car_services_page, displaycar, update_password 
+
 
 class HomePage:
     def __init__(self):
