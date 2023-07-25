@@ -100,7 +100,7 @@ class SellCarPage:
       #####---------------------------///// SELLER DETAILS  //////--------------------------------------------#####
 
         self.title2_label = Label(self.sellcar_frame, text="----- Enter Seller Details -----",foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 19, 'normal'))
-        self.title2_label.place(x=345,y=400)
+        self.title2_label.place(x=360,y=400)
 
 
         self.seller_name = ttk.Label(self.sellcar_frame,text="Seller Name",foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 16, 'normal'))
