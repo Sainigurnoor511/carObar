@@ -3,15 +3,20 @@ from tkinter import ttk
 import database
 from tkinter import messagebox
 import sv_ttk
-import Sell_car
 
 class DisplayCars:
     def __init__(self):
         self.root = Tk()
-        self.root.geometry("1200x700")
+        self.width_of_window = 1200
+        self.height_of_window = 700
+        self.screen_width = self.root.winfo_screenwidth()
+        self.screen_height = self.root.winfo_screenheight()
+        self.x_coordinate = (self.screen_width/2)-(self.width_of_window/2)
+        self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
+        self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
         self.root.resizable(False,False)
         self.root.title("Manage Database")
-        sv_ttk.set_theme("dark")
+        
 
     def button_frame(self):
 

@@ -1,4 +1,4 @@
-import sv_ttk
+# import sv_ttk
 import tkinter
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -8,13 +8,19 @@ class BuyCarPage:
 
     def __init__(self):
         self.root = tkinter.Tk()
-        self.root.geometry("1000x700")
+        self.width_of_window = 1000
+        self.height_of_window = 700
+        self.screen_width = self.root.winfo_screenwidth()
+        self.screen_height = self.root.winfo_screenheight()
+        self.x_coordinate = (self.screen_width/2)-(self.width_of_window/2)
+        self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
+        self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
+
         self.root.title("CarOBar -- Buy Car")
         self.root.resizable(width=False, height=False)
-        self.root.attributes('-alpha', 0.97)
-        sv_ttk.set_theme("dark")
+        # sv_ttk.set_theme("light")
 
-    def buy_car_page_widgets(self):
+    def buycar_page_widgets(self):
 
         self.frame = tkinter.Frame(self.root, width=1000, height=700)
         self.frame.place(x=0, y=0)
@@ -68,13 +74,13 @@ class BuyCarPage:
         #!_________________________________________________________________________________________________________
 
 
-        self.divider = ttk.Label(self.frame,text= '______________________________________________________________________________________________________________', width=89, foreground='#c5d0e0', background="#1C1C1C", font=('Bahnschrift SemiBold Condensed', 20, 'normal'))
+        self.divider = ttk.Label(self.frame,text= '______________________________________________________________________________________________________________', width=89, foreground='#c5d0e0', background="white", font=('Bahnschrift SemiBold Condensed', 20, 'normal'))
         self.divider.place(x=10, y=180)
 
 
         #!_______________________________________________________________________________________________________________
 
-        self.image_path = Image.open('images/Cars/New Cars/mclaren.png').resize((350,200))
+        self.image_path = Image.open('images/Cars/NewCars/mclaren.png').resize((350,200))
         self.imgTk = ImageTk.PhotoImage(self.image_path)
         self.image_label = ttk.Label(self.root, image=self.imgTk)
         self.image_label.place(x=40, y=250)
@@ -110,5 +116,5 @@ class BuyCarPage:
 
 if __name__ == "__main__":
     buy = BuyCarPage()
-    buy.buy_car_page_widgets()
+    buy.buycar_page_widgets()
     buy.root.mainloop()

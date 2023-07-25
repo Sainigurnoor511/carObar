@@ -34,8 +34,8 @@ label2.configure(font=("Calibri", 11))
 label2.place(x=10,y=215)
 
 #making animation
-image_a=ImageTk.PhotoImage(Image.open('c2.png'))
-image_b=ImageTk.PhotoImage(Image.open('c1.png'))
+image_a=ImageTk.PhotoImage(Image.open('images\splashscreen\c1.png'))
+image_b=ImageTk.PhotoImage(Image.open('images\splashscreen\c2.png'))
 
 
 for i in range(2): #5loops

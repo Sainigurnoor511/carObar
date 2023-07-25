@@ -9,7 +9,13 @@ class UpdatePass:
 
     def __init__(self):
         self.root = Tk()
-        self.root.geometry("900x500+300+200")
+        self.width_of_window = 900
+        self.height_of_window = 450
+        self.screen_width = self.root.winfo_screenwidth()
+        self.screen_height = self.root.winfo_screenheight()
+        self.x_coordinate = (self.screen_width/2)-(self.width_of_window/2)
+        self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
+        self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
         self.root.configure(bg ='#fff')
         self.root.title("Create New Password")
         self.root.resizable(width =False, height= False)

@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
+import buy_car_page, sell_car_page, car_services_page, displaycar, update_password 
 
 class HomePage:
     def __init__(self):
@@ -27,10 +28,18 @@ class HomePage:
         self.heading = ttk.Label(self.mainframe, text='Welcome Administrator !', foreground='white',background="#1C1C1C", font=('Bahnschrift SemiCondensed', 30, 'normal'))
         self.heading.place(x=320, y=20)
 
-        self.image_path = Image.open('assets/frame0/sidebar.png').resize((40,40))
+        self.image_path = Image.open('images\mainpage\sidebar.png').resize((40,40))
         self.sidebar_image = ImageTk.PhotoImage(self.image_path)
         self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0, background="#1C1C1C", command= self.open_side_bar)
         self.sidebar_button.place(x=20,y=30)
+
+        # self.image_path = Image.open('assets/frame0/sidebar.png').resize((40,40))
+        # self.sidebar_image = ImageTk.PhotoImage(self.image_path)
+        # self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0, background="#1C1C1C", command= self.open_side_bar)
+        # self.sidebar_button.place(x=20,y=30)
+
+
+
 
     def open_side_bar(self):
         # Sidebar/Menubar for accessing different windows
@@ -40,26 +49,65 @@ class HomePage:
         self.heading = ttk.Label(self.sidebar_frame, text='carObar', foreground='white',background="black", font=('Magneto', 23, 'normal'))
         self.heading.place(x=40, y=30)
 
-        self.image_path = Image.open('assets/frame0/back.png').resize((20,20))
+        self.image_path = Image.open('images/mainpage/back.png').resize((20,20))
         self.back_image = ImageTk.PhotoImage(self.image_path)
         self.back_button = Button(self.sidebar_frame, image= self.back_image, border=0, background="black",command= self.close_sidebar)
         self.back_button.place(x=10,y=45)
 
-        self.image_path = Image.open('assets/frame0/dashboard.png').resize((140,40))
+        self.image_path = Image.open('images/mainpage/dashboard.png').resize((150,30))
         self.dashboard_image = ImageTk.PhotoImage(self.image_path)
         self.dashboard_button = Button(self.sidebar_frame, image= self.dashboard_image, border=0, background="black", command= self.open_dashboard)
-        self.dashboard_button.place(x=35,y=100)
+        self.dashboard_button.place(x=25,y=150)
+
+        self.image_path = Image.open('images/mainpage/buycar.png').resize((150,30))
+        self.buycar_image = ImageTk.PhotoImage(self.image_path)
+        self.buycar_button = Button(self.sidebar_frame, image= self.buycar_image, border=0, background="black", command= self.open_buycar)
+        self.buycar_button.place(x=25,y=200)
+
+        self.image_path = Image.open('images/mainpage/sellcar.png').resize((150,30))
+        self.sellcar_image = ImageTk.PhotoImage(self.image_path)
+        self.sellcar_button = Button(self.sidebar_frame, image= self.sellcar_image, border=0, background="black", command= self.open_sellcar)
+        self.sellcar_button.place(x=25,y=250)
+
+        self.image_path = Image.open('images/mainpage/services.png').resize((150,30))
+        self.services_image = ImageTk.PhotoImage(self.image_path)
+        self.services_button = Button(self.sidebar_frame, image= self.services_image, border=0, background="black", command= self.open_car_services)
+        self.services_button.place(x=26,y=300)
+
+        self.image_path = Image.open('images\mainpage\exit.png').resize((80,35))
+        self.exit_image = ImageTk.PhotoImage(self.image_path)
+        self.exit_button = Button(self.sidebar_frame, image= self.exit_image, border=0, background="black")
+        self.exit_button.place(x=33,y=350)
+
 
     def close_sidebar(self):
         self.sidebar_frame.destroy()
 
     def open_dashboard(self):
 
-        self.dashboard_frame = Frame(self.root, width=800, height=600, background= '#1C1C1C')
-        self.dashboard_frame.place(x=200, y=100)
+        self.dashboard_frame = Frame(self.root, width=980, height=680, background= 'black')
+        self.dashboard_frame.place(x=10, y=10)
+        self.close_sidebar()
 
+        self.image_path = Image.open('images/mainpage/dashboard_sidebar pic.png').resize((40,40))
+        self.sidebar_image = ImageTk.PhotoImage(self.image_path)
+        self.sidebar_button = Button(self.dashboard_frame, image= self.sidebar_image, border=0, background="black", command= self.open_side_bar)
+        self.sidebar_button.place(x=20,y=30)
 
+    def open_buycar(self):
+        self.root.destroy()
+        bc = buy_car_page.BuyCarPage()
+        bc.buycar_page_widgets()
 
+    def open_sellcar(self):
+        self.root.destroy()
+        sc = sell_car_page.SellCarPage()
+        sc.sellcar_page_widgets()
+
+    def open_car_services(self):
+        self.root.destroy()
+        cs = car_services_page.CarServicePage()
+        cs.car_services_page_widgets()
 
 
 if __name__ == '__main__':
