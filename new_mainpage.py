@@ -30,7 +30,7 @@ class HomePage:
         self.heading = ttk.Label(self.mainframe, text='Welcome Administrator !', foreground='white',background="#1C1C1C", font=('Bahnschrift SemiCondensed', 30, 'normal'))
         self.heading.place(x=320, y=20)
 
-        self.image_path = Image.open('images\mainpage\sidebar.png').resize((40,40))
+        self.image_path = Image.open('images/mainpage/sidebar.png').resize((40,40))
         self.sidebar_image = ImageTk.PhotoImage(self.image_path)
         self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0, background="#1C1C1C", command= self.open_side_bar)
         self.sidebar_button.place(x=20,y=30)
