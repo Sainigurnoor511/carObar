@@ -7,8 +7,8 @@ from tkinter import messagebox
 class Services:
     def __init__(self):
         self.root = Tk()
-        self.width_of_window = 1000
-        self.height_of_window = 600
+        self.width_of_window = 1200
+        self.height_of_window = 700
         self.screen_width = self.root.winfo_screenwidth()
         self.screen_height = self.root.winfo_screenheight()
         self.x_coordinate = (self.screen_width/2)-(self.width_of_window/2)
@@ -16,19 +16,19 @@ class Services:
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
         self.root.resizable(width =False, height= False)
         self.root.title("Services Details")
-        self.root.configure(bg='#fff')
 
     def build_view_services_page_widgets(self):
-        self.f = Frame(self.root, bg ="#57A1F8")
-        self.f.place(x=0,y=0,width =1000, height=600)
+        self.f = Frame(self.root, background="light blue")
+        # self.f.place(x=10,y=10,width =1000, height=600)
+        self.f.place(x=20,y=10,width=1160,height=550)
 
         self.tree_view = ttk.Treeview(self.f, columns= ("A","B","C","D","E","F","G","H"))
 
         self.tree_view.heading("#0",text= "ID")
-        self.tree_view.column("#0", width= 100,anchor="center")
+        self.tree_view.column("#0", width= 40, anchor=CENTER)
 
         self.tree_view.heading("#1",text= "Service Type")
-        self.tree_view.column("#1", width= 150,anchor="center")
+        self.tree_view.column("#1", width= 120,anchor="center")
 
         self.tree_view.heading("#2",text= "Service Time")
         self.tree_view.column("#2", width= 150,anchor="center")
@@ -46,14 +46,14 @@ class Services:
         self.tree_view.column("#6", width= 100,anchor="center")
 
         self.tree_view.heading("#7",text= "Update")
-        self.tree_view.column("#7", width= 100,anchor="center")
+        self.tree_view.column("#7", width= 10,anchor="center")
 
 
         for i in database.get_car_services_details():
             self.tree_view.insert("",0,text=i[0],values=(i[1],i[2],i[3],i[4],i[5],"Delete","Update"))
 
         self.tree_view.bind("<Double-Button-1>", self.perform_actions )
-        self.tree_view.place(x=0, y=0,width=1000,height=600)
+        self.tree_view.place(x=10, y=10)
         
 
 
@@ -99,17 +99,6 @@ class Services:
             a.car_services_page_widgets()
         
 
-        
-
-
-
-
-
-
-
-
-
-        
 if __name__=="__main__":
     
     v = Services()

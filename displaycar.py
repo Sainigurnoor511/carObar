@@ -23,14 +23,19 @@ class DisplayCars:
         self.f = Frame(self.root, background="light blue")
         self.f.place(x=20, y=10, width=1160, height=100)
 
-        self.manage_cars_database = ttk.Button(self.f, width=40, text='Manage Cars in Stock', command=self.display_cars)
-        self.manage_cars_database.place(x=130, y=50)
+        self.database1 = ttk.Button(self.f, width=35, text='Manage New Cars Bought', command=self.display_cars)
+        self.database1.place(x=50, y=50)
 
-        self.manage_used_cars_database = ttk.Button(self.f, width=40, text='Manage Cars Sold')
-        self.manage_used_cars_database.place(x=700, y=50)
+        # self.database2 = ttk.Button(self.f, width=35, text='Manage Second-hand Cars Bought', command=self.display_sellcars)
+        # self.database2.place(x=330, y=50)
 
-        self.manage_used_cars_database = ttk.Button(self.f, width=40, text='Manage Second Hand Cars Bought')
-        self.manage_used_cars_database.place(x=700, y=50)
+        self.database3 = ttk.Button(self.f, width=35, text='Manage In Stock Cars', command=self.display_cars)
+        self.database3.place(x=610, y=50)
+
+        self.database4 = ttk.Button(self.f, width=35, text='Manage Cars Sold', command=self.display_cars)
+        self.database4.place(x=890, y=50)
+
+
 
     def display_cars(self):
 

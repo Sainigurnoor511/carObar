@@ -1,0 +1,1 @@
+self.car_frame.place(x=20,y=130,width=1160,height=550)

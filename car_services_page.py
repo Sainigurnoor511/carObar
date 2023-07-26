@@ -148,7 +148,8 @@ class CarServicePage:
             result = database.add_car_services_details(a)
             if result:
                     messagebox.showinfo("Message","Car Service detail added successfully")
-                    self.root.destroy()
+                    self.car_services_page_widgets()
+
                 
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")
