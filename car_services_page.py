@@ -5,6 +5,7 @@ from tkcalendar import DateEntry
 from tkinter import messagebox
 import database, car_services_treeview, new_mainpage
 # from PIL import Image, ImageTk
+import displaycar
 
 
 class CarServicePage:
@@ -108,7 +109,7 @@ class CarServicePage:
             
             self.services_cb.insert(0,result[0])
             self.time_cb.insert(0,result[1])
-            self.d.insert(0,result[2])
+            self.d.set_date(result[2])
             self.customer_name_entry.insert(0,result[3])
             self.customer_contact_entry.insert(0,result[4])
 
@@ -154,7 +155,7 @@ class CarServicePage:
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")
 
-      #!_________________________________________________________________________________________________________
+    #!_________________________________________________________________________________________________________
 
 
     def get_services_update(self):
@@ -186,8 +187,9 @@ class CarServicePage:
             if result:
                     messagebox.showinfo("Message","Car Service detail updated successfully")
                     self.root.destroy()
-                    v = car_services_treeview.Services()
-                    v.build_view_services_page_widgets()
+                    v = displaycar.DisplayCars()
+                    v.display_car_services()
+                    v.button_frame()
                 
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")

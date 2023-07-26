@@ -87,13 +87,13 @@ class HomePage:
 
     def open_dashboard(self):
 
-        self.dashboard_frame = Frame(self.root, width=980, height=680, background= 'black')
-        self.dashboard_frame.place(x=10, y=10)
+        self.dashboard_frame = Frame(self.root, width=1000, height=700, background= 'white')
+        self.dashboard_frame.place(x=0, y=100)
         self.close_sidebar()
 
-        self.image_path = Image.open('images/mainpage/dashboard_sidebar pic.png').resize((40,40))
+        self.image_path = Image.open('images/mainpage/sidebar.png').resize((40,40))
         self.sidebar_image = ImageTk.PhotoImage(self.image_path)
-        self.sidebar_button = Button(self.dashboard_frame, image= self.sidebar_image, border=0, background="black", command= self.open_side_bar)
+        self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0, background="#1c1c1c", command= self.open_side_bar)
         self.sidebar_button.place(x=20,y=30)
 
     def open_buycar(self):
