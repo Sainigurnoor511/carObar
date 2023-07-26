@@ -46,14 +46,15 @@ class Services:
         self.tree_view.column("#6", width= 100,anchor="center")
 
         self.tree_view.heading("#7",text= "Update")
-        self.tree_view.column("#7", width= 10,anchor="center")
+        self.tree_view.column("#7", width= 100,anchor="center")
 
 
         for i in database.get_car_services_details():
             self.tree_view.insert("",0,text=i[0],values=(i[1],i[2],i[3],i[4],i[5],"Delete","Update"))
 
         self.tree_view.bind("<Double-Button-1>", self.perform_actions )
-        self.tree_view.place(x=10, y=10)
+
+        self.tree_view.place(x=10, y=10,width=1100)
         
 
 
