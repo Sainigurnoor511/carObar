@@ -2,6 +2,7 @@
 import tkinter
 from tkinter import ttk
 from PIL import Image, ImageTk
+import new_mainpage
 
 
 class BuyCarPage:
@@ -15,9 +16,13 @@ class BuyCarPage:
         self.x_coordinate = (self.screen_width/2)-(self.width_of_window/2)
         self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
+        
+
+        self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
 
         self.root.title("CarOBar -- Buy Car")
         self.root.resizable(width=False, height=False)
+
         # sv_ttk.set_theme("light")
 
     def buycar_page_widgets(self):
@@ -112,6 +117,11 @@ class BuyCarPage:
 
         self.rto = ttk.Label(self.frame,text= ' PB-07', width=7, foreground='#57A1F8', font=('Bahnschrift SemiBold Condensed', 16, 'normal'))
         self.rto.place(x=375, y=480)
+
+    def open_home_page(self):
+        self.root.destroy()
+        n = new_mainpage.HomePage()
+        n.homepage_widgets()    
 
 
 if __name__ == "__main__":
