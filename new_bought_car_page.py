@@ -89,10 +89,10 @@ class BoughtCarPage:
 
         if self.selectedCar:
 
-            self.sign_up = Button(self.brand_new_frame, text = "sumbit" ,borderwidth=0,background="white", command=self.get_new_car_data)
+            self.sign_up = Button(self.brand_new_frame, text = "Update" ,borderwidth=0,background="white", command=self.get_updated_new_car_data)
             self.sign_up.place(x=440,y=640)
 
-            result = dict(self.selectedCar).get("Values")
+            result = dict(self.selectedCar).get("values")
             print("result")    
                 
             self.car_brand_entry.insert(0,result[0])
@@ -135,13 +135,12 @@ class BoughtCarPage:
             carPrice = self.car_price_entry.get()
             
             a = (carBrand,carModel, carVariant,carMileage,carPrice)
-            print(a)
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
 
             result = database.add_brand_new_cars(a)
             if result:
-                    messagebox.showinfo("Message","Car & Seller details added successfully")
+                    messagebox.showinfo("Message","Car details added successfully")
                     self.new_bought_car_page_widgets()
                     
                 
@@ -177,29 +176,25 @@ class BoughtCarPage:
             carPrice = self.car_price_entry.get()
             
 
-        
+            u = (carBrand,carModel, carVariant,carMileage,carPrice, dict(self.selectedCar).get("text"))
 
-
-            u = (carBrand,carModel, carVariant,carMileage,carPrice)
-            dict(self.car_id)
-            print(u)
-
-            ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
+            ###----------------------//////// CONNECTING WITH DATABASE ///////---------------------------###
 
             result = database.update_new_cars(u)
             if result:
                     messagebox.showinfo("Message","Car details updated successfully")
-                    # self.root.destroy()
+                    self.root.destroy()
 
                 
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")
 
-    def open_home_page(self):
-        self.root.destroy()
-        n = new_mainpage.HomePage()
-        n.homepage_widgets()
+    # def open_home_page(self):
+    #     self.root.destroy()
+    #     n = new_mainpage.HomePage()
+    #     n.homepage_widgets()
 
 if __name__=="__main__":
     s=BoughtCarPage()
     s.new_bought_car_page_widgets()
+    

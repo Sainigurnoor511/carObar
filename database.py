@@ -14,7 +14,7 @@ print("Database Connected")
 
 
 
-
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Treeview for brand new cars !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
 def add_brand_new_cars(new_car_data):
     
@@ -27,9 +27,10 @@ def add_brand_new_cars(new_car_data):
 
 
 
-def update_new_cars(new_car_data):
+def update_new_cars(car_id):
+    print()
     try:
-        cursor.execute("UPDATE `brand_new_cars_data` (car_brand,car_model,car_variant,car_mileage,car_price) values(%s,%s,%s,%s,%s)",new_car_data)
+        cursor.execute("UPDATE `brand_new_cars_data` SET car_brand=%s,car_model=%s,car_variant=%s,car_mileage=%s,car_price=%s WHERE id=%s",car_id)  #?????????????????????????? for updating 
         con.commit()
         return True
     except:

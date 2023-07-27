@@ -1,1 +1,4 @@
-self.car_frame.place(x=20,y=130,width=1160,height=550)
+    # def open_home_page(self):
+    #     self.root.destroy()
+    #     n = new_mainpage.HomePage()
+    #     n.homepage_widgets()
