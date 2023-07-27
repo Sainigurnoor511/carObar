@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
 # import update_password
-import database
+import database, new_mainpage
 
 class Login:
     def __init__(self):
@@ -96,10 +96,10 @@ class Login:
                 result = database.register_data(a)    
                 if result:
                             
-                            messagebox.showinfo("Message"," Logged in")
-                            self.root.destroy()
-                            mp = Mainpage()
-                            mp.Mainpage.window()
+                        # messagebox.showinfo("Message"," Logged in")
+                        self.root.destroy()
+                        np = new_mainpage.HomePage()
+                        np.homepage_widgets()
                         
                 else:
 

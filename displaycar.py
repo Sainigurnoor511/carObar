@@ -3,7 +3,7 @@ from tkinter import ttk
 import database
 from tkinter import messagebox
 import sv_ttk
-import car_services_page
+import car_services_page,sell_car_page
 
 class DisplayCars:
     def __init__(self):
@@ -125,9 +125,9 @@ class DisplayCars:
         elif column_id == "#10":
             confirmation = messagebox.askyesno("Alert!","Do you really want to update this data?")
             if confirmation:
-                s = Sell_car.Sellcar(self.tree_view2.item(r))
+                s = sell_car_page.SellCarPage(self.tree_view2.item(r))
                 self.root.quit()
-                s.sellcar_widgets()
+                s.sellcar_page_widgets()
 
 
     def display_car_services(self):

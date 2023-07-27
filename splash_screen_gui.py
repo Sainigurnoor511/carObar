@@ -4,6 +4,7 @@ from tkinter import font
 from PIL import ImageTk, Image 
 import time
 import new_mainpage
+import login_admin
 
 w=Tk()
 
@@ -20,8 +21,9 @@ w.overrideredirect(1) #for hiding titlebar
 
 #new window to open
 def new_win():
-    nw = new_mainpage.HomePage()
-    nw.homepage_widgets()
+    la = login_admin.Login()
+
+    la.login_frame()
     
 
 Frame(w, width=427, height=250, bg='#272727').place(x=0,y=0)
@@ -44,28 +46,28 @@ for i in range(2): #5loops
     l3=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=220, y=145)
     l4=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=240, y=145)
     w.update_idletasks()
-    time.sleep(0.2)
+    time.sleep(0.1)
 
     l1=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=180, y=145)
     l2=Label(w, image=image_a, border=0, relief=SUNKEN).place(x=200, y=145)
     l3=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=220, y=145)
     l4=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=240, y=145)
     w.update_idletasks()
-    time.sleep(0.2)
+    time.sleep(0.1)
 
     l1=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=180, y=145)
     l2=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=200, y=145)
     l3=Label(w, image=image_a, border=0, relief=SUNKEN).place(x=220, y=145)
     l4=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=240, y=145)
     w.update_idletasks()
-    time.sleep(0.2)
+    time.sleep(0.1)
 
     l1=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=180, y=145)
     l2=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=200, y=145)
     l3=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=220, y=145)
     l4=Label(w, image=image_a, border=0, relief=SUNKEN).place(x=240, y=145)
     w.update_idletasks()
-    time.sleep(0.2)
+    time.sleep(0.1)
 
 w.destroy()
 new_win()

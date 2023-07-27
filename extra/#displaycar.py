@@ -3,7 +3,7 @@ from tkinter import ttk
 import database
 from tkinter import messagebox
 # import sv_ttk
-import Sell_car
+import extra.Sell_car as Sell_car
 
 class DisplayCars:
     def __init__(self):

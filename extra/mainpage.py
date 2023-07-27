@@ -3,11 +3,11 @@ from pathlib import Path
 from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
-import Sell_car
+import extra.Sell_car as Sell_car
 
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\Gurnoor Singh Saini\Desktop\build\assets\frame0")
+ASSETS_PATH = OUTPUT_PATH / Path(r"D:\Github_projects\carObar\assets\frame0")
 
 
 def relative_to_assets(path: str) -> Path:
@@ -187,7 +187,7 @@ canvas.create_text(
     anchor="nw",
     text="Welcome, Administrator !",
     fill="#FFFFFF",
-    font=("Arial BOLD", 36 * -1)
+    font=("ArialRoundedMTBold", 36 * -1)
 )
 
 button_image_9 = PhotoImage(
