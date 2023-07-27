@@ -25,7 +25,7 @@ class CarServicePage:
         self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
 
         self.root.resizable(width=False, height=False)
-          
+
         
         if self.selectedService:
             self.root.title("Update Services")

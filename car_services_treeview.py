@@ -17,52 +17,45 @@ class Services:
         self.root.resizable(width =False, height= False)
         self.root.title("Services Details")
 
-        self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
 
-    def build_view_services_page_widgets(self):
-        self.f = Frame(self.root, background="light blue")
-        # self.f.place(x=10,y=10,width =1000, height=600)
-        self.f.place(x=20,y=10,width=1160,height=550)
+    def display_car_services(self):
+        self.f2 = Frame(self.root, background="light blue")
+        self.f2.place(x=20,y=150,width=1160,height=525)
 
-        self.tree_view = ttk.Treeview(self.f, columns= ("A","B","C","D","E","F","G","H"))
+        self.tree_view = ttk.Treeview(self.f2, columns= ("A","B","C","D","E","F","G"))
 
         self.tree_view.heading("#0",text= "ID")
-        self.tree_view.column("#0", width= 40, anchor=CENTER)
+        self.tree_view.column("#0", width= 80, anchor=CENTER)
 
-        self.tree_view.heading("#1",text= "Service Type")
-        self.tree_view.column("#1", width= 120,anchor="center")
+        self.tree_view.heading("#1",text= "SERVICE TYPE")
+        self.tree_view.column("#1", width= 140,anchor="center")
 
-        self.tree_view.heading("#2",text= "Service Time")
-        self.tree_view.column("#2", width= 150,anchor="center")
+        self.tree_view.heading("#2",text= "SERVICE TIME")
+        self.tree_view.column("#2", width= 170,anchor="center")
 
-        self.tree_view.heading("#3",text= "Service Date")
-        self.tree_view.column("#3", width= 130,anchor="center")
+        self.tree_view.heading("#3",text= "SERVICE DATE")
+        self.tree_view.column("#3", width= 150,anchor="center")
 
-        self.tree_view.heading("#4",text= "Customer Name")
-        self.tree_view.column("#4", width= 140,anchor="center")
+        self.tree_view.heading("#4",text= "CUSTOMER NAME")
+        self.tree_view.column("#4", width= 180,anchor="center")
 
-        self.tree_view.heading("#5",text= "Customer Contact")
-        self.tree_view.column("#5", width= 130,anchor="center")
+        self.tree_view.heading("#5",text= "CUSTOMER CONTACT")
+        self.tree_view.column("#5", width= 160,anchor="center")
 
-        self.tree_view.heading("#6",text= "Delete")
-        self.tree_view.column("#6", width= 100,anchor="center")
+        self.tree_view.heading("#6",text= "DELETE")
+        self.tree_view.column("#6", width= 120,anchor="center")
 
-        self.tree_view.heading("#7",text= "Update")
-        self.tree_view.column("#7", width= 100,anchor="center")
+        self.tree_view.heading("#7",text= "UPDATE")
+        self.tree_view.column("#7", width= 120,anchor="center")
 
 
         for i in database.get_car_services_details():
             self.tree_view.insert("",0,text=i[0],values=(i[1],i[2],i[3],i[4],i[5],"Delete","Update"))
 
-        self.tree_view.bind("<Double-Button-1>", self.perform_actions )
+        self.tree_view.bind("<Double-Button-1>", self.perform_action)
+        self.tree_view.place(x=15, y=20)
 
-        self.tree_view.place(x=10, y=10,width=1100)
-        
-
-
-        self.root.mainloop()
-
-    def perform_actions(self,e):
+    def perform_action(self,e):
         
         #Focus Row
         r = self.tree_view.focus()
@@ -89,9 +82,8 @@ class Services:
                 result = database.delete_car_services_data(d)
                 if result:
                     messagebox.showinfo("Message","Sevices data deleted successfully")
-                    self.root.destroy()
-                    v = Services()
-                    v.build_view_services_page_widgets()
+                    self.display_car_services()
+                    
                     
                 else:
                     messagebox.showwarning("Alert!","Something went wrong")
@@ -105,4 +97,5 @@ class Services:
 if __name__=="__main__":
     
     v = Services()
-    v.build_view_services_page_widgets()
+    v.display_car_services()
+    v.root.mainloop()
