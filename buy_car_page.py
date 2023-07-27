@@ -20,7 +20,7 @@ class BuyCarPage:
 
         self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
 
-        self.root.title("CarOBar -- Buy Car")
+        self.root.title("Buy Car")
         self.root.resizable(width=False, height=False)
 
         # sv_ttk.set_theme("light")

@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-# import database
+import database
 # import new_mainpage
 from tkinter import messagebox
 from PIL import Image, ImageTk
@@ -25,9 +25,9 @@ class BoughtCarPage:
         self.selectedCar = selected_car
 
         if self.selectedCar:
-            self.root.title("Update Used Car")
+            self.root.title("Update Brand New Cars")
         else:
-            self.root.title("Sell Car")
+            self.root.title("Buy Factory Cars")
         
 
     def new_bought_car_page_widgets(self):
@@ -83,11 +83,28 @@ class BoughtCarPage:
 
 
 
-        self.user_image_path = Image.open('images\mainpage\submit_sellcar_button.png').resize((120,30))
-        self.user_imageTk2 = ImageTk.PhotoImage(self.user_image_path)
-        print(self.user_image_path)
-        self.sign_up = Button(self.brand_new_frame, image= self.user_imageTk2,borderwidth=0,background="white", command=self.get_new_car_data)
-        self.sign_up.place(x=440,y=640)
+        # self.user_image_path = Image.open('images\mainpage\submit_sellcar_button.png').resize((120,30))
+        # self.user_imageTk2 = ImageTk.PhotoImage(self.user_image_path)
+        # print(self.user_image_path)
+
+        if self.selectedCar:
+
+            self.sign_up = Button(self.brand_new_frame, text = "sumbit" ,borderwidth=0,background="white", command=self.get_new_car_data)
+            self.sign_up.place(x=440,y=640)
+
+            result = dict(self.selectedCar).get("Values")
+            print("result")    
+                
+            self.car_brand_entry.insert(0,result[0])
+            self.car_model_entry.insert(0,result[1])
+            self.car_var_cb.insert(0,result[2])
+            self.car_mileage_entry.insert(0,result[3])
+            self.car_price_entry.insert(0,result[4])
+
+        else:
+
+            self.sign_up = Button(self.brand_new_frame,  text = "sumbit" ,borderwidth=0,background="white", command=self.get_new_car_data)
+            self.sign_up.place(x=440,y=640)
 
         self.root.mainloop()
         
@@ -103,7 +120,49 @@ class BoughtCarPage:
             
         elif self.car_var_cb.get() =="Select Variant":
             messagebox.showwarning("Alert!","Please select variant")
-       
+
+        elif self.car_mileage_entry.get() =="":
+            messagebox.showwarning("Alert!","Please enter car mileage")
+
+        elif self.car_price_entry.get()=="":
+            messagebox.showwarning("Alert!","Please enter car price")
+
+        else:
+            carBrand =  self.car_brand_entry.get()
+            carModel =  self.car_model_entry.get()
+            carVariant = self.car_var_cb.get()
+            carMileage = self.car_mileage_entry.get()
+            carPrice = self.car_price_entry.get()
+            
+            a = (carBrand,carModel, carVariant,carMileage,carPrice)
+            print(a)
+
+            ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
+
+            result = database.add_brand_new_cars(a)
+            if result:
+                    messagebox.showinfo("Message","Car & Seller details added successfully")
+                    self.new_bought_car_page_widgets()
+                    
+                
+            else:
+                    messagebox.showerror("Alert!", "Something Went wrong")
+
+
+
+
+
+    
+    def get_updated_new_car_data(self):
+        if self.car_brand_entry.get() == "":
+            messagebox.showwarning("Alert!","Please enter the car brand")
+            
+        elif self.car_model_entry.get() =="":
+            messagebox.showwarning("Alert!","Please enter the car model")
+            
+        elif self.car_var_cb.get() =="Select Variant":
+            messagebox.showwarning("Alert!","Please select variant")
+
         elif self.car_mileage_entry.get() =="":
             messagebox.showwarning("Alert!","Please enter car mileage")
 
@@ -117,84 +176,29 @@ class BoughtCarPage:
             carMileage=self.car_mileage_entry.get()
             carPrice = self.car_price_entry.get()
             
-            a = (carBrand,carModel, carVariant,carMileage,carPrice)
-            print(a)
+
+        
+
+
+            u = (carBrand,carModel, carVariant,carMileage,carPrice)
+            dict(self.car_id)
+            print(u)
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
 
-            # result = database.add_car_and_seller_details(a)
-            # if result:
-            #         messagebox.showinfo("Message","Car & Seller details added successfully")
-            #         # self.root.destroy()
+            result = database.update_new_cars(u)
+            if result:
+                    messagebox.showinfo("Message","Car details updated successfully")
+                    # self.root.destroy()
+
                 
-            # else:
-            #         messagebox.showerror("Alert!", "Something Went wrong")
+            else:
+                    messagebox.showerror("Alert!", "Something Went wrong")
 
-
-
-
-
-    
-    # def get_updated_new_car_data(self):
-
-    #     if self.car_brand_entry.get() == "":
-    #         messagebox.showwarning("Alert!","Please enter the car brand")
-
-    #     elif self.car_reg_cb.get() =="Select Year":
-    #         messagebox.showwarning("Alert!","Please select registration year")
-            
-    #     elif self.car_model_entry.get() =="":
-    #         messagebox.showwarning("Alert!","Please enter the car model")
-            
-    #     elif self.car_var_cb.get() =="Select Variant":
-    #         messagebox.showwarning("Alert!","Please select variant")
-            
-    #     elif self.car_ownership_cb.get() =="Select Ownership":
-    #         messagebox.showwarning("Alert!","Please select car ownership")
-
-    #     elif self.km_driven_cb.get() =="odometer":
-    #         messagebox.showwarning("Alert!","Please select km driven")
-
-    #     elif self.seller_name_entry.get() =="":
-    #         messagebox.showwarning("Alert!","Please enter seller name")
-
-    #     elif self.seller_mobile_entry.get()=="":
-    #         messagebox.showwarning("Alert!","Please enetr seller's contact number")
-
-    #     elif self.seller_address_entry.get() =="":
-    #         messagebox.showwarning("Alert!","Please enter seller's address")
-
-    #     else:
-    #         carBrand =  self.car_brand_entry.get()
-    #         registrationYear = self.car_reg_cb.get()
-    #         carModel =  self.car_model_entry.get()
-    #         carVariant = self.car_var_cb.get()
-    #         carOwnership = self.car_ownership_cb.get()
-    #         kmDriven= self.km_driven_cb.get()
-
-
-    #         sellerName = self.seller_name_entry.get()
-    #         sellerContact=self.seller_mobile_entry.get()
-    #         sellerAddress = self.seller_address_entry.get()
-
-    #         u = (carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,sellerName, sellerContact,sellerAddress)
-    #         dict(self.car_is)
-    #         print(u)
-
-    #         ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
-
-    #         result = database.update_car_and_seller_details(u)
-    #         if result:
-    #                 messagebox.showinfo("Message","Car & Seller details added successfully")
-    #                 # self.root.destroy()
-                
-    #         else:
-    #                 messagebox.showerror("Alert!", "Something Went wrong")
-
-    # def open_home_page(self):
-    #     self.root.destroy()
-    #     n = new_mainpage.HomePage()
-    #     n.homepage_widgets()
+    def open_home_page(self):
+        self.root.destroy()
+        n = new_mainpage.HomePage()
+        n.homepage_widgets()
 
 if __name__=="__main__":
     s=BoughtCarPage()

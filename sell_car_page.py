@@ -188,7 +188,7 @@ class SellCarPage:
             result = database.add_car_and_seller_details(a)
             if result:
                     messagebox.showinfo("Message","Car & Seller details added successfully")
-                    # self.root.destroy()
+                    self.sellcar_page_widgets()
                 
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")

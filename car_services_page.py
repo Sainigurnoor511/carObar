@@ -198,7 +198,7 @@ class CarServicePage:
         self.root.destroy()
         n = new_mainpage.HomePage()
         n.homepage_widgets()
-       
+
 
 
 

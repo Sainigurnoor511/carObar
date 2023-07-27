@@ -1,8 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
-import database
-# import login
+import database, login_admin
 
 class UpdatePass:
     
@@ -122,6 +121,7 @@ class UpdatePass:
             if result:
                 messagebox.showinfo("Message"," Password updated")
                 self.root.destroy()
+
                         
             else:
                 messagebox.showerror("Alert!", "something went wrong")
@@ -131,7 +131,7 @@ class UpdatePass:
 
 
 
-   
+
     # def open_sign_in_window(self):
     #     self.root.destroy()
     #     lg = login.Login()

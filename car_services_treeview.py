@@ -17,6 +17,8 @@ class Services:
         self.root.resizable(width =False, height= False)
         self.root.title("Services Details")
 
+        self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
+
     def build_view_services_page_widgets(self):
         self.f = Frame(self.root, background="light blue")
         # self.f.place(x=10,y=10,width =1000, height=600)
