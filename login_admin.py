@@ -32,7 +32,7 @@ class Login:
         self.heading = Label(self.frame,text ='Log in' , fg='#57a1f8',bg = 'white',font=('Microsoft YaHei UI Light',18,'bold'))
         self.heading.place(x=130,y=5)
         #------------------------------------------------------------
-       
+    
         def on_enter(e):
             self.user.delete(0,'end')
 
@@ -81,10 +81,10 @@ class Login:
     def log_in(self):
             
             if self.user.get() == "": 
-                 messagebox.showwarning("Alert!","Please enter the username")
+                messagebox.showwarning("Alert!","Please enter the username")
 
             elif self.passwd.get() =="":
-                 messagebox.showwarning("Alert!","Please enter the password")
+                messagebox.showwarning("Alert!","Please enter the password")
 
             else:
             
@@ -106,7 +106,7 @@ class Login:
                     messagebox.showerror("Alert!", "Incorrect username & password")
 
     # def open_update_password_window(self):
-         
+    
     #     self.root.destroy()
     #     up = update_password.UpdatePass()
     #     up.update_passw_frame()

@@ -184,7 +184,6 @@ class BoughtCarPage:
             if result:
                     messagebox.showinfo("Message","Car details updated successfully")
                     self.root.destroy()
-
                 
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")

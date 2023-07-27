@@ -35,7 +35,7 @@ class ScrollBar:
 		# widget to the horizontal scrollbar
 		# here yscrollcomannd is used to attach Text
 		# widget to the vertical scrollbar
-		t = Text(root, width = 15, height = 15, wrap = NONE,
+		t = Text(root, width = 200, height = 15, wrap = NONE,
 				xscrollcommand = h.set,
 				yscrollcommand = v.set)
 

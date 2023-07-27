@@ -42,6 +42,7 @@ def delete_new_cars(car_id):
     con.commit()
     return True
 
+
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CAR SERVICES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 def add_car_services_details(car_service_data):
@@ -72,7 +73,7 @@ def update_car_services_details(updated_services_data):
         return False
     
 
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SELL CARS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SECOND HAND CARS BOUGHT (SELL CAR) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 def add_car_and_seller_details(sell_car_data):
     print(sell_car_data)
@@ -176,8 +177,11 @@ def delete_used_cars(car_id):
     return True
 
 
-    
+
+def get_cars(car_id):
+    cursor.execute("SELECT * From `instock_cars_data`")
+    return cursor.fetchall()
 
 
-    
 
+    # (car_brand,car_registration_year,car_model,car_variant,car_ownership,car_km_driven,seller_name,seller_contact,seller_address) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",sell_car_data)
