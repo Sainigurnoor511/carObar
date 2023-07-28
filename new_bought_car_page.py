@@ -10,7 +10,7 @@ class BoughtCarPage:
     def __init__(self, selected_car=""):
         self.root = Tk()
         self.width_of_window = 1000
-        self.height_of_window = 700
+        self.height_of_window = 600
         self.screen_width = self.root.winfo_screenwidth()
         self.screen_height = self.root.winfo_screenheight()
         self.x_coordinate = (self.screen_width/2)-(self.width_of_window/2)
@@ -38,10 +38,10 @@ class BoughtCarPage:
         self.brand_new_frame.place(x=0,y=0)
 
         self.heading = ttk.Label(self.brand_new_frame, text='Brand New Cars', foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 35, 'normal'))
-        self.heading.place(x=380, y=0)
+        self.heading.place(x=350, y=0)
 
         self.title1 = ttk.Label(self.brand_new_frame, text=' Enter Car Details ', foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 19, 'normal'))
-        self.title1.place(x=420, y=110)
+        self.title1.place(x=400, y=110)
 
         self.car_brand = ttk.Label(self.brand_new_frame,text="Car Brand", foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 16, 'normal'))
         self.car_brand.place(x=90, y=190,width=180, height=30)
@@ -89,8 +89,8 @@ class BoughtCarPage:
 
         if self.selectedCar:
 
-            self.sign_up = Button(self.brand_new_frame, text = "Update" ,borderwidth=0,background="white", command=self.get_updated_new_car_data)
-            self.sign_up.place(x=440,y=640)
+            self.submit = Button(self.root,text='update',width=8,font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_updated_new_car_data)
+            self.submit.place(x=450,y=520)
 
             result = dict(self.selectedCar).get("values")
             print("result")    
@@ -103,9 +103,8 @@ class BoughtCarPage:
             self.car_price_entry.insert(0,result[5])
 
         else:
-
-            self.sign_up = Button(self.brand_new_frame,  text = "sumbit" ,borderwidth=0,background="white", command=self.get_new_car_data)
-            self.sign_up.place(x=440,y=640)
+            self.submit = Button(self.root,width=8,text='sumbit',font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_new_car_data)
+            self.submit.place(x=450,y=520)
 
         self.root.mainloop()
         

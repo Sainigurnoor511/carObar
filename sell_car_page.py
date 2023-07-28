@@ -101,34 +101,34 @@ class SellCarPage:
       #####---------------------------///// SELLER DETAILS  //////--------------------------------------------#####
 
         self.title2_label = Label(self.sellcar_frame, text="----- Enter Seller Details -----",foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 19, 'normal'))
-        self.title2_label.place(x=360,y=400)
+        self.title2_label.place(x=360,y=380)
 
 
         self.seller_name = ttk.Label(self.sellcar_frame,text="Seller Name",foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 16, 'normal'))
-        self.seller_name.place(x=70,y=480,width=180, height=30)
+        self.seller_name.place(x=70,y=460,width=180, height=30)
 
         self.seller_name_entry = ttk.Entry(self.sellcar_frame, font =20 )
-        self.seller_name_entry.place(x =220,y =480,width =180,height=30) 
+        self.seller_name_entry.place(x =220,y =460,width =180,height=30) 
 
 
         self.seller_address = ttk.Label(self.sellcar_frame,text="Seller Address",foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 16, 'normal'))
-        self.seller_address.place(x=50,y=560,width=180, height=30)
+        self.seller_address.place(x=50,y=540,width=180, height=30)
 
         self.seller_address_entry = ttk.Entry(self.sellcar_frame, font =20 )
-        self.seller_address_entry.place(x =220,y =560,width =180,height=30) 
+        self.seller_address_entry.place(x =220,y =540,width =180,height=30) 
 
 
         self.seller_mobile = ttk.Label(self.sellcar_frame,text="Seller Contact No.",foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 16, 'normal'))
-        self.seller_mobile.place(x=520,y=480,width=180, height=30)
+        self.seller_mobile.place(x=520,y=460,width=180, height=30)
 
         self.seller_mobile_entry = ttk.Entry(self.sellcar_frame, font =20 )
-        self.seller_mobile_entry.place(x =720,y =480,width =180,height=30)
+        self.seller_mobile_entry.place(x =720,y =460,width =180,height=30)
 
         self.car_price = ttk.Label(self.sellcar_frame,text="Car Price",foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 16, 'normal'))
-        self.car_price.place(x=520,y=560,width=180, height=30)
+        self.car_price.place(x=520,y=540,width=180, height=30)
 
         self.car_price_entry = ttk.Entry(self.sellcar_frame, font =20 )
-        self.car_price_entry.place(x =720,y =560,width =180,height=30)
+        self.car_price_entry.place(x =720,y =540,width =180,height=30)
 
         if self.selectedCar:
 
@@ -138,8 +138,8 @@ class SellCarPage:
             # self.sign_up = Button(self.sellcar_frame, image= self.user_imageTk2,borderwidth=0,background="white", command=self.get_sell_car_data)
             # self.sign_up.place(x=440,y=640)
 
-            self.submit = Button(self.root,width=12,text='update',bg="#57A1F8",fg="white",command= self.get_updated_sell_car_data)
-            self.submit.place(x=440,y=640)
+            self.submit = Button(self.root,text='update',width=8,font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_sell_car_data)
+            self.submit.place(x=450,y=635)
 
             result = dict(self.selectedCar).get("values")
 
@@ -163,8 +163,8 @@ class SellCarPage:
             
         
         else:
-            self.submit = Button(self.root,width=12,text='submit',bg="#57A1F8",fg="white",command= self.get_sell_car_data)
-            self.submit.place(x=440,y=640)
+            self.submit = Button(self.root,text='submit',width=8,font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_sell_car_data)
+            self.submit.place(x=450,y=635)
 
         self.root.mainloop()
         
