@@ -87,7 +87,7 @@ class BuyCarPage:
         self.frame = tkinter.Frame(self.root, width=1000, height=450)
         self.frame.place(x=0, y=231)
 
-        self.image_path = Image.open('images/Cars/NewCars/honda civic.png').resize((350,200))
+        self.image_path = Image.open('images/Cars/Used Cars/Honda Civic.png').resize((350,200))
         self.imgTk = ImageTk.PhotoImage(self.image_path)
         self.image_label = ttk.Label(self.frame, image=self.imgTk)
         self.image_label.place(x=80, y=0)
