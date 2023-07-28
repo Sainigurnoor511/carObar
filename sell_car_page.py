@@ -192,7 +192,7 @@ class SellCarPage:
             sellerAddress = self.seller_address_entry.get()
             carPrice =  self.car_price_entry.get()
 
-            a = (carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,carPrice,sellerName, sellerContact,sellerAddress)
+            a = ("Used", carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,carPrice,sellerName, sellerContact,sellerAddress)
             print(a)
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
@@ -257,7 +257,7 @@ class SellCarPage:
             carPrice =  self.car_price_entry.get()
 
 
-            u = (carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,carPrice,sellerName, sellerContact,sellerAddress)
+            u = ("Used", carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,carPrice,sellerName, sellerContact,sellerAddress)
             dict(self.car_is)
             print(u)
 
