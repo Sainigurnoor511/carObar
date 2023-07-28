@@ -98,7 +98,7 @@ class BoughtCarPage:
 
             self.car_brand_entry.insert(0,result[1])
             self.car_model_entry.insert(0,result[2])
-            self.car_var_cb.insert(0,result[3])
+            self.car_var_cb.set(result[3])
             self.car_mileage_entry.insert(0,result[4])
             self.car_price_entry.insert(0,result[5])
 
