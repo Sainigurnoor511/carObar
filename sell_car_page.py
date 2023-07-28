@@ -124,6 +124,12 @@ class SellCarPage:
         self.seller_mobile_entry = ttk.Entry(self.sellcar_frame, font =20 )
         self.seller_mobile_entry.place(x =720,y =480,width =180,height=30)
 
+        self.car_price = ttk.Label(self.sellcar_frame,text="Car Price",foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 16, 'normal'))
+        self.car_price.place(x=520,y=560,width=180, height=30)
+
+        self.car_price_entry = ttk.Entry(self.sellcar_frame, font =20 )
+        self.car_price_entry.place(x =720,y =560,width =180,height=30)
+
 
         self.user_image_path = Image.open('images\mainpage\submit_sellcar_button.png').resize((120,30))
         self.user_imageTk2 = ImageTk.PhotoImage(self.user_image_path)
@@ -167,6 +173,11 @@ class SellCarPage:
         elif self.seller_address_entry.get() =="":
             messagebox.showwarning("Alert!","Please enter seller's address")
 
+        elif self.car_price_entry.get() =="":
+            messagebox.showwarning("Alert!","Please enter car price")
+
+        
+
         else:
             carBrand =  self.car_brand_entry.get()
             registrationYear = self.car_reg_cb.get()
@@ -179,8 +190,9 @@ class SellCarPage:
             sellerName = self.seller_name_entry.get()
             sellerContact=self.seller_mobile_entry.get()
             sellerAddress = self.seller_address_entry.get()
+            carPrice =  self.car_price_entry.get()
 
-            a = (carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,sellerName, sellerContact,sellerAddress)
+            a = (carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,carPrice,sellerName, sellerContact,sellerAddress)
             print(a)
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
@@ -227,6 +239,9 @@ class SellCarPage:
         elif self.seller_address_entry.get() =="":
             messagebox.showwarning("Alert!","Please enter seller's address")
 
+        elif self.car_price_entry.get() =="":
+            messagebox.showwarning("Alert!","Please enter car price")    
+
         else:
             carBrand =  self.car_brand_entry.get()
             registrationYear = self.car_reg_cb.get()
@@ -239,8 +254,10 @@ class SellCarPage:
             sellerName = self.seller_name_entry.get()
             sellerContact=self.seller_mobile_entry.get()
             sellerAddress = self.seller_address_entry.get()
+            carPrice =  self.car_price_entry.get()
 
-            u = (carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,sellerName, sellerContact,sellerAddress)
+
+            u = (carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,carPrice,sellerName, sellerContact,sellerAddress)
             dict(self.car_is)
             print(u)
 
