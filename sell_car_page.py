@@ -130,15 +130,41 @@ class SellCarPage:
         self.car_price_entry = ttk.Entry(self.sellcar_frame, font =20 )
         self.car_price_entry.place(x =720,y =560,width =180,height=30)
 
+        if self.selectedCar:
 
-        self.user_image_path = Image.open('images\mainpage\submit_sellcar_button.png').resize((120,30))
-        self.user_imageTk2 = ImageTk.PhotoImage(self.user_image_path)
-        print(self.user_image_path)
-        self.sign_up = Button(self.sellcar_frame, image= self.user_imageTk2,borderwidth=0,background="white", command=self.get_sell_car_data)
-        self.sign_up.place(x=440,y=640)
+            # self.user_image_path = Image.open('images\mainpage\submit_sellcar_button.png').resize((120,30))
+            # self.user_imageTk2 = ImageTk.PhotoImage(self.user_image_path)
+            # print(self.user_image_path)
+            # self.sign_up = Button(self.sellcar_frame, image= self.user_imageTk2,borderwidth=0,background="white", command=self.get_sell_car_data)
+            # self.sign_up.place(x=440,y=640)
 
-        # self.submit = Button(self.root,width=12,text='submit',bg="#57A1F8",fg="white",command= self.get_sell_car_data)
-        # self.submit.place(x=440,y=640)
+            self.submit = Button(self.root,width=12,text='update',bg="#57A1F8",fg="white",command= self.get_updated_sell_car_data)
+            self.submit.place(x=440,y=640)
+
+            result = dict(self.selectedCar).get("values")
+
+            self.car_brand_entry.insert(0, result[1])
+
+            self.car_reg_cb.set(result[2])
+
+            self.car_model_entry.insert(0, result[3])
+
+            self.car_var_cb.set(result[4])
+
+            self.car_ownership_cb.set(result[5])
+
+            self.km_driven_cb.set(result[7])
+
+            self.car_price_entry.insert(0, result[8])
+
+            # self.seller_name_entry.insert(0, result[8])
+            # self.seller_mobile_entry.insert(0, result[7])
+            # self.seller_address_entry.insert(0, result[9])
+            
+        
+        else:
+            self.submit = Button(self.root,width=12,text='submit',bg="#57A1F8",fg="white",command= self.get_sell_car_data)
+            self.submit.place(x=440,y=640)
 
         self.root.mainloop()
         
@@ -257,15 +283,13 @@ class SellCarPage:
             carPrice =  self.car_price_entry.get()
 
 
-            u = ("Used", carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,carPrice,sellerName, sellerContact,sellerAddress)
-            dict(self.car_is)
-            print(u)
+            u = ("Used", carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,carPrice,sellerName, sellerContact,sellerAddress, dict(self.selectedCar).get("text"))
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
 
             result = database.update_car_and_seller_details(u)
             if result:
-                    messagebox.showinfo("Message","Car & Seller details added successfully")
+                    messagebox.showinfo("Message","Car & Seller details updated successfully")
                     # self.root.destroy()
                 
             else:

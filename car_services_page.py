@@ -107,8 +107,8 @@ class CarServicePage:
             result = dict(self.selectedService).get("values")
             print("Services detials - ", result)
             
-            self.services_cb.insert(0,result[0])
-            self.time_cb.insert(0,result[1])
+            self.services_cb.set(result[0])
+            self.time_cb.set(result[1])
             self.d.set_date(result[2])
             self.customer_name_entry.insert(0,result[3])
             self.customer_contact_entry.insert(0,result[4])

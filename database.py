@@ -84,11 +84,19 @@ def add_car_and_seller_details(sell_car_data):
     except:
         return False
 
+def get_car_and_seller_details():
+    cursor.execute("SELECT * FROM `secondhand_cars_bought_data`")
+    return cursor.fetchall()
 
+def delete_car_and_seller_details(car_id):
+    print("Database: car id ", car_id)
+    cursor.execute("DELETE FROM `secondhand_cars_bought_data` WHERE id=%s",car_id)
+    con.commit()
+    return True
 
 def update_car_and_seller_details(update_car_data):
     try:
-        cursor.execute("UPDATE `secondhand_cars_bought_data` (car_type, car_brand,car_registration_year,car_model,car_variant,car_ownership,car_km_driven,car_price,seller_name,seller_contact,seller_address,car_price) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",update_car_data)
+        cursor.execute("UPDATE `secondhand_cars_bought_data` SET car_type=%s, car_brand=%s, car_registration_year=%s,car_model=%s,car_variant=%s,car_ownership=%s,car_km_driven=%s,car_price=%s,seller_name=%s,seller_contact=%s,seller_address=%s,car_price=%s WHERE id=%s" , update_car_data )
         con.commit()
         return True
     except:
