@@ -19,7 +19,7 @@ print("Database Connected")
 def add_brand_new_cars(new_car_data):
     
     try:
-        cursor.execute("INSERT INTO `brand_new_cars_data` (car_brand,car_model,car_variant,car_mileage,car_price) values(%s,%s,%s,%s,%s)",new_car_data)
+        cursor.execute("INSERT INTO `brand_new_cars_data` (car_type, car_brand,car_model,car_variant,car_mileage,car_price) values(%s,%s,%s,%s,%s,%s)",new_car_data)
         con.commit()
         return True
     except:
@@ -29,7 +29,7 @@ def add_brand_new_cars(new_car_data):
 def update_new_cars(car_id):
     print()
     try:
-        cursor.execute("UPDATE `brand_new_cars_data` SET car_brand=%s,car_model=%s,car_variant=%s,car_mileage=%s,car_price=%s WHERE id=%s",car_id)  #?????????????????????????? for updating 
+        cursor.execute("UPDATE `brand_new_cars_data` SET car_type=%s, car_brand=%s,car_model=%s,car_variant=%s,car_mileage=%s,car_price=%s WHERE id=%s",car_id)  #?????????????????????????? for updating 
         con.commit()
         return True
     except:
@@ -88,7 +88,7 @@ def add_car_and_seller_details(sell_car_data):
 
 def update_car_and_seller_details(update_car_data):
     try:
-        cursor.execute("UPDATE `secondhand_cars_bought_data` (car_type, car_brand,car_registration_year,car_model,car_variant,car_ownership,car_km_driven,car_price,seller_name,seller_contact,seller_address,car_price) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",update_car_data)
+        cursor.execute("UPDATE `secondhand_cars_bought_data` (car_type, car_brand,car_registration_year,car_model,car_variant,car_ownership,car_km_driven,car_price,seller_name,seller_contact,seller_address,car_price) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",update_car_data)
         con.commit()
         return True
     except:

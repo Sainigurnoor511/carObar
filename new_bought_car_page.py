@@ -134,7 +134,7 @@ class BoughtCarPage:
             carMileage = self.car_mileage_entry.get()
             carPrice = self.car_price_entry.get()
             
-            a = (carBrand,carModel, carVariant,carMileage,carPrice)
+            a = ("New", carBrand,carModel, carVariant,carMileage,carPrice)
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
 
@@ -176,7 +176,7 @@ class BoughtCarPage:
             carPrice = self.car_price_entry.get()
             
 
-            u = (carBrand,carModel, carVariant,carMileage,carPrice, dict(self.selectedCar).get("text"))
+            u = ("New", carBrand, carModel, carVariant,carMileage,carPrice, dict(self.selectedCar).get("text"))
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////---------------------------###
 
