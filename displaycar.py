@@ -15,10 +15,10 @@ class DisplayCars:
         self.x_coordinate = (self.screen_width/2)-(self.width_of_window/2)
         self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
-        self.root.resizable(False,False)
+        #self.root.resizable(False,False)
         self.root.title("Manage Database")
 
-        # self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
+        self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
 
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   BUTTON FRAME   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -52,7 +52,7 @@ class DisplayCars:
         self.f = Frame(self.root, background="light blue")
         self.f.place(x=20,y=150,width=1160,height=550)
 
-        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H"))
+        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I"))
 
         self.tree_view.heading("#0",text="ID")
         self.tree_view.column("#0", width=60)
@@ -80,10 +80,13 @@ class DisplayCars:
 
         self.tree_view.heading("#8",text="UPDATE")
         self.tree_view.column("#8", width=120, anchor=CENTER)
+
+        self.tree_view.heading("#9",text="ADD IN STOCK")
+        self.tree_view.column("#9", width=120, anchor=CENTER)
         
 
         for i in database.manage_brand_new_cars():
-            self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5],i[6], "Delete", "Update"))
+            self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5],i[6], "Delete", "Update","Add In Stock"))
         self.tree_view.bind("<Double-Button-1>", self.perform_action1)    
         self.tree_view.place(x=15,y=20)
 
@@ -125,6 +128,33 @@ class DisplayCars:
                 self.root.destroy()
                 s.new_bought_car_page_widgets()
 
+        elif column_id == "#9":
+            new_car_data = self.tree_view.item(r)
+            print("New Car Data - ", new_car_data)
+
+            car_details = new_car_data.get("values")
+            print("Car Details - ", car_details)
+
+            add_in_stock_result = database.add_in_stock(
+                (
+                    car_details[0],
+                    car_details[1],
+                    car_details[2],
+                    car_details[3],
+                    car_details[4],
+                    "N/A",
+                    "N/A",
+                    "N/A",
+                    car_details[5],
+                    "NO"
+                )
+            )
+
+            if add_in_stock_result:
+                messagebox.showinfo("Meesage","Car added in the stock")
+            else:
+                messagebox.showwarning("Alert!","Something went wrong")
+
 
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!       IN STOCK CARS TREEVIEW         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -133,9 +163,9 @@ class DisplayCars:
     def display_in_stock_cars(self):
 
         self.f = Frame(self.root, background="light blue")
-        self.f.place(x=20,y=150,width=1160,height=550)
+        self.f.place(x=20,y=150,width=1260,height=550)
 
-        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I"))
+        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I","J","K"))
 
         self.tree_view.heading("#0", text="ID")
         self.tree_view.column("#0", width=50)
@@ -166,43 +196,53 @@ class DisplayCars:
 
         self.tree_view.heading("#9",text="PRICE")
         self.tree_view.column("#9", width=100, anchor=CENTER)
+
+        self.tree_view.heading("#10",text="CAR SOLD STATUS")
+        self.tree_view.column("#10", width=100, anchor=CENTER)
         
+        self.tree_view.heading("#11",text="SOLD CAR")
+        self.tree_view.column("#11", width=100, anchor=CENTER)
 
         for i in database.manage_cars_stock():
-            self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9]))
-        # self.tree_view.bind("<Double-Button-1>", self.perform_action2)    
+            self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10], "Sold Car"))
+        self.tree_view.bind("<Double-Button-1>", self.perform_action2)    
         self.tree_view.place(x=15,y=20)
 
-    # def perform_action2(self, e):
-    #     # Focus Row 
-    #     r = self.tree_view.focus()
-    #     print(r)
+    def perform_action2(self, e):
+        # Focus Row 
+        r = self.tree_view.focus()
+        print(r)
 
-    #     # Get the column id
-    #     column_id = self.tree_view.identify_column(e.x)
-    #     print("Column ID - ", column_id)
+        # Get the column id
+        column_id = self.tree_view.identify_column(e.x)
+        print("Column ID - ", column_id)
 
-    #     # Get the data from the row according to the focused row
-    #     d = self.tree_view.item(r)
-    #     print("Focused Row - ", d)
+        # Get the data from the row according to the focused row
+        d = self.tree_view.item(r)
+        print("Focused Row - ", d)
 
-    #     car_id = d.get("text")
-    #     print("Car ID - ", car_id)
-    #     d = (car_id,)
+        car_id = d.get("text")
+        print("Car ID - ", car_id)
+        d = (car_id,)
 
-    #     if column_id == "#10":
-    #         confirmation = messagebox.askyesno("Alert!","Do you really want to delete this data?")
-    #         if confirmation:
-    #             result = database.delete_cars_stock(d)
-    #             if result:
-    #                 messagebox.showinfo("Message","Car data deleted successfully")
-    #                 self.root.quit()
-    #                 v = DisplayCars()
-    #                 v.display_in_stock_cars()
-    #                 v.button_frame()
+        if column_id == "#11":
+            confirmation = messagebox.askyesno("Alert!","Do you really want to sell this car?")
+            if confirmation:
+                result = database.sold_car(
+                    (
+                        "YES",
+                        d[0]
+                        )
+                    )
+                if result:
+                    messagebox.showinfo("Message","Car sold successfully")
+                    self.root.quit()
+                    v = DisplayCars()
+                    v.display_in_stock_cars()
+                    v.button_frame()
                     
-    #             else:
-    #                 messagebox.showwarning("Alert!","Something went wrong")
+                else:
+                    messagebox.showwarning("Alert!","Something went wrong")
 
     #     elif column_id == "#11":
     #         confirmation = messagebox.askyesno("Alert!","Do you really want to update this data?")
@@ -297,7 +337,7 @@ class DisplayCars:
         self.f = Frame(self.root, background="light blue")
         self.f.place(x=20,y=150,width=1160,height=550)
 
-        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I","J","K","L","M"), selectmode= EXTENDED)
+        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I","J","K","L","M","N"), selectmode= EXTENDED)
 
         self.tree_view.heading("#0",text="ID")
         self.tree_view.column("#0", anchor=CENTER,width=40)
@@ -340,10 +380,13 @@ class DisplayCars:
 
         self.tree_view.heading("#13",text="UPDATE")
         self.tree_view.column("#13", anchor=CENTER,width=110)
+
+        self.tree_view.heading("#14",text="Add in Stock")
+        self.tree_view.column("#14", anchor=CENTER,width=110)
         
 
         for i in database.get_car_and_seller_details():
-            self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8],i[9],i[10],i[11], "Delete", "Update"))
+            self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8],i[9],i[10],i[11], "Delete", "Update","Add In Stock"))
         self.tree_view.bind("<Double-Button-1>", self.perform_actions4)    
 
         vertical_scrollbar = ttk.Scrollbar(self.f, orient=VERTICAL, command=self.tree_view.yview)
@@ -393,13 +436,38 @@ class DisplayCars:
                 s = sell_car_page.SellCarPage(self.tree_view.item(r))
                 self.root.destroy()
                 s.sellcar_page_widgets()
+        elif column_id == "#14":
+            second_hand_car_detials = self.tree_view.item(r)
+
+            scar_details = second_hand_car_detials.get("values")
+            print("Second Hand Car Details - ", scar_details)
+
+            second_hand_car_add_result = database.add_second_hand_car_in_stock(
+                (
+                    scar_details[0],
+                    scar_details[1],
+                    scar_details[2],
+                    scar_details[3],
+                    "N/A",
+                    scar_details[4],
+                    scar_details[5],
+                    scar_details[6],
+                    scar_details[10],
+                    "NO"
+                )
+            )
+
+            if second_hand_car_add_result:
+                messagebox.showinfo("Message","Car added in the stock")
+            else:
+                messagebox.showwarning("Alert!","Something went wrong")
                 
 
 
-    # def open_home_page(self):
-    #     self.root.destroy()
-    #     n = new_mainpage.HomePage()
-    #     n.homepage_widgets() 
+    def open_home_page(self):
+        self.root.destroy()
+        n = new_mainpage.HomePage()
+        n.homepage_widgets() 
 
 if __name__=="__main__":
     v = DisplayCars()

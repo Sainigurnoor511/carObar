@@ -132,13 +132,7 @@ class SellCarPage:
 
         if self.selectedCar:
 
-            # self.user_image_path = Image.open('images\mainpage\submit_sellcar_button.png').resize((120,30))
-            # self.user_imageTk2 = ImageTk.PhotoImage(self.user_image_path)
-            # print(self.user_image_path)
-            # self.sign_up = Button(self.sellcar_frame, image= self.user_imageTk2,borderwidth=0,background="white", command=self.get_sell_car_data)
-            # self.sign_up.place(x=440,y=640)
-
-            self.submit = Button(self.root,text='update',width=8,font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_sell_car_data)
+            self.submit = Button(self.root,text='update',width=8,font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_updated_sell_car_data)
             self.submit.place(x=450,y=635)
 
             result = dict(self.selectedCar).get("values")
@@ -154,24 +148,6 @@ class SellCarPage:
             self.seller_mobile_entry.insert(0, result[8])
             self.seller_address_entry.insert(0, result[9])
             self.car_price_entry.insert(0, result[10])
-
-            # self.car_brand_entry.insert(0, result[1])
-
-            # self.car_reg_cb.set(result[2])
-
-            # self.car_model_entry.insert(0, result[3])
-
-            # self.car_var_cb.set(result[4])
-
-            # self.car_ownership_cb.set(result[5])
-
-            # self.km_driven_cb.set(result[6])
-
-            # self.car_price_entry.insert(0, result[7])
-
-            # self.seller_name_entry.insert(0, result[8])
-            # self.seller_mobile_entry.insert(0, result[9])
-            # self.seller_address_entry.insert(0, result[10])
             
         
         else:
@@ -218,13 +194,11 @@ class SellCarPage:
 
         else:
             carBrand =  self.car_brand_entry.get()
-           
             carModel =  self.car_model_entry.get()
             carVariant = self.car_var_cb.get()
             kmDriven= self.km_driven_cb.get()
             registrationYear = self.car_reg_cb.get()
             carOwnership = self.car_ownership_cb.get()
-            
             sellerName = self.seller_name_entry.get()
             sellerContact=self.seller_mobile_entry.get()
             sellerAddress = self.seller_address_entry.get()
@@ -242,9 +216,6 @@ class SellCarPage:
                 
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")
-
-
-
 
 
     
@@ -282,16 +253,11 @@ class SellCarPage:
 
         else:
             carBrand =  self.car_brand_entry.get()
-            
             carModel =  self.car_model_entry.get()
             carVariant = self.car_var_cb.get()
             kmDriven= self.km_driven_cb.get()
             carOwnership = self.car_ownership_cb.get()
             registrationYear = self.car_reg_cb.get()
-            
-            
-
-
             sellerName = self.seller_name_entry.get()
             sellerContact=self.seller_mobile_entry.get()
             sellerAddress = self.seller_address_entry.get()
@@ -300,12 +266,14 @@ class SellCarPage:
 
             u = ("Used", carBrand,carModel, carVariant,kmDriven,registrationYear,carOwnership,sellerName, sellerContact,sellerAddress,carPrice, dict(self.selectedCar).get("text"))
 
+            print("Updated Sell car data - ", u)
+
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
 
             result = database.update_car_and_seller_details(u)
             if result:
                     messagebox.showinfo("Message","Car & Seller details updated successfully")
-                    # self.root.destroy()
+                    self.root.destroy()
                 
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")

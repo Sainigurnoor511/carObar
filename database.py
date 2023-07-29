@@ -42,6 +42,14 @@ def delete_new_cars(car_id):
     con.commit()
     return True
 
+def add_in_stock(car_details):
+    print("Database: new car detials - ", car_details)
+    try:
+        cursor.execute("INSERT INTO `instock_cars_data` (car_type,car_brand,car_model,car_variant,car_mileage,car_km_driven,car_registration_year,car_ownership,car_price,is_sold) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", car_details)
+        con.commit()
+        return True
+    except:
+        return False
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CAR SERVICES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -95,13 +103,23 @@ def delete_car_and_seller_details(car_id):
     return True
 
 def update_car_and_seller_details(update_car_data):
+    print("Database: updated sell car data - ", update_car_data)
     try:
-        cursor.execute("UPDATE `secondhand_cars_bought_data` SET car_type=%s, car_brand=%s, car_registration_year=%s,car_model=%s,car_variant=%s,car_ownership=%s,car_km_driven=%s,car_price=%s,seller_name=%s,seller_contact=%s,seller_address=%s,car_price=%s WHERE id=%s" , update_car_data )
+        cursor.execute("UPDATE `secondhand_cars_bought_data` SET car_type=%s, car_brand=%s, car_model=%s, car_variant=%s, car_km_driven=%s, car_registration_year=%s, car_ownership=%s, seller_name=%s, seller_contact=%s, seller_address=%s,car_price=%s WHERE id=%s" , update_car_data )
         con.commit()
         return True
     except:
         return False    
-    
+
+def add_second_hand_car_in_stock(second_hand_car_details):
+    print("Database: second hand car details - ", second_hand_car_details)
+    try:
+        cursor.execute("INSERT INTO `instock_cars_data` (car_type,car_brand,car_model,car_variant,car_mileage,car_km_driven,car_registration_year,car_ownership,car_price,is_sold) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", second_hand_car_details)
+        con.commit()
+        return True
+    except:
+        return False
+
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ADMIN LOGIN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    
     
 def register_data(admin):
@@ -113,7 +131,6 @@ def register_data(admin):
         
         except:
             return False    
-        
         
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! UPDATE PASSWORD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         
@@ -165,7 +182,8 @@ def manage_used_cars():
 
 
 def manage_cars_stock():
-    cursor.execute("SELECT *FROM `instock_cars_data`")
+    status = ("NO",)
+    cursor.execute("SELECT * FROM `instock_cars_data` WHERE `is_sold`=%s",status)
     return cursor.fetchall()
 
 def delete_cars_stock(car_id):
@@ -195,3 +213,20 @@ def get_cars(car_id):
 
 
     # (car_brand,car_registration_year,car_model,car_variant,car_ownership,car_km_driven,seller_name,seller_contact,seller_address) values(%s,%s,%s,%s,%s,%s,%s,%s,%s)",sell_car_data)
+
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IN STOCK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+def sold_car(sold_car_details):
+    print("Database: sold car detials - ", sold_car_details)
+    try:
+        cursor.execute("UPDATE `instock_cars_data` SET `is_sold`=%s WHERE `id`=%s",sold_car_details)
+        con.commit()
+        return True
+    except:
+        return False
+
+
+def show_all_sold_cars_details():
+    status = ("YES",)
+    cursor.execute("SELECT * FROM `instock_cars_data` WHERE `is_sold`=%s",status)
+    return cursor.fetchall()
