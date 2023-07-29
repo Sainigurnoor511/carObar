@@ -348,7 +348,16 @@ class DisplayCars:
         for i in database.get_car_and_seller_details():
             self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8],i[9],i[10],i[11], "Delete", "Update"))
         self.tree_view.bind("<Double-Button-1>", self.perform_actions4)    
-        self.tree_view.place(x=15,y=20)
+
+        vertical_scrollbar = ttk.Scrollbar(self.f, orient=VERTICAL, command=self.tree_view.yview)
+        self.tree_view.configure(yscrollcommand=vertical_scrollbar.set)
+        vertical_scrollbar.place(x=1108, y=20, height=500)
+
+        horizontal_scrollbar = ttk.Scrollbar(self.root, orient=HORIZONTAL, command=self.tree_view.xview)
+        self.tree_view.configure(xscrollcommand=horizontal_scrollbar.set)
+        horizontal_scrollbar.place(x=35, y=654, width=1095)
+        
+        self.tree_view.place(x=15,y=20,width=1110,height=500)
 
     def perform_actions4(self, e):
         # Focus Row 
