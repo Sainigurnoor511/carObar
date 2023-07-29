@@ -143,23 +143,35 @@ class SellCarPage:
 
             result = dict(self.selectedCar).get("values")
 
-            self.car_brand_entry.insert(0, result[1])
+            self.car_brand_entry.insert(0,result[1])
+            self.car_model_entry.insert(0, result[2])
+            self.car_var_cb.set(result[3])
+            self.km_driven_cb.set(result[4])
+            self.car_reg_cb.set(result[5])
+            self.car_ownership_cb.set(result[6])
+            
+            self.seller_name_entry.insert(0, result[7])
+            self.seller_mobile_entry.insert(0, result[8])
+            self.seller_address_entry.insert(0, result[9])
+            self.car_price_entry.insert(0, result[10])
 
-            self.car_reg_cb.set(result[2])
+            # self.car_brand_entry.insert(0, result[1])
 
-            self.car_model_entry.insert(0, result[3])
+            # self.car_reg_cb.set(result[2])
 
-            self.car_var_cb.set(result[4])
+            # self.car_model_entry.insert(0, result[3])
 
-            self.car_ownership_cb.set(result[5])
+            # self.car_var_cb.set(result[4])
 
-            self.km_driven_cb.set(result[6])
+            # self.car_ownership_cb.set(result[5])
 
-            self.car_price_entry.insert(0, result[7])
+            # self.km_driven_cb.set(result[6])
 
-            self.seller_name_entry.insert(0, result[8])
-            self.seller_mobile_entry.insert(0, result[9])
-            self.seller_address_entry.insert(0, result[10])
+            # self.car_price_entry.insert(0, result[7])
+
+            # self.seller_name_entry.insert(0, result[8])
+            # self.seller_mobile_entry.insert(0, result[9])
+            # self.seller_address_entry.insert(0, result[10])
             
         
         else:
