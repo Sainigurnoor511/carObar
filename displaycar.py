@@ -300,13 +300,13 @@ class DisplayCars:
         self.f = Frame(self.root, background="light blue")
         self.f.place(x=20,y=150,width=1160,height=550)
 
-        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I","J"))
+        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I","J","K","L","M","N"))
 
         self.tree_view.heading("#0",text="ID")
         self.tree_view.column("#0", anchor=CENTER,width=40)
 
         self.tree_view.heading("#1",text="TYPE")
-        self.tree_view.column("#1", anchor=CENTER,width=90)
+        self.tree_view.column("#1", anchor=CENTER,width=50)
 
         self.tree_view.heading("#2",text="BRAND")
         self.tree_view.column("#2", anchor=CENTER,width=100)
@@ -321,25 +321,32 @@ class DisplayCars:
         self.tree_view.column("#5", anchor=CENTER,width=140)
 
         self.tree_view.heading("#6",text="REGISTRATION YEAR")
-        self.tree_view.column("#6", anchor=CENTER,width=150)
+        self.tree_view.column("#6", anchor=CENTER,width=80)
 
         self.tree_view.heading("#7",text="OWNERSHIP")
         self.tree_view.column("#7", anchor=CENTER,width=120)
 
-        self.tree_view.heading("#8",text="PRICE")
-        self.tree_view.column("#8", anchor=CENTER,width=100)
+        self.tree_view.heading("#8",text="SELLER NAME")
+        self.tree_view.column("#8", anchor=CENTER,width=90)
 
-        
+        self.tree_view.heading("#9",text="SELLER CONTACT")
+        self.tree_view.column("#9", anchor=CENTER,width=120)
 
-        self.tree_view.heading("#9",text="DELETE")
-        self.tree_view.column("#9", anchor=CENTER,width=90)
+        self.tree_view.heading("#10",text="SELLER ADDRESS")
+        self.tree_view.column("#10", anchor=CENTER,width=120)
 
-        self.tree_view.heading("#10",text="UPDATE")
-        self.tree_view.column("#10", anchor=CENTER,width=90)
+        self.tree_view.heading("#11",text="PRICE")
+        self.tree_view.column("#11", anchor=CENTER,width=100)
+
+        self.tree_view.heading("#12",text="DELETE")
+        self.tree_view.column("#12", anchor=CENTER,width=60)
+
+        self.tree_view.heading("#13",text="UPDATE")
+        self.tree_view.column("#13", anchor=CENTER,width=60)
         
 
         for i in database.get_car_and_seller_details():
-            self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], "Delete", "Update"))
+            self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8],i[9],i[10],i[11], "Delete", "Update"))
         self.tree_view.bind("<Double-Button-1>", self.perform_actions4)    
         self.tree_view.place(x=15,y=20)
 
@@ -360,7 +367,7 @@ class DisplayCars:
         print("Car ID - ", car_id)
         d = (car_id,)
 
-        if column_id == "#9":
+        if column_id == "#12":
             confirmation = messagebox.askyesno("Alert!","Do you really want to delete this data?")
             if confirmation:
                 result = database.delete_car_and_seller_details(d)
@@ -374,7 +381,7 @@ class DisplayCars:
                 else:
                     messagebox.showwarning("Alert!","Something went wrong")
 
-        elif column_id == "#10":
+        elif column_id == "#13":
             confirmation = messagebox.askyesno("Alert!","Do you really want to update this data?")
             if confirmation:
                 s = sell_car_page.SellCarPage(self.tree_view.item(r))

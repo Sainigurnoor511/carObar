@@ -153,13 +153,13 @@ class SellCarPage:
 
             self.car_ownership_cb.set(result[5])
 
-            self.km_driven_cb.set(result[7])
+            self.km_driven_cb.set(result[6])
 
-            self.car_price_entry.insert(0, result[8])
+            self.car_price_entry.insert(0, result[7])
 
-            # self.seller_name_entry.insert(0, result[8])
-            # self.seller_mobile_entry.insert(0, result[7])
-            # self.seller_address_entry.insert(0, result[9])
+            self.seller_name_entry.insert(0, result[8])
+            self.seller_mobile_entry.insert(0, result[9])
+            self.seller_address_entry.insert(0, result[10])
             
         
         else:
@@ -206,19 +206,19 @@ class SellCarPage:
 
         else:
             carBrand =  self.car_brand_entry.get()
-            registrationYear = self.car_reg_cb.get()
+           
             carModel =  self.car_model_entry.get()
             carVariant = self.car_var_cb.get()
-            carOwnership = self.car_ownership_cb.get()
             kmDriven= self.km_driven_cb.get()
-
-
+            registrationYear = self.car_reg_cb.get()
+            carOwnership = self.car_ownership_cb.get()
+            
             sellerName = self.seller_name_entry.get()
             sellerContact=self.seller_mobile_entry.get()
             sellerAddress = self.seller_address_entry.get()
             carPrice =  self.car_price_entry.get()
 
-            a = ("Used", carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,carPrice,sellerName, sellerContact,sellerAddress)
+            a = ("Used", carBrand,carModel, carVariant,kmDriven,registrationYear,carOwnership,sellerName, sellerContact,sellerAddress,carPrice)
             print(a)
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
@@ -270,11 +270,14 @@ class SellCarPage:
 
         else:
             carBrand =  self.car_brand_entry.get()
-            registrationYear = self.car_reg_cb.get()
+            
             carModel =  self.car_model_entry.get()
             carVariant = self.car_var_cb.get()
-            carOwnership = self.car_ownership_cb.get()
             kmDriven= self.km_driven_cb.get()
+            carOwnership = self.car_ownership_cb.get()
+            registrationYear = self.car_reg_cb.get()
+            
+            
 
 
             sellerName = self.seller_name_entry.get()
@@ -283,7 +286,7 @@ class SellCarPage:
             carPrice =  self.car_price_entry.get()
 
 
-            u = ("Used", carBrand,registrationYear,carModel, carVariant,carOwnership,kmDriven,carPrice,sellerName, sellerContact,sellerAddress, dict(self.selectedCar).get("text"))
+            u = ("Used", carBrand,carModel, carVariant,kmDriven,registrationYear,carOwnership,sellerName, sellerContact,sellerAddress,carPrice, dict(self.selectedCar).get("text"))
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
 
