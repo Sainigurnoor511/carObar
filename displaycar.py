@@ -297,13 +297,13 @@ class DisplayCars:
         self.f = Frame(self.root, background="light blue")
         self.f.place(x=20,y=150,width=1160,height=550)
 
-        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I","J","K","L","M","N"))
+        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I","J","K","L","M"), selectmode= EXTENDED)
 
         self.tree_view.heading("#0",text="ID")
         self.tree_view.column("#0", anchor=CENTER,width=40)
 
         self.tree_view.heading("#1",text="TYPE")
-        self.tree_view.column("#1", anchor=CENTER,width=50)
+        self.tree_view.column("#1", anchor=CENTER,width=80)
 
         self.tree_view.heading("#2",text="BRAND")
         self.tree_view.column("#2", anchor=CENTER,width=100)
@@ -315,31 +315,31 @@ class DisplayCars:
         self.tree_view.column("#4", anchor=CENTER,width=100)
 
         self.tree_view.heading("#5",text="KMS DRIVEN")
-        self.tree_view.column("#5", anchor=CENTER,width=140)
+        self.tree_view.column("#5", anchor=CENTER,width=160)
 
         self.tree_view.heading("#6",text="REGISTRATION YEAR")
-        self.tree_view.column("#6", anchor=CENTER,width=80)
+        self.tree_view.column("#6", anchor=CENTER,width=150)
 
         self.tree_view.heading("#7",text="OWNERSHIP")
         self.tree_view.column("#7", anchor=CENTER,width=120)
 
         self.tree_view.heading("#8",text="SELLER NAME")
-        self.tree_view.column("#8", anchor=CENTER,width=90)
+        self.tree_view.column("#8", anchor=CENTER,width=100)
 
         self.tree_view.heading("#9",text="SELLER CONTACT")
         self.tree_view.column("#9", anchor=CENTER,width=120)
 
         self.tree_view.heading("#10",text="SELLER ADDRESS")
-        self.tree_view.column("#10", anchor=CENTER,width=120)
+        self.tree_view.column("#10", anchor=CENTER,width=200)
 
         self.tree_view.heading("#11",text="PRICE")
-        self.tree_view.column("#11", anchor=CENTER,width=100)
+        self.tree_view.column("#11", anchor=CENTER,width=120)
 
         self.tree_view.heading("#12",text="DELETE")
-        self.tree_view.column("#12", anchor=CENTER,width=60)
+        self.tree_view.column("#12", anchor=CENTER,width=100)
 
         self.tree_view.heading("#13",text="UPDATE")
-        self.tree_view.column("#13", anchor=CENTER,width=60)
+        self.tree_view.column("#13", anchor=CENTER,width=110)
         
 
         for i in database.get_car_and_seller_details():
@@ -348,11 +348,11 @@ class DisplayCars:
 
         vertical_scrollbar = ttk.Scrollbar(self.f, orient=VERTICAL, command=self.tree_view.yview)
         self.tree_view.configure(yscrollcommand=vertical_scrollbar.set)
-        vertical_scrollbar.place(x=1108, y=20, height=500)
+        vertical_scrollbar.place(x=1108, y=21, height=499)
 
         horizontal_scrollbar = ttk.Scrollbar(self.root, orient=HORIZONTAL, command=self.tree_view.xview)
         self.tree_view.configure(xscrollcommand=horizontal_scrollbar.set)
-        horizontal_scrollbar.place(x=35, y=654, width=1095)
+        horizontal_scrollbar.place(x=36, y=653, width=1094)
         
         self.tree_view.place(x=15,y=20,width=1110,height=500)
 
