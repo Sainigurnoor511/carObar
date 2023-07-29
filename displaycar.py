@@ -135,7 +135,7 @@ class DisplayCars:
         self.f = Frame(self.root, background="light blue")
         self.f.place(x=20,y=150,width=1160,height=550)
 
-        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I","J"))
+        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I"))
 
         self.tree_view.heading("#0", text="ID")
         self.tree_view.column("#0", width=50)
@@ -152,67 +152,64 @@ class DisplayCars:
         self.tree_view.heading("#4",text="VARIANT")
         self.tree_view.column("#4", width=100, anchor=CENTER)
 
-        self.tree_view.heading("#5",text="KMS DRIVEN")
+        self.tree_view.heading("#5",text="MILEAGE")
         self.tree_view.column("#5", width=140, anchor=CENTER)
 
-        self.tree_view.heading("#6",text="REGISTRATION YEAR")
-        self.tree_view.column("#6", width=150, anchor=CENTER)
+        self.tree_view.heading("#6",text="KMS DRIVEN")
+        self.tree_view.column("#6", width=140, anchor=CENTER)
 
-        self.tree_view.heading("#7",text="OWNERSHIP")
-        self.tree_view.column("#7", width=120, anchor=CENTER)
+        self.tree_view.heading("#7",text="REGISTRATION YEAR")
+        self.tree_view.column("#7", width=150, anchor=CENTER)
 
-        self.tree_view.heading("#8",text="PRICE")
-        self.tree_view.column("#8", width=100, anchor=CENTER)
+        self.tree_view.heading("#8",text="OWNERSHIP")
+        self.tree_view.column("#8", width=120, anchor=CENTER)
 
-        self.tree_view.heading("#9",text="DELETE")
-        self.tree_view.column("#9", width=90, anchor=CENTER)
-
-        self.tree_view.heading("#10",text="UPDATE")
-        self.tree_view.column("#10", width=90, anchor=CENTER)
+        self.tree_view.heading("#9",text="PRICE")
+        self.tree_view.column("#9", width=100, anchor=CENTER)
         
 
         for i in database.manage_cars_stock():
-            self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], "Delete", "Update"))
-        self.tree_view.bind("<Double-Button-1>", self.perform_action2)    
+            self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9]))
+        # self.tree_view.bind("<Double-Button-1>", self.perform_action2)    
         self.tree_view.place(x=15,y=20)
 
-    def perform_action2(self, e):
-        # Focus Row 
-        r = self.tree_view.focus()
-        print(r)
+    # def perform_action2(self, e):
+    #     # Focus Row 
+    #     r = self.tree_view.focus()
+    #     print(r)
 
-        # Get the column id
-        column_id = self.tree_view.identify_column(e.x)
-        print("Column ID - ", column_id)
+    #     # Get the column id
+    #     column_id = self.tree_view.identify_column(e.x)
+    #     print("Column ID - ", column_id)
 
-        # Get the data from the row according to the focused row
-        d = self.tree_view.item(r)
-        print("Focused Row - ", d)
+    #     # Get the data from the row according to the focused row
+    #     d = self.tree_view.item(r)
+    #     print("Focused Row - ", d)
 
-        car_id = d.get("text")
-        print("Car ID - ", car_id)
-        d = (car_id,)
+    #     car_id = d.get("text")
+    #     print("Car ID - ", car_id)
+    #     d = (car_id,)
 
-        if column_id == "#9":
-            confirmation = messagebox.askyesno("Alert!","Do you really want to delete this data?")
-            if confirmation:
-                result = database.delete_cars_stock(d)
-                if result:
-                    messagebox.showinfo("Message","Car data deleted successfully")
-                    self.root.quit()
-                    v = DisplayCars()
-                    v.display_in_stock_cars()
-                    v.button_frame()
+    #     if column_id == "#10":
+    #         confirmation = messagebox.askyesno("Alert!","Do you really want to delete this data?")
+    #         if confirmation:
+    #             result = database.delete_cars_stock(d)
+    #             if result:
+    #                 messagebox.showinfo("Message","Car data deleted successfully")
+    #                 self.root.quit()
+    #                 v = DisplayCars()
+    #                 v.display_in_stock_cars()
+    #                 v.button_frame()
                     
-                else:
-                    messagebox.showwarning("Alert!","Something went wrong")
+    #             else:
+    #                 messagebox.showwarning("Alert!","Something went wrong")
 
-        elif column_id == "#10":
-            confirmation = messagebox.askyesno("Alert!","Do you really want to update this data?")
-            if confirmation:
-                s = sell_car_page.SellCarPage(self.tree_view2.item(r))
-                self.root.quit()
-                s.sellcar_page_widgets()
+    #     elif column_id == "#11":
+    #         confirmation = messagebox.askyesno("Alert!","Do you really want to update this data?")
+    #         if confirmation:
+    #             s = sell_car_page.SellCarPage(self.tree_view2.item(r))
+    #             self.root.quit()
+    #             s.sellcar_page_widgets()
 
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!      CAR SERVICES          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

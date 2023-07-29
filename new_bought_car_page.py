@@ -4,7 +4,7 @@ import database
 # import new_mainpage
 from tkinter import messagebox
 from PIL import Image, ImageTk
-# import sv_ttk
+import sv_ttk
 
 class BoughtCarPage:
     def __init__(self, selected_car=""):
@@ -16,7 +16,7 @@ class BoughtCarPage:
         self.x_coordinate = (self.screen_width/2)-(self.width_of_window/2)
         self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
-        # sv_ttk.set_theme("light")
+        sv_ttk.set_theme("light")
 
         # self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
 
