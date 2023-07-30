@@ -1,4 +1,3 @@
-import sv_ttk
 from tkinter import *
 import tkinter
 from tkinter import ttk
@@ -20,8 +19,8 @@ class BuyCarPage:
         self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
         self.root.resizable(width =False, height= False)
-        # self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
-        sv_ttk.set_theme("light")
+        self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
+        # sv_ttk.set_theme("light")
 
 
     def select_car_widgets(self):
@@ -161,10 +160,10 @@ class BuyCarPage:
         # self.rto.place(x=375, y=480)
     
 
-    # def open_home_page(self):
-    #     self.root.destroy()
-    #     n = new_mainpage.HomePage()
-    #     n.homepage_widgets()    
+    def open_home_page(self):
+        self.root.destroy()
+        n = new_mainpage.HomePage()
+        n.homepage_widgets()    
 
 
 if __name__ == "__main__":

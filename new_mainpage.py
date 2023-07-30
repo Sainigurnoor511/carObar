@@ -2,16 +2,13 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
-
 import buy_car_page, sell_car_page, car_services_page, displaycar, update_password 
 
 
 class HomePage:
     def __init__(self):
         self.root = Tk()
-        # self.root.geometry('1000x700')
         self.root.title('Home Page')
-
         self.width_of_window = 1000
         self.height_of_window = 700
         self.screen_width = self.root.winfo_screenwidth()
@@ -22,29 +19,30 @@ class HomePage:
         self.root.resizable(width =False, height= False)
 
 
+    ###########################################       HOMEPAGE       ######################################################
+    
     def homepage_widgets(self):
-
         # Main Frame
-        self.mainframe = Frame(self.root, width=1000, height=700, background="#1C1C1C")
+        self.mainframe = Frame(self.root, width=1000, height=700, background="white")
         self.mainframe.place(x=0, y=0)
 
-        self.heading = ttk.Label(self.mainframe, text='Welcome Administrator !', foreground='white',background="#1C1C1C", font=('Bahnschrift SemiCondensed', 30, 'normal'))
-        self.heading.place(x=320, y=20)
+        self.image_path = Image.open('images/background.jpg').resize((1000,564))
+        self.image = ImageTk.PhotoImage(self.image_path)
+        self.background_pic = ttk.Label(self.mainframe, image=self.image)
+        self.background_pic.place(x=-2, y=136)
 
-        self.image_path = Image.open('images/mainpage/sidebar.png').resize((40,40))
+        self.heading = ttk.Label(self.mainframe, text='Welcome Administrator !', foreground='#1C1C1C', background="white", font=('Bahnschrift SemiCondensed', 35, 'normal'))
+        self.heading.place(x=320, y=50)
+
+        self.image_path = Image.open('images/mainpage/sidebar.png').resize((45,45))
         self.sidebar_image = ImageTk.PhotoImage(self.image_path)
-        self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0, background="#1C1C1C", command= self.open_side_bar)
-        self.sidebar_button.place(x=20,y=30)
+        self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0,background="white", command= self.open_sidebar)
+        self.sidebar_button.place(x=10,y=35)
 
-        # self.image_path = Image.open('assets/frame0/sidebar.png').resize((40,40))
-        # self.sidebar_image = ImageTk.PhotoImage(self.image_path)
-        # self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0, background="#1C1C1C", command= self.open_side_bar)
-        # self.sidebar_button.place(x=20,y=30)
+        
+    ###########################################     SIDEBAR MENU     ######################################################
 
-
-
-
-    def open_side_bar(self):
+    def open_sidebar(self):
         # Sidebar/Menubar for accessing different windows
         self.sidebar_frame = Frame(self.root, height=700, width=200, background= 'black')
         self.sidebar_frame.place(x=0, y=0)
@@ -55,7 +53,7 @@ class HomePage:
         self.image_path = Image.open('images/mainpage/back.png').resize((20,20))
         self.back_image = ImageTk.PhotoImage(self.image_path)
         self.back_button = Button(self.sidebar_frame, image= self.back_image, border=0, background="black",command= self.close_sidebar)
-        self.back_button.place(x=10,y=45)
+        self.back_button.place(x=10,y=42)
 
         self.image_path = Image.open('images/mainpage/dashboard.png').resize((150,30))
         self.dashboard_image = ImageTk.PhotoImage(self.image_path)
@@ -79,28 +77,58 @@ class HomePage:
 
         self.image_path = Image.open('images\mainpage\exit.png').resize((80,35))
         self.exit_image = ImageTk.PhotoImage(self.image_path)
-        self.exit_button = Button(self.sidebar_frame, image= self.exit_image, border=0, background="black")
+        self.exit_button = Button(self.sidebar_frame, image= self.exit_image, border=0, background="black", command=self.exit_button)
         self.exit_button.place(x=33,y=350)
-
 
     def close_sidebar(self):
         self.sidebar_frame.destroy()
 
-    def open_dashboard(self):
 
-        self.dashboard_frame = Frame(self.root, width=1000, height=700, background= 'white')
+    ######################################     SIDEBAR MENU ITEMS     #####################################################
+    
+    def open_dashboard(self):
+        self.dashboard_frame = Frame(self.root, width=1000, height=700, background="white")
         self.dashboard_frame.place(x=0, y=100)
         self.close_sidebar()
+        # self.open_sidebar()
+        
 
         self.image_path = Image.open('images/mainpage/sidebar.png').resize((40,40))
         self.sidebar_image = ImageTk.PhotoImage(self.image_path)
-        self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0, background="#1c1c1c", command= self.open_side_bar)
-        self.sidebar_button.place(x=20,y=30)
+        self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0, background="white", command= self.open_sidebar)
+        self.sidebar_button.place(x=10,y=35)
+
+        self.image_path = Image.open('images/mainpage/dashboard_buttons.png')
+        self.dashboard_buttons_image = ImageTk.PhotoImage(self.image_path)
+        self.dashboard_buttons = ttk.Label(self.dashboard_frame,image=self.dashboard_buttons_image, background="white")
+        self.dashboard_buttons.place(x=10,y=50)
+
+        self.dashboard_buttons_label1 = ttk.Label(self.dashboard_frame,text= "₹ 198,000", foreground='#01FB09', background="white", font=('Montserrat Medium', 16, 'bold'))
+        self.dashboard_buttons_label1.place(x=42,y=80)
+
+        self.dashboard_buttons_label2 = ttk.Label(self.dashboard_frame,text= "744", foreground='#FE0101', background="white", font=('Montserrat Medium', 16, 'bold'))
+        self.dashboard_buttons_label2.place(x=325,y=80)
+
+        self.dashboard_buttons_label2_5 = ttk.Label(self.dashboard_frame,text= "👁", foreground='#FE0101', background="white", font=('Montserrat Medium', 18, 'normal'))
+        self.dashboard_buttons_label2_5.place(x=290,y=78)
+
+        self.dashboard_buttons_label3 = ttk.Label(self.dashboard_frame,text= "10", foreground='#FFCF00', background="white", font=('Montserrat Medium', 25, 'bold'))
+        self.dashboard_buttons_label3.place(x=546,y=70)
+
+        self.dashboard_buttons_label4 = ttk.Label(self.dashboard_frame,text= "10", foreground='#0079C6', background="white", font=('Montserrat Medium', 25, 'bold'))
+        self.dashboard_buttons_label4.place(x=799,y=70)
+
+        self.image_path = Image.open('images/mainpage/manage_database.png').resize((300, 50))
+        self.manage_database_image = ImageTk.PhotoImage(self.image_path)
+        self.manage_database_button = Button(self.dashboard_frame, image= self.manage_database_image, border=0, command= self.open_displaycar)
+        self.manage_database_button.place(x=22,y=200)
+
 
     def open_buycar(self):
         self.root.destroy()
         bc = buy_car_page.BuyCarPage()
-        bc.buycar_page_widgets()
+        bc.select_car_widgets()
+        bc.show_car_widgets()
 
     def open_sellcar(self):
         self.root.destroy()
@@ -112,6 +140,13 @@ class HomePage:
         cs = car_services_page.CarServicePage()
         cs.car_services_page_widgets()
 
+    def open_displaycar(self):
+        self.root.destroy()
+        db = displaycar.DisplayCars()
+        db.button_frame()
+
+    def exit_button(self):
+        self.root.destroy()
 
 if __name__ == '__main__':
     hm = HomePage()

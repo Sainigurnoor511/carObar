@@ -148,10 +148,6 @@ class BoughtCarPage:
                     messagebox.showerror("Alert!", "Something Went wrong")
 
 
-
-
-
-    
     def get_updated_new_car_data(self):
         if self.car_brand_entry.get() == "":
             messagebox.showwarning("Alert!","Please enter the car brand")
