@@ -37,7 +37,7 @@ class CarServicePage:
             self.heading = ttk.Label(self.frame, text=' Update Services', foreground='#57A1F8', font=('Harlow Solid Italic', 30, 'normal'))
             self.heading.place(x=350, y=5)
         else:
-            self.heading = ttk.Label(self.frame, text='Services', foreground='#57A1F8', font=('Harlow Solid Italic', 40, 'normal'))
+            self.heading = ttk.Label(self.frame, text='Services',background="white", foreground='#57A1F8', font=('Harlow Solid Italic', 40, 'normal'))
             self.heading.place(x=400, y=5)
 
         self.heading = ttk.Label(self.frame, text='* closed on Sunday', foreground='red')
@@ -46,13 +46,13 @@ class CarServicePage:
         #!_________________________________________________________________________________________________________
 
 
-        self.customer_name = ttk.Label(self.frame,text='Customer Name', width=27, foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
+        self.customer_name = ttk.Label(self.frame,text='Customer Name', width=27,background="white", foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
         self.customer_name.place(x=80, y=200)
 
         self.customer_name_entry = ttk.Entry(self.frame)
         self.customer_name_entry.place(x=80,y=250,width=200)
 
-        self.customer_contact = ttk.Label(self.frame,text='Customer Contact', width=27, foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
+        self.customer_contact = ttk.Label(self.frame,text='Customer Contact', width=27,background="white", foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
         self.customer_contact.place(x=398, y=200)
 
         self.customer_contact_entry = ttk.Entry(self.frame)
@@ -61,7 +61,7 @@ class CarServicePage:
 
         #!_________________________________________________________________________________________________________
 
-        self.services_label = ttk.Label(self.frame,text='Select Service', width=27, foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
+        self.services_label = ttk.Label(self.frame,text='Select Service', width=27,background="white", foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
         self.services_label.place(x=80, y=110)
 
         self.services_cb = ttk.Combobox(self.root, width=27)
@@ -74,7 +74,7 @@ class CarServicePage:
 
         #!_________________________________________________________________________________________________________
 
-        self.time_label = ttk.Label(self.frame,text='Select Time', width=27, foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
+        self.time_label = ttk.Label(self.frame,text='Select Time', width=27,background="white", foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
         self.time_label.place(x=398, y=110)
 
         self.time_cb = ttk.Combobox(self.root, width=27)
@@ -88,7 +88,7 @@ class CarServicePage:
 
         #!_________________________________________________________________________________________________________
 
-        self.date_label = ttk.Label(self.frame,text='Select date', width=27, foreground='#57A1F8',font=('Harlow Solid Italic', 16, 'normal'))
+        self.date_label = ttk.Label(self.frame,text='Select date',background="white", width=27, foreground='#57A1F8',font=('Harlow Solid Italic', 16, 'normal'))
         self.date_label.place(x=705, y=110)
 
         self.d = DateEntry(self.root)
@@ -96,7 +96,7 @@ class CarServicePage:
         
         if self.selectedService:
             
-            self.up = tkinter.Button(self.root,width=12,text='Update',bg="#57A1F8",fg="white",command= self.get_services_update)
+            self.up = Button(self.root,width=12,text='Update',bg="#57A1F8",fg="white",command= self.get_services_update)
             self.up.place(x=420,y=350)
 
             result = dict(self.selectedService).get("values")
