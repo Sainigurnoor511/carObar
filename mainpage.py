@@ -1,8 +1,7 @@
 from tkinter import *
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
-import buy_car_page, sell_car_page, car_services_page, displaycar, update_password 
+import buy_car_page, sell_car_page, car_services_page, manage_database, update_password, invoice_generator
 
 
 class HomePage:
@@ -32,7 +31,7 @@ class HomePage:
         self.background_pic.place(x=-2, y=136)
 
         self.heading = ttk.Label(self.mainframe, text='Welcome Administrator !', foreground='#1C1C1C', background="white", font=('Bahnschrift SemiCondensed', 35, 'normal'))
-        self.heading.place(x=320, y=50)
+        self.heading.place(x=280, y=30)
 
         self.image_path = Image.open('images/mainpage/sidebar.png').resize((45,45))
         self.sidebar_image = ImageTk.PhotoImage(self.image_path)
@@ -52,7 +51,7 @@ class HomePage:
 
         self.image_path = Image.open('images/mainpage/back.png').resize((20,20))
         self.back_image = ImageTk.PhotoImage(self.image_path)
-        self.back_button = Button(self.sidebar_frame, image= self.back_image, border=0, background="black",command= self.close_sidebar)
+        self.back_button = Button(self.sidebar_frame, image= self.back_image, border=0,borderwidth=0, background="black",command= self.close_sidebar)
         self.back_button.place(x=10,y=42)
 
         self.image_path = Image.open('images/mainpage/dashboard.png').resize((150,30))
@@ -103,10 +102,15 @@ class HomePage:
         self.dashboard_buttons = ttk.Label(self.dashboard_frame,image=self.dashboard_buttons_image, background="white")
         self.dashboard_buttons.place(x=10,y=50)
 
-        self.dashboard_buttons_label1 = ttk.Label(self.dashboard_frame,text= "₹ 198,000", foreground='#01FB09', background="white", font=('Montserrat Medium', 16, 'bold'))
+        self.image_path = Image.open('images/mainpage/graph.png').resize((478,400))
+        self.graph_img = ImageTk.PhotoImage(self.image_path)
+        self.graph_image = ttk.Label(self.dashboard_frame,image=self.graph_img, background="white")
+        self.graph_image.place(x=520,y=195)
+
+        self.dashboard_buttons_label1 = ttk.Label(self.dashboard_frame,text= "₹ 2.5 cr", foreground='#01FB09', background="white", font=('Montserrat Medium', 16, 'bold'))
         self.dashboard_buttons_label1.place(x=42,y=80)
 
-        self.dashboard_buttons_label2 = ttk.Label(self.dashboard_frame,text= "744", foreground='#FE0101', background="white", font=('Montserrat Medium', 16, 'bold'))
+        self.dashboard_buttons_label2 = ttk.Label(self.dashboard_frame,text= "926", foreground='#FE0101', background="white", font=('Montserrat Medium', 16, 'bold'))
         self.dashboard_buttons_label2.place(x=325,y=80)
 
         self.dashboard_buttons_label2_5 = ttk.Label(self.dashboard_frame,text= "👁", foreground='#FE0101', background="white", font=('Montserrat Medium', 18, 'normal'))
@@ -120,8 +124,13 @@ class HomePage:
 
         self.image_path = Image.open('images/mainpage/manage_database.png').resize((300, 50))
         self.manage_database_image = ImageTk.PhotoImage(self.image_path)
-        self.manage_database_button = Button(self.dashboard_frame, image= self.manage_database_image, border=0, command= self.open_displaycar)
-        self.manage_database_button.place(x=22,y=200)
+        self.manage_database_button = Button(self.dashboard_frame, image= self.manage_database_image, border=0, command= self.open_manage_database)
+        self.manage_database_button.place(x=40,y=200)
+
+        self.image_path = Image.open('images/mainpage/generate_invoice.png').resize((300, 52))
+        self.generate_invoice_image = ImageTk.PhotoImage(self.image_path)
+        self.generate_invoice_button = Button(self.dashboard_frame, image= self.generate_invoice_image, border=0, command= self.open_invoice_generator)
+        self.generate_invoice_button.place(x=40,y=270)
 
 
     def open_buycar(self):
@@ -140,10 +149,15 @@ class HomePage:
         cs = car_services_page.CarServicePage()
         cs.car_services_page_widgets()
 
-    def open_displaycar(self):
+    def open_manage_database(self):
         self.root.destroy()
-        db = displaycar.DisplayCars()
+        db = manage_database.DisplayCars()
         db.button_frame()
+
+    def open_invoice_generator(self):
+        ig = invoice_generator.InvoiceGenerator()
+        ig.widgets()
+        
 
     def exit_button(self):
         self.root.destroy()

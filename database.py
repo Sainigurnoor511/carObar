@@ -23,7 +23,8 @@ def register_data(admin):
         
         except:
             return False    
-        
+
+
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   ADMIN PASSWORD UPDATE   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         
 def update_passwords(previous_data, updated_data):
@@ -39,9 +40,14 @@ def update_passwords(previous_data, updated_data):
         return False    
 
 
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!       BUY CAR PAGE     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+def get_cars(car_id):
+    cursor.execute("SELECT * From `instock_cars_data`")
+    return cursor.fetchall()
 
 
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!            Brand new cars           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    BRAND NEW CARS TREEVIEW   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 def add_brand_new_cars(new_car_data):
     try:
@@ -86,8 +92,7 @@ def add_in_stock(car_details):
         return False
 
 
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SECOND HAND CARS BOUGHT (SELL CAR) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    SECOND HAND CARS BOUGHT (SELL CAR)     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 def add_car_and_seller_details(sell_car_data):
     try:
@@ -133,7 +138,7 @@ def add_second_hand_car_in_stock(second_hand_car_details):
         return False
 
 
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IN STOCK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!        IN STOCK           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 def manage_cars_stock():
     status = ("NO",)
@@ -226,7 +231,3 @@ def update_car_services_details(updated_services_data):
 #     cursor.execute("DELETE FROM `used_cars_data` WHERE id=%s",car_id)
 #     con.commit()
 #     return True
-
-# def get_cars(car_id):
-#     cursor.execute("SELECT * From `instock_cars_data`")
-#     return cursor.fetchall()

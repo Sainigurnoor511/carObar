@@ -1,10 +1,7 @@
 from tkinter import *
-from tkinter import ttk
-import database
-# import new_mainpage
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
-import sv_ttk
+import mainpage, manage_database, database
 
 class BoughtCarPage:
     def __init__(self, selected_car=""):
@@ -18,7 +15,7 @@ class BoughtCarPage:
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
         sv_ttk.set_theme("light")
 
-        # self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
+        self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
 
         # Here we are getting the data from the parameter regarding
         # the selected car from the display car file
@@ -80,12 +77,6 @@ class BoughtCarPage:
         self.car_var_cb.place(x=720, y=190, width=180, height=30)
         self.car_var_cb["state"]='readonly'
         self.car_var_cb.set("Select Variant")
-
-
-
-        # self.user_image_path = Image.open('images\mainpage\submit_sellcar_button.png').resize((120,30))
-        # self.user_imageTk2 = ImageTk.PhotoImage(self.user_image_path)
-        # print(self.user_image_path)
 
         if self.selectedCar:
 
@@ -180,14 +171,17 @@ class BoughtCarPage:
             if result:
                     messagebox.showinfo("Message","Car details updated successfully")
                     self.root.destroy()
+                    bnc = manage_database.DisplayCars()
+                    bnc.display_brand_new_cars()
+                    bnc.button_frame()
                 
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")
 
-    # def open_home_page(self):
-    #     self.root.destroy()
-    #     n = new_mainpage.HomePage()
-    #     n.homepage_widgets()
+    def open_home_page(self):
+        self.root.destroy()
+        n = mainpage.HomePage()
+        n.homepage_widgets()
 
 if __name__=="__main__":
     s=BoughtCarPage()

@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import font
 from PIL import ImageTk, Image 
 import time
-import new_mainpage
+import mainpage
 import login_admin
 
 w=Tk()

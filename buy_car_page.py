@@ -1,15 +1,13 @@
 from tkinter import *
-import tkinter
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
-import new_mainpage
-import database
+import sv_ttk, mainpage, database
 
 
 class BuyCarPage:
 
     def __init__(self):
-        self.root = tkinter.Tk()
+        self.root = Tk()
         self.root.title("Buy Car")
         self.width_of_window = 1000
         self.height_of_window = 700
@@ -20,18 +18,16 @@ class BuyCarPage:
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
         self.root.resizable(width =False, height= False)
         self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
-        # sv_ttk.set_theme("light")
+        sv_ttk.set_theme("light")
 
 
     def select_car_widgets(self):
 
-        self.frame = tkinter.Frame(self.root, width=1000, height=250)
+        self.frame = Frame(self.root, width=1000, height=250)
         self.frame.place(x=0, y=0)
         
         self.heading = ttk.Label(self.frame, text='buy car', foreground='#57A1F8', font=('Harlow Solid Italic', 40, 'normal'))
         self.heading.place(x=420, y=5)
-
-
 
 
         self.car_brand = ttk.Label(self.frame,text='Select Brand', width=27, foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
@@ -83,7 +79,7 @@ class BuyCarPage:
 
     def show_car_widgets(self):
 
-        self.frame = tkinter.Frame(self.root, width=1000, height=450)
+        self.frame = Frame(self.root, width=1000, height=450)
         self.frame.place(x=0, y=231)
 
         self.image_path = Image.open('images/Cars/Used Cars/Honda Civic.png').resize((350,200))
@@ -162,7 +158,7 @@ class BuyCarPage:
 
     def open_home_page(self):
         self.root.destroy()
-        n = new_mainpage.HomePage()
+        n = mainpage.HomePage()
         n.homepage_widgets()    
 
 

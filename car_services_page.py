@@ -1,18 +1,13 @@
-# import sv_ttk
-import tkinter
-from tkinter import ttk
+from tkinter import *
+from tkinter import ttk, messagebox
 from tkcalendar import DateEntry
-from tkinter import messagebox
-import database, car_services_treeview, new_mainpage
-# from PIL import Image, ImageTk
-import displaycar
+import database, mainpage, manage_database
 
 
 class CarServicePage:
 
     def __init__(self,selected_Service=""):
-        self.root = tkinter.Tk()
-        # sv_ttk.set_theme("light")  
+        self.root = Tk()
         self.selectedService = selected_Service
         self.width_of_window = 900
         self.height_of_window = 450
@@ -34,8 +29,8 @@ class CarServicePage:
                 
 
     def car_services_page_widgets(self):
-
-        self.frame = tkinter.Frame(self.root, width=1000, height=700)
+        
+        self.frame = Frame(self.root, width=1000, height=700, background="white")
         self.frame.place(x=0, y=0)
 
         if self.selectedService: 
@@ -116,12 +111,13 @@ class CarServicePage:
             
 
         else:    
-            self.book = tkinter.Button(self.root,width=12,text='Book',bg="#57A1F8",fg="white",command= self.get_services_data)
+            self.book = Button(self.root,width=12,text='Book',bg="#57A1F8",fg="white",command= self.get_services_data)
             self.book.place(x=420,y=350)
         
         #!_________________________________________________________________________________________________________
 
     def get_services_data(self):
+        
         if self.services_cb.get() == "Select Service":
             messagebox.showwarning("Alert!","Please select the service")
 
@@ -159,6 +155,7 @@ class CarServicePage:
 
 
     def get_services_update(self):
+        
         if self.services_cb.get() == "Select Service":
             messagebox.showwarning("Alert!","Please select the service")
 
@@ -187,7 +184,7 @@ class CarServicePage:
             if result:
                     messagebox.showinfo("Message","Car Service detail updated successfully")
                     self.root.destroy()
-                    v = displaycar.DisplayCars()
+                    v = manage_database.DisplayCars()
                     v.display_car_services()
                     v.button_frame()
                 
@@ -196,10 +193,8 @@ class CarServicePage:
     
     def open_home_page(self):
         self.root.destroy()
-        n = new_mainpage.HomePage()
-        n.homepage_widgets()
-
-
+        n = mainpage.HomePage()
+        n.homepage_widgets() 
 
 
 if __name__ == "__main__":
