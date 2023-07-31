@@ -7,7 +7,7 @@ class UpdatePass:
     
 
     def __init__(self):
-        self.root = Tk()
+        self.root = Toplevel()
         self.width_of_window = 900
         self.height_of_window = 450
         self.screen_width = self.root.winfo_screenwidth()
@@ -22,7 +22,7 @@ class UpdatePass:
 
 
     def update_passw_frame(self):
-        self.image_path = Image.open('images/login and update page/main.png').resize((350,300))
+        self.image_path = Image.open('images/mainpage/main.png').resize((350,300))
         self.imgTk = ImageTk.PhotoImage(self.image_path)
         self.image_label = Label(self.root, image=self.imgTk, width=350, height=300,bg='white')
         self.image_label.place(x=50, y=80)
