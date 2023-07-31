@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
-import sv_ttk, mainpage, database
+import mainpage, database
 
 
 class BuyCarPage:
@@ -17,20 +17,20 @@ class BuyCarPage:
         self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
         self.root.resizable(width =False, height= False)
+
         self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
-        sv_ttk.set_theme("light")
 
 
     def select_car_widgets(self):
 
-        self.frame = Frame(self.root, width=1000, height=250)
+        self.frame = Frame(self.root, width=1000, height=250, background="white")
         self.frame.place(x=0, y=0)
         
-        self.heading = ttk.Label(self.frame, text='buy car', foreground='#57A1F8', font=('Harlow Solid Italic', 40, 'normal'))
+        self.heading = ttk.Label(self.frame, text='buy car', foreground='#57A1F8', background="white", font=('Harlow Solid Italic', 40, 'normal'))
         self.heading.place(x=420, y=5)
 
 
-        self.car_brand = ttk.Label(self.frame,text='Select Brand', width=27, foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
+        self.car_brand = ttk.Label(self.frame,text='Select Brand', width=27, foreground='#57A1F8', background="white", font=('Harlow Solid Italic', 16, 'normal'))
         self.car_brand.place(x=80, y=110)
 
         self.selectbrand = ttk.Combobox(self.root, width=27)
@@ -45,7 +45,7 @@ class BuyCarPage:
         self.selectbrand.place(x=80, y=140)
 
 
-        self.budget = ttk.Label(self.frame,text='Select Budget', width=27, foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
+        self.budget = ttk.Label(self.frame,text='Select Budget', width=27, foreground='#57A1F8', background="white", font=('Harlow Solid Italic', 16, 'normal'))
         self.budget.place(x=398, y=110)
 
         self.selectbudget = ttk.Combobox(self.root, width=27)
@@ -57,7 +57,7 @@ class BuyCarPage:
         self.selectbudget.place(x=398, y=140)
 
 
-        self.new_used = ttk.Label(self.frame,text='New / Used', width=27, foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
+        self.new_used = ttk.Label(self.frame,text='New / Used', width=27, foreground='#57A1F8', background="white", font=('Harlow Solid Italic', 16, 'normal'))
         self.new_used.place(x=705, y=110)
 
         self.select_new_used = ttk.Combobox(self.root, width=27)
@@ -79,27 +79,27 @@ class BuyCarPage:
 
     def show_car_widgets(self):
 
-        self.frame = Frame(self.root, width=1000, height=450)
+        self.frame = Frame(self.root, width=1000, height=450, background="white")
         self.frame.place(x=0, y=231)
 
         self.image_path = Image.open('images/Cars/Used Cars/Honda Civic.png').resize((350,200))
         self.imgTk = ImageTk.PhotoImage(self.image_path)
-        self.image_label = ttk.Label(self.frame, image=self.imgTk)
+        self.image_label = ttk.Label(self.frame, image=self.imgTk, background="white")
         self.image_label.place(x=80, y=0)
 
 
         for i in database.get_cars(2):
 
-            self.car_type = ttk.Label(self.frame, text= i[1], width=20, foreground='#2F60D8', font=('Bahnschrift SemiBold Condensed', 17, 'normal'))
+            self.car_type = ttk.Label(self.frame, text= i[1], width=20, foreground='#2F60D8', background="white", font=('Bahnschrift SemiBold Condensed', 17, 'normal'))
             self.car_type.place(x=550, y=50)
 
-            self.car_brand = ttk.Label(self.frame, text= i[2], width=40, foreground='#2F60D8', font=('Bahnschrift SemiBold Condensed', 17, 'normal'))
+            self.car_brand = ttk.Label(self.frame, text= i[2], width=40, foreground='#2F60D8', background="white", font=('Bahnschrift SemiBold Condensed', 17, 'normal'))
             self.car_brand.place(x=550, y=90)
 
-            self.car_model = ttk.Label(self.frame, text= i[3], width=20, foreground='#2F60D8', font=('Bahnschrift SemiBold Condensed', 17, 'normal'))
+            self.car_model = ttk.Label(self.frame, text= i[3], width=20, foreground='#2F60D8', background="white", font=('Bahnschrift SemiBold Condensed', 17, 'normal'))
             self.car_model.place(x=620, y=90)
 
-            self.car_variant = ttk.Label(self.frame, text= i[4], width=40, foreground='#2F60D8', font=('Bahnschrift SemiBold Condensed', 17, 'normal'))
+            self.car_variant = ttk.Label(self.frame, text= i[4], width=40, foreground='#2F60D8', background="white", font=('Bahnschrift SemiBold Condensed', 17, 'normal'))
             self.car_variant.place(x=550, y=130)
 
             self.car_mileage = ttk.Label(self.frame, text= i[5], width=10, foreground='#57A1F8', background="#454443", font=('Bahnschrift SemiBold Condensed', 16, 'normal'))

@@ -22,7 +22,7 @@ class UpdatePass:
 
 
     def update_passw_frame(self):
-        self.image_path = Image.open('images/main5.png').resize((350,300))
+        self.image_path = Image.open('images/login and update page/main.png').resize((350,300))
         self.imgTk = ImageTk.PhotoImage(self.image_path)
         self.image_label = Label(self.root, image=self.imgTk, width=350, height=300,bg='white')
         self.image_label.place(x=50, y=80)
@@ -35,7 +35,7 @@ class UpdatePass:
         self.heading.place(x=80,y=5)
 
         #------------------------------- ///// USERNAME ENTRY ///// -----------------------------##
-       
+    
         def on_enter(e):
             self.Username.delete(0,'end')
 
@@ -127,24 +127,9 @@ class UpdatePass:
                 messagebox.showerror("Alert!", "something went wrong")
             
 
-
-
-
-
-
-    # def open_sign_in_window(self):
-    #     self.root.destroy()
-    #     lg = login.Login()
-    #     lg.login_frame()
-
-
-
-
-
-        
 if __name__ == "__main__":
 
     t = UpdatePass()
     t.update_passw_frame()
 
-
+# auto-py-to-exe

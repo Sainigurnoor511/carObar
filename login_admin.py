@@ -20,7 +20,7 @@ class Login:
         
 
     def login_frame(self):
-        self.image_path = Image.open('images/main.png').resize((350,300))
+        self.image_path = Image.open('images/login and update page/main5.png').resize((350,300))
         self.imgTk = ImageTk.PhotoImage(self.image_path)
         self.image_label = Label(self.root, image=self.imgTk, width=350, height=300,bg='white')
         self.image_label.place(x=50, y=80)
@@ -73,7 +73,6 @@ class Login:
 
         # self.sign_up = Button(self.frame,width=20,text='Forgot password?', border=0,bg='white',cursor='hand1',fg='#57a1f8')#,command=self. open_update_password_window
         # self.sign_up.place(x=195,y=250)
-
 
 
         self.root.mainloop()

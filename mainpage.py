@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
-import buy_car_page, sell_car_page, car_services_page, manage_database, update_password, invoice_generator
+import buy_car_page, sell_car_page, new_bought_car_page, car_services_page, manage_database, update_password, invoice_generator
 
 
 class HomePage:
@@ -127,11 +127,15 @@ class HomePage:
         self.manage_database_button = Button(self.dashboard_frame, image= self.manage_database_image, border=0, command= self.open_manage_database)
         self.manage_database_button.place(x=40,y=200)
 
-        self.image_path = Image.open('images/mainpage/generate_invoice.png').resize((300, 52))
+        self.image_path = Image.open('images/mainpage/add_brandnew_cars.png').resize((305, 45))
+        self.new_bought_car_image = ImageTk.PhotoImage(self.image_path)
+        self.new_bought_car_button = Button(self.dashboard_frame, image= self.new_bought_car_image, border=0, command= self.open_new_bought_car)
+        self.new_bought_car_button.place(x=37,y=273)
+
+        self.image_path = Image.open('images/mainpage/generate_invoice.png').resize((301, 52))
         self.generate_invoice_image = ImageTk.PhotoImage(self.image_path)
         self.generate_invoice_button = Button(self.dashboard_frame, image= self.generate_invoice_image, border=0, command= self.open_invoice_generator)
-        self.generate_invoice_button.place(x=40,y=270)
-
+        self.generate_invoice_button.place(x=40,y=340)
 
     def open_buycar(self):
         self.root.destroy()
@@ -153,6 +157,11 @@ class HomePage:
         self.root.destroy()
         db = manage_database.DisplayCars()
         db.button_frame()
+
+    def open_new_bought_car(self):
+        self.root.destroy()
+        nb = new_bought_car_page.BoughtCarPage()
+        nb.new_bought_car_page_widgets()
 
     def open_invoice_generator(self):
         ig = invoice_generator.InvoiceGenerator()
