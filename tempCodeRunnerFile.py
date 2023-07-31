@@ -1,1 +1,2 @@
-self.root.resizable(width =False, height= False)
+
+        #     self.context_menu.post(event.x_root, event.y_root)

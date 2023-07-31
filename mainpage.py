@@ -38,11 +38,24 @@ class HomePage:
         self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0,background="white", command= self.open_sidebar)
         self.sidebar_button.place(x=10,y=35)
 
-               
+
         self.image_path = Image.open('images/mainpage/user.png').resize((45,45))
         self.user_image = ImageTk.PhotoImage(self.image_path)
-        self.user_button = Button(self.mainframe, image= self.user_image, background="black",border=0)
-        self.user_button.place(x=940,y=35)
+        self.user_label = Label(self.mainframe, image=self.user_image, background= "white")
+        self.user_label.place(x=940, y=35)
+
+        self.context_menu = Menu(self.mainframe, tearoff=0)
+        self.context_menu.add_command(label="Update Password", command=self.menu_action)
+
+        # Bind the context menu to the label widget
+        self.user_label.bind("<Button-3>", self.show_context_menu)
+
+    def show_context_menu(self,event):
+            self.context_menu.post(event.x_root, event.y_root)
+
+    def menu_action(self):
+            up = update_password.UpdatePass()
+            up.update_passw_frame()
 
         
     ###########################################     SIDEBAR MENU     ######################################################
@@ -85,7 +98,6 @@ class HomePage:
         self.exit_button = Button(self.sidebar_frame, image= self.exit_image, border=0, background="black", command=self.exit_button)
         self.exit_button.place(x=33,y=350)
 
- 
 
     def close_sidebar(self):
         self.sidebar_frame.destroy()
