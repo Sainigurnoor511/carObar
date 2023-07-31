@@ -38,6 +38,12 @@ class HomePage:
         self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0,background="white", command= self.open_sidebar)
         self.sidebar_button.place(x=10,y=35)
 
+               
+        self.image_path = Image.open('images/mainpage/user.png').resize((45,45))
+        self.user_image = ImageTk.PhotoImage(self.image_path)
+        self.user_button = Button(self.mainframe, image= self.user_image, background="black",border=0)
+        self.user_button.place(x=940,y=35)
+
         
     ###########################################     SIDEBAR MENU     ######################################################
 
@@ -78,6 +84,8 @@ class HomePage:
         self.exit_image = ImageTk.PhotoImage(self.image_path)
         self.exit_button = Button(self.sidebar_frame, image= self.exit_image, border=0, background="black", command=self.exit_button)
         self.exit_button.place(x=33,y=350)
+
+ 
 
     def close_sidebar(self):
         self.sidebar_frame.destroy()
