@@ -8,7 +8,7 @@ class BuyCarPage:
 
     def __init__(self):
         self.root = Tk()
-        self.root.title("Buy Car")
+        self.root.title("carObar -- Buy Car")
         self.width_of_window = 1000
         self.height_of_window = 700
         self.screen_width = self.root.winfo_screenwidth()

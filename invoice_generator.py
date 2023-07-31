@@ -7,7 +7,7 @@ from docxtpl import DocxTemplate
 class InvoiceGenerator:
     def __init__(self):
         self.root = Tk()
-        self.root.title("Invoice Generator Form")
+        self.root.title("carObar -- Invoice Generator")
         self.width_of_root = 900
         self.height_of_root = 460
         self.screen_width = self.root.winfo_screenwidth()

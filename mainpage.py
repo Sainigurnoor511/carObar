@@ -7,7 +7,7 @@ import buy_car_page, sell_car_page, new_bought_car_page, car_services_page, mana
 class HomePage:
     def __init__(self):
         self.root = Tk()
-        self.root.title('Home Page')
+        self.root.title('carObar')
         self.width_of_window = 1000
         self.height_of_window = 700
         self.screen_width = self.root.winfo_screenwidth()

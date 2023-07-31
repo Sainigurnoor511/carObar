@@ -13,7 +13,7 @@ class DisplayCars:
         self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
         # self.root.resizable(False,False)
-        self.root.title("Manage Database")
+        self.root.title("carObar -- Manage Database")
 
         self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
 

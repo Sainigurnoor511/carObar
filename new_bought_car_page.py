@@ -22,9 +22,9 @@ class BoughtCarPage:
         self.selectedCar = selected_car
 
         if self.selectedCar:
-            self.root.title("Update Brand New Cars")
+            self.root.title("carObar -- Update Brand New Cars")
         else:
-            self.root.title("Buy Factory Cars")
+            self.root.title("carObar -- Buy Brand New Cars")
         
 
     def new_bought_car_page_widgets(self):

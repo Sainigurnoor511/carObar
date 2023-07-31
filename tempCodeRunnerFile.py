@@ -1,0 +1,1 @@
+self.root.resizable(width =False, height= False)

@@ -16,7 +16,7 @@ class UpdatePass:
         self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
         self.root.configure(bg ='#fff')
-        self.root.title("Create New Password")
+        self.root.title("carObar -- Create New Password")
         self.root.resizable(width =False, height= False)
     
 

@@ -23,9 +23,9 @@ class CarServicePage:
 
         
         if self.selectedService:
-            self.root.title("Update Services")
+            self.root.title("carObar -- Update Services")
         else:
-            self.root.title("CarOBar -- Services")  
+            self.root.title("CarObar -- Services")  
                 
 
     def car_services_page_widgets(self):
