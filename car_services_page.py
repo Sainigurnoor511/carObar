@@ -47,13 +47,13 @@ class CarServicePage:
 
 
         self.customer_name = ttk.Label(self.frame,text='Customer Name', width=27,background="white", foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
-        self.customer_name.place(x=80, y=200)
+        self.customer_name.place(x=80, y=210)
 
         self.customer_name_entry = ttk.Entry(self.frame)
         self.customer_name_entry.place(x=80,y=250,width=200)
 
         self.customer_contact = ttk.Label(self.frame,text='Customer Contact', width=27,background="white", foreground='#57A1F8', font=('Harlow Solid Italic', 16, 'normal'))
-        self.customer_contact.place(x=398, y=200)
+        self.customer_contact.place(x=398, y=210)
 
         self.customer_contact_entry = ttk.Entry(self.frame)
         self.customer_contact_entry.place(x=398,y=250,width=200)
