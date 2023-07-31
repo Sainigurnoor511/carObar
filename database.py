@@ -42,7 +42,7 @@ def update_passwords(previous_data, updated_data):
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!       BUY CAR PAGE     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-def get_cars(car_id):
+def get_cars():
     cursor.execute("SELECT * From `instock_cars_data`")
     return cursor.fetchall()
 

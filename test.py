@@ -22,12 +22,12 @@ class DynamicListApp:
         self.canvas.create_window((0, 0), window=self.list_frame, anchor=tk.NW)
 
         # Simulate a list of data (labels and image paths)
-        self.data_list = [
+        self.data_list = (
             {"label": "Item 1", "image_path": "images/Cars/New Cars/BMW M8 .png"},
             {"label": "Item 2", "image_path": "images/Cars/New Cars/Audi A8 .png"},
             {"label": "Item 3", "image_path": "images/Cars/New Cars/Audi A7.png"},
             # Add more items as needed
-        ]
+        )
 
         # Load and display the list items
         self.load_list_items()
@@ -37,6 +37,7 @@ class DynamicListApp:
 
     def load_list_items(self):
         for item_data in self.data_list:
+            print(item_data)
             label = tk.Label(self.list_frame, text=item_data["label"])
             label.pack(padx=10, pady=5, anchor=tk.W)
 
