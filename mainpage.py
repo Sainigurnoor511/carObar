@@ -169,7 +169,7 @@ class HomePage:
         sc.sellcar_page_widgets()
 
     def open_car_services(self):
-        self.root.destroy()
+        # self.root.destroy()
         cs = car_services_page.CarServicePage()
         cs.car_services_page_widgets()
 
