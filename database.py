@@ -46,6 +46,10 @@ def get_cars():
     cursor.execute("SELECT * From `instock_cars_data`")
     return cursor.fetchall()
 
+# def get_cars():
+#     cursor.execute("SELECT * From `instock_cars_data` WHERE `car_brand` = ")
+#     return cursor.fetchall()
+
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    BRAND NEW CARS TREEVIEW   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

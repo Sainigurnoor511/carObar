@@ -148,8 +148,8 @@ class DisplayCars:
                     car_details[2],
                     car_details[3],
                     car_details[4],
-                    "N/A",
-                    "N/A",
+                    "0 KM",
+                    "XXXX",
                     "N/A",
                     car_details[5],
                     "NO"

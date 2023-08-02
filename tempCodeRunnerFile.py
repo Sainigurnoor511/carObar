@@ -1,0 +1,2 @@
+self.ownership = ttk.Label(self.frame2, text= i[6], width=10, foreground='white', background="#57A1F8", font=('Bahnschrift SemiBold Condensed', 16, 'normal'))
+            self.ownership.place(x=160, y=200)

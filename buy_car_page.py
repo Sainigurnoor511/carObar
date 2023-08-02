@@ -84,12 +84,12 @@ class BuyCarPage:
 
     def show_car_widgets(self):
 
-        self.frame = Frame(self.root,width=1000, height=470, background="grey" )
+        self.frame = Frame(self.root,width=1000, height=1000, background="grey" )
         self.frame.place(x=0, y=231)
 
 
-        vertical_scrollbar = ttk.Scrollbar(self.frame, orient=VERTICAL)
-        vertical_scrollbar.place(x=982, y=2, height=470)
+        self.vertical_scrollbar = ttk.Scrollbar(self.frame, orient=VERTICAL)
+        self.vertical_scrollbar.place(x=982, y=2, height=470)
 
         # self.frame.configure(yscrollcommand=vertical_scrollbar.set)
         # vertical_scrollbar.place(x=900, y=231, height=4450)
