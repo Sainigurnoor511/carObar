@@ -29,7 +29,7 @@ class BoughtCarPage:
 
     def new_bought_car_page_widgets(self):
 
-    ###---------------------------------/////// SELL CAR DETAILS //////------------------------------###
+    ###---------------------------------/////// Brand New CAR DETAILS //////------------------------------###
 
         self.brand_new_frame = Frame(self.root, width=1000,height=1000, bg= "white")
         self.brand_new_frame.place(x=0,y=0)

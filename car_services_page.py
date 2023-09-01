@@ -7,7 +7,7 @@ import database, mainpage, manage_database
 class CarServicePage:
 
     def __init__(self,selected_Service=""):
-        self.root = Toplevel()
+        self.root = Tk()
         self.selectedService = selected_Service
         self.width_of_window = 900
         self.height_of_window = 450
@@ -17,7 +17,7 @@ class CarServicePage:
         self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
         
-        # self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
+        self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
 
         self.root.resizable(width=False, height=False)
 
@@ -192,10 +192,10 @@ class CarServicePage:
             else:
                     messagebox.showerror("Alert!", "Something Went wrong")
     
-    # def open_home_page(self):
-    #     self.root.destroy()
-    #     n = mainpage.HomePage()
-    #     n.homepage_widgets() 
+    def open_home_page(self):
+        self.root.destroy()
+        n = mainpage.HomePage()
+        n.homepage_widgets() 
 
 
 if __name__ == "__main__":

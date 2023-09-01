@@ -1,10 +1,12 @@
 import mysql.connector
 
 con = mysql.connector.connect(
+    port = "3307",
     host = "localhost",
     user = "root",
     passwd = "",
     database = "carObar"
+
 )
 
 cursor = con.cursor()
