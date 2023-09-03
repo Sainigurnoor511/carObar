@@ -2,11 +2,10 @@ import tkinter, datetime
 from tkinter import *
 from tkinter import ttk, messagebox
 from docxtpl import DocxTemplate
-# import mainpage
 
 class InvoiceGenerator:
     def __init__(self):
-        self.root = Tk()
+        self.root = Toplevel()
         self.root.title("carObar -- Invoice Generator")
         self.width_of_root = 900
         self.height_of_root = 460
@@ -17,7 +16,6 @@ class InvoiceGenerator:
         self.root.geometry("%dx%d+%d+%d" %(self.width_of_root,self.height_of_root,self.x_coordinate,self.y_coordinate))
         self.root.resizable(width =False, height= False)
 
-        # self.root.protocol("WM_DELETE_WINDOW",self.open_home_page)
 
     def widgets(self):
         self.frame = Frame(self.root)
@@ -120,11 +118,6 @@ class InvoiceGenerator:
         messagebox.showinfo("Invoice Complete", "Invoice Complete")
         
         self.new_invoice()
-
-    # def open_home_page(self):
-    #     self.root.destroy()
-    #     n = mainpage.HomePage()
-    #     n.homepage_widgets() 
 
 if __name__ == "__main__":
     ig = InvoiceGenerator()

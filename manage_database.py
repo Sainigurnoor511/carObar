@@ -162,7 +162,7 @@ class DisplayCars:
                 messagebox.showwarning("Alert!","Something went wrong")
 
 
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!      SECOND-HAND CARS BOUGHT      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!      SECOND-HAND CARS BOUGHT      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     def display_secondhand_cars_bought(self):
 
@@ -569,9 +569,7 @@ class DisplayCars:
             a = car_services_page.CarServicePage(self.tree_view.item(r))
             self.root.destroy()
             a.car_services_page_widgets()    
-
-                
-
+            
 
     def open_home_page(self):
         self.root.destroy()

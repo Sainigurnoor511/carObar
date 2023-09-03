@@ -160,9 +160,7 @@ class HomePage:
     def open_buycar(self):
         self.root.destroy()
         bc = buy_car_page.BuyCarPage()
-        bc.select_car_widgets()
-        bc.show_car_widgets()
-
+        
     def open_sellcar(self):
         self.root.destroy()
         sc = sell_car_page.SellCarPage()

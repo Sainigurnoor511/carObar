@@ -147,8 +147,13 @@ class SellCarPage:
             
         
         else:
-            self.submit = Button(self.root,text='submit',width=8,font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_sell_car_data)
-            self.submit.place(x=450,y=635)
+            # self.submit = Button(self.root,text='submit',width=8,font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_sell_car_data)
+            # self.submit.place(x=450,y=635)
+
+            self.s = ttk.Style()
+            self.s.configure('my.TButton', font=('Bahnschrift SemiBold SemiConden', 18, 'bold'), background='white', foreground='black')
+            self.submit = ttk.Button(self.root, text='Submit', style= "my.TButton", command= self.get_sell_car_data)
+            self.submit.place(x=420,y=635)
 
         self.root.mainloop()
         
