@@ -18,7 +18,7 @@ class HomePage:
         self.root.resizable(width =False, height= False)
 
 
-    ###########################################       HOMEPAGE       ######################################################
+    #######################################       HOMEPAGE       ##################################################
     
     def homepage_widgets(self):
         # Main Frame
@@ -35,7 +35,7 @@ class HomePage:
 
         self.image_path = Image.open('images/mainpage/sidebar.png').resize((45,45))
         self.sidebar_image = ImageTk.PhotoImage(self.image_path)
-        self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0,background="white", command= self.open_sidebar)
+        self.sidebar_button = Button(self.mainframe, image= self.sidebar_image, border=0, background="white", command= self.open_sidebar)
         self.sidebar_button.place(x=10,y=35)
 
 
@@ -58,7 +58,7 @@ class HomePage:
             up.update_passw_frame()
 
         
-    ###########################################     SIDEBAR MENU     ######################################################
+    #######################################     SIDEBAR MENU     ##################################################
 
     def open_sidebar(self):
         # Sidebar/Menubar for accessing different windows
@@ -103,7 +103,7 @@ class HomePage:
         self.sidebar_frame.destroy()
 
 
-    ######################################     SIDEBAR MENU ITEMS     #####################################################
+    ##################################     SIDEBAR MENU ITEMS     #################################################
     
     def open_dashboard(self):
         self.dashboard_frame = Frame(self.root, width=1000, height=700, background="white")
@@ -142,20 +142,38 @@ class HomePage:
         self.dashboard_buttons_label4 = ttk.Label(self.dashboard_frame,text= "10", foreground='#0079C6', background="white", font=('Montserrat Medium', 25, 'bold'))
         self.dashboard_buttons_label4.place(x=799,y=70)
 
-        self.image_path = Image.open('images/mainpage/manage_database.png').resize((300, 50))
-        self.manage_database_image = ImageTk.PhotoImage(self.image_path)
-        self.manage_database_button = Button(self.dashboard_frame, image= self.manage_database_image, border=0, command= self.open_manage_database)
-        self.manage_database_button.place(x=40,y=200)
 
-        self.image_path = Image.open('images/mainpage/add_brandnew_cars.png').resize((305, 45))
-        self.new_bought_car_image = ImageTk.PhotoImage(self.image_path)
-        self.new_bought_car_button = Button(self.dashboard_frame, image= self.new_bought_car_image, border=0, command= self.open_new_bought_car)
-        self.new_bought_car_button.place(x=37,y=273)
+        self.s = ttk.Style()
+        self.s.configure('my.TButton', font=('Montserrat', 22, 'bold'), width= 18, background='white', foreground='#57A1F8')
 
-        self.image_path = Image.open('images/mainpage/generate_invoice.png').resize((301, 52))
-        self.generate_invoice_image = ImageTk.PhotoImage(self.image_path)
-        self.generate_invoice_button = Button(self.dashboard_frame, image= self.generate_invoice_image, border=0, command= self.open_invoice_generator)
-        self.generate_invoice_button.place(x=40,y=340)
+
+        self.new_bought_car_button = ttk.Button(self.root, text='Add New Cars', style= "my.TButton", command= self.open_new_bought_car)
+        self.new_bought_car_button.place(x=60,y=340)
+
+
+        self.manage_database_button = ttk.Button(self.root, text='Manage Database', style= "my.TButton", command= self.open_manage_database)
+        self.manage_database_button.place(x=60,y=400)
+
+
+        self.generate_invoice_button = ttk.Button(self.root, text='Generate Invoice', style= "my.TButton", command= self.open_invoice_generator)
+        self.generate_invoice_button.place(x=60,y=460)
+
+
+
+        # self.image_path = Image.open('images/mainpage/manage_database.png').resize((300, 50))
+        # self.manage_database_image = ImageTk.PhotoImage(self.image_path)
+        # self.manage_database_button = Button(self.dashboard_frame, image= self.manage_database_image, background= "white", border=0, command= self.open_manage_database)
+        # self.manage_database_button.place(x=40,y=200)
+
+        # self.image_path = Image.open('images/mainpage/add_brandnew_cars.png').resize((305, 45))
+        # self.new_bought_car_image = ImageTk.PhotoImage(self.image_path)
+        # self.new_bought_car_button = Button(self.dashboard_frame, image= self.new_bought_car_image,background= "white", border=0, command= self.open_new_bought_car)
+        # self.new_bought_car_button.place(x=37,y=273)
+
+        # self.image_path = Image.open('images/mainpage/generate_invoice.png').resize((301, 52))
+        # self.generate_invoice_image = ImageTk.PhotoImage(self.image_path)
+        # self.generate_invoice_button = Button(self.dashboard_frame, image= self.generate_invoice_image, background= "white",  border=0, command= self.open_invoice_generator)
+        # self.generate_invoice_button.place(x=40,y=340)
 
     def open_buycar(self):
         self.root.destroy()

@@ -40,34 +40,34 @@ image_a=ImageTk.PhotoImage(Image.open('images\splashscreen\c1.png'))
 image_b=ImageTk.PhotoImage(Image.open('images\splashscreen\c2.png'))
 
 
-for i in range(2): #5loops
+for i in range(3): #4loops
     l1=Label(w, image=image_a, border=0, relief=SUNKEN).place(x=180, y=145)
     l2=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=200, y=145)
     l3=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=220, y=145)
     l4=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=240, y=145)
     w.update_idletasks()
-    time.sleep(0.2)
+    time.sleep(0.4)
 
     l1=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=180, y=145)
     l2=Label(w, image=image_a, border=0, relief=SUNKEN).place(x=200, y=145)
     l3=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=220, y=145)
     l4=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=240, y=145)
     w.update_idletasks()
-    time.sleep(0.2)
+    time.sleep(0.4)
 
     l1=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=180, y=145)
     l2=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=200, y=145)
     l3=Label(w, image=image_a, border=0, relief=SUNKEN).place(x=220, y=145)
     l4=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=240, y=145)
     w.update_idletasks()
-    time.sleep(0.2)
+    time.sleep(0.4)
 
     l1=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=180, y=145)
     l2=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=200, y=145)
     l3=Label(w, image=image_b, border=0, relief=SUNKEN).place(x=220, y=145)
     l4=Label(w, image=image_a, border=0, relief=SUNKEN).place(x=240, y=145)
     w.update_idletasks()
-    time.sleep(0.2)
+    time.sleep(0.4)
 
 w.destroy()
 new_win()

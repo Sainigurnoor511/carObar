@@ -7,7 +7,7 @@ import database, mainpage, manage_database
 class CarServicePage:
 
     def __init__(self,selected_Service=""):
-        self.root = Tk()
+        self.root = Toplevel()
         self.selectedService = selected_Service
         self.width_of_window = 900
         self.height_of_window = 450
@@ -111,8 +111,13 @@ class CarServicePage:
             
 
         else:    
-            self.book = Button(self.root,width=12,text='Book',bg="#57A1F8",fg="white",command= self.get_services_data)
-            self.book.place(x=420,y=350)
+            # self.book = Button(self.root,width=12,text='Book',bg="#57A1F8",fg="white",command= self.get_services_data)
+            # self.book.place(x=420,y=350)
+
+            self.s = ttk.Style()
+            self.s.configure('my.TButton', font=('Bahnschrift SemiBold SemiConden', 16, 'bold'), background='white', foreground='#57A1F8')
+            self.submit = ttk.Button(self.root, text='Book', style= "my.TButton", command= self.get_services_data)
+            self.submit.place(x=420,y=355)
         
         #!_________________________________________________________________________________________________________
 
@@ -194,8 +199,6 @@ class CarServicePage:
     
     def open_home_page(self):
         self.root.destroy()
-        n = mainpage.HomePage()
-        n.homepage_widgets() 
 
 
 if __name__ == "__main__":

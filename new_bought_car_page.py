@@ -80,7 +80,10 @@ class BoughtCarPage:
 
         if self.selectedCar:
 
-            self.submit = Button(self.root,text='update',width=8,font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_updated_new_car_data)
+            self.s = ttk.Style()
+            self.s.configure('my.TButton', font=('Bahnschrift SemiBold SemiConden', 18, 'bold'), background='white', foreground='#57A1F8')
+
+            self.submit = ttk.Button(self.root, text='Submit', style= "my.TButton", command= self.get_updated_new_car_data)
             self.submit.place(x=450,y=520)
 
             result = dict(self.selectedCar).get("values")
@@ -94,8 +97,11 @@ class BoughtCarPage:
             self.car_price_entry.insert(0,result[5])
 
         else:
-            self.submit = Button(self.root,width=8,text='sumbit',font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_new_car_data)
-            self.submit.place(x=450,y=520)
+            self.s = ttk.Style()
+            self.s.configure('my.TButton', font=('Bahnschrift SemiBold SemiConden', 18, 'bold'), background='white', foreground='#57A1F8')
+            
+            self.submit = ttk.Button(self.root, text='Submit', style= "my.TButton", command= self.get_updated_new_car_data)
+            self.submit.place(x=420,y=520)
 
         self.root.mainloop()
         
