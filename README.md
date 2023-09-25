@@ -47,7 +47,7 @@ python splash_screen_gui.py
 
 ## Screenshots
 
-![Car Dealership Management App Screenshot](screenshots/screenshot.png)
+![Car Dealership Management App Screenshot](screenshots/)
 
 ## Contributing
 
