@@ -87,7 +87,6 @@ class Login:
 
 
         self.root.mainloop()
-        self.root.bind('<Return>', self.log_in)
 
     def log_in(self):
             

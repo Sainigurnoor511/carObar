@@ -1,10 +1,8 @@
-#importing library
 from tkinter import *
 from tkinter import font
 from PIL import ImageTk, Image 
 import time
-import mainpage
-import login_admin
+import mainpage, login_admin
 
 w=Tk()
 w.iconbitmap("resources/myIcon.ico")
