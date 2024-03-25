@@ -5,7 +5,7 @@ import time
 import mainpage, login_admin
 
 w=Tk()
-w.iconbitmap("resources/myIcon.ico")
+w.iconbitmap("assets/myIcon.ico")
 
 #Using piece of code from old splash screen
 width_of_window = 643
@@ -29,7 +29,7 @@ Frame(w, width=643, height=400, bg='white').place(x=0,y=0)
 # label1.configure(font=("Harlow Solid Italic", 40, "bold"))
 # label1.place(x=115,y=70)
 
-image_path = Image.open('resources/Picture1.png')
+image_path = Image.open('assets/Picture1.png')
 imgTk = ImageTk.PhotoImage(image_path)
 image_label = Label(w, image=imgTk)
 image_label.place(x=0, y=0)
@@ -39,8 +39,8 @@ label2.configure(font=("ADLaM Display", 16, "bold"))
 label2.place(x=10,y=360)
 
 #making animation
-image_a=ImageTk.PhotoImage(Image.open('images\splashscreen\c1.png'))
-image_b=ImageTk.PhotoImage(Image.open('images\splashscreen\c2.png'))
+image_a=ImageTk.PhotoImage(Image.open('assets/splashscreen/c1.png'))
+image_b=ImageTk.PhotoImage(Image.open('assets/splashscreen/c2.png'))
 
 
 for i in range(2): #4loops

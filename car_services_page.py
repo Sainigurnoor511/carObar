@@ -9,7 +9,7 @@ class CarServicePage:
 
     def __init__(self,selected_Service=""):
         self.root = Toplevel()
-        self.root.iconbitmap("resources/myIcon.ico")
+        self.root.iconbitmap("assets/myIcon.ico")
         self.root.title("carObar -- Car Services")
         self.selectedService = selected_Service
         self.width_of_window = 900
