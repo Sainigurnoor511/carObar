@@ -15,7 +15,7 @@ screen_height = w.winfo_screenheight()
 x_coordinate = (screen_width/2)-(width_of_window/2)
 y_coordinate = (screen_height/2)-(height_of_window/2)
 w.geometry("%dx%d+%d+%d" %(width_of_window,height_of_window,x_coordinate,y_coordinate))
-# w.attributes("-alpha", 0.95)
+w.attributes("-alpha", 0.95)
 w.overrideredirect(1) #for hiding titlebar
 
 #new window to open
