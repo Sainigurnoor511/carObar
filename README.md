@@ -2,7 +2,7 @@
 
 This is a Car Dealership Management Application built with Python and Tkinter. It provides a user-friendly interface to manage various aspects of a car dealership, including inventory, sales, and customer information.
 
-![Logo](resources/Picture1.png)
+![Logo](assets/Picture1.png)
 
 ## Features
 
