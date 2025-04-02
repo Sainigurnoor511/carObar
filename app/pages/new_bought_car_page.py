@@ -1,12 +1,15 @@
-from tkinter import *
+from tkinter import Tk, Frame
 from tkinter import ttk, messagebox
-from PIL import Image, ImageTk
-import mainpage, manage_database, database
+from app.pages import home_page
+from app.pages import manage_catalogue_page
+from app.database import database
+
 
 class BoughtCarPage:
+
     def __init__(self, selected_car=""):
         self.root = Tk()
-        self.root.iconbitmap("assets/myIcon.ico")
+        self.root.iconbitmap("app/assets/myIcon.ico")
         self.root.title("carObar -- Add Cars")
         self.width_of_window = 1000
         self.height_of_window = 600
@@ -179,7 +182,7 @@ class BoughtCarPage:
             if result:
                     messagebox.showinfo("Message","Car details updated successfully")
                     self.root.destroy()
-                    bnc = manage_database.DisplayCars()
+                    bnc = manage_catalogue_page.DisplayCars()
                     bnc.display_brand_new_cars()
                     bnc.button_frame()
                 
@@ -188,7 +191,7 @@ class BoughtCarPage:
 
     def open_home_page(self):
         self.root.destroy()
-        n = mainpage.HomePage()
+        n = home_page.HomePage()
         n.homepage_widgets()
 
 if __name__=="__main__":

@@ -1,15 +1,15 @@
-from tkinter import *
-from tkinter import Tk
+from tkinter import Frame, Button, Toplevel
 from tkinter import ttk, messagebox
 from tkcalendar import DateEntry
-import database, mainpage, manage_database
+from app.database import database
+from app.pages import manage_catalogue_page
 
 
 class CarServicePage:
 
     def __init__(self,selected_Service=""):
         self.root = Toplevel()
-        self.root.iconbitmap("assets/myIcon.ico")
+        self.root.iconbitmap("app/assets/myIcon.ico")
         self.root.title("carObar -- Car Services")
         self.selectedService = selected_Service
         self.width_of_window = 900
@@ -193,7 +193,7 @@ class CarServicePage:
             if result:
                     messagebox.showinfo("Message","Car Service detail updated successfully")
                     self.root.destroy()
-                    v = manage_database.DisplayCars()
+                    v = manage_catalogue_page.DisplayCars()
                     v.display_car_services()
                     v.button_frame()
                 

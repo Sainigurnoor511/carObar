@@ -1,11 +1,10 @@
-from tkinter import *
-from tkinter import font
+from tkinter import Tk, Frame, Label, SUNKEN
 from PIL import ImageTk, Image 
 import time
-import mainpage, login_admin
+from app.pages import admin_login_page
 
 w=Tk()
-w.iconbitmap("assets/myIcon.ico")
+w.iconbitmap("app/assets/myIcon.ico")
 
 #Using piece of code from old splash screen
 width_of_window = 643
@@ -20,7 +19,7 @@ w.overrideredirect(1) #for hiding titlebar
 
 #new window to open
 def new_win():
-    la = login_admin.Login()
+    la = admin_login_page.Login()
     la.login_frame()
     
 
@@ -29,7 +28,7 @@ Frame(w, width=643, height=400, bg='white').place(x=0,y=0)
 # label1.configure(font=("Harlow Solid Italic", 40, "bold"))
 # label1.place(x=115,y=70)
 
-image_path = Image.open('assets/Picture1.png')
+image_path = Image.open('app/assets/Picture1.png')
 imgTk = ImageTk.PhotoImage(image_path)
 image_label = Label(w, image=imgTk)
 image_label.place(x=0, y=0)
@@ -39,8 +38,8 @@ label2.configure(font=("ADLaM Display", 16, "bold"))
 label2.place(x=10,y=360)
 
 #making animation
-image_a=ImageTk.PhotoImage(Image.open('assets/splashscreen/c1.png'))
-image_b=ImageTk.PhotoImage(Image.open('assets/splashscreen/c2.png'))
+image_a=ImageTk.PhotoImage(Image.open('app/assets/splashscreen/c1.png'))
+image_b=ImageTk.PhotoImage(Image.open('app/assets/splashscreen/c2.png'))
 
 
 for i in range(2): #4loops

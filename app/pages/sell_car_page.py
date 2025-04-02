@@ -1,12 +1,16 @@
-from tkinter import *
+from tkinter import Tk, Frame, Label, Button
 from tkinter import ttk, messagebox
-from PIL import Image, ImageTk
-import mainpage, manage_database, database
+from app.pages import home_page
+from app.pages import manage_catalogue_page
+from app.database import database
+
 
 class SellCarPage:
+
+
     def __init__(self, selected_car=""):
         self.root = Tk()
-        self.root.iconbitmap("assets/myIcon.ico")
+        self.root.iconbitmap("app/assets/myIcon.ico")
         self.root.title("carObar -- Sell Car")
         self.width_of_window = 1000
         self.height_of_window = 700
@@ -30,8 +34,7 @@ class SellCarPage:
         
 
     def sellcar_page_widgets(self):
-
-    ###---------------------------------/////// SELL CAR DETAILS //////------------------------------###
+    ###-------------------------/////// SELL CAR DETAILS //////--------------------------###
 
         self.sellcar_frame = Frame(self.root, width=1000,height=1000, bg= "white")
         self.sellcar_frame.place(x=0,y=0)
@@ -55,8 +58,9 @@ class SellCarPage:
         self.car_model_entry= ttk.Entry(self.sellcar_frame, font =20)
         self.car_model_entry.place(x =220,y =230,width =180,height=30)
 
-        # -------------/////////  COMBOBOXES //////////----------------#
 
+
+        # -------------/////////  COMBOBOXES //////////----------------#
         self.car_reg = ttk.Label(self.sellcar_frame,text="Registration Year", foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 16, 'normal'))
         self.car_reg.place(x=520,y=160,width =250,height=30)
 
@@ -96,8 +100,7 @@ class SellCarPage:
         self.km_driven_cb["state"]='readonly'
         self.km_driven_cb.set("odometer")
 
-      #####---------------------------///// SELLER DETAILS  //////--------------------------------------------#####
-
+        #####---------------------------///// SELLER DETAILS  //////-----------------------------------#####
         self.title2_label = Label(self.sellcar_frame, text="----- Enter Seller Details -----",foreground='#57A1F8',background="white", font=('Harlow Solid Italic', 19, 'normal'))
         self.title2_label.place(x=360,y=380)
 
@@ -128,8 +131,8 @@ class SellCarPage:
         self.car_price_entry = ttk.Entry(self.sellcar_frame, font =20 )
         self.car_price_entry.place(x =720,y =540,width =180,height=30)
 
-        if self.selectedCar:
 
+        if self.selectedCar:
             self.submit = Button(self.root,text='update',width=8,font=('Harlow Solid Italic', 12, 'bold'),bg="blue",fg="white",border=2,command= self.get_updated_sell_car_data)
             self.submit.place(x=450,y=635)
 
@@ -149,7 +152,6 @@ class SellCarPage:
             
         
         else:
-
             self.s = ttk.Style()
             self.s.configure('my.TButton', font=('Bahnschrift SemiBold SemiConden', 18, 'bold'), background='white', foreground='#57A1F8')
             self.submit = ttk.Button(self.root, text='Submit', style= "my.TButton", command= self.get_sell_car_data)
@@ -157,10 +159,9 @@ class SellCarPage:
 
         self.root.mainloop()
         
-        #------------------------------//////// GETTING CAR DATA ///////----------------------------###
 
     def get_sell_car_data(self):
-
+        #------------------------------//////// GETTING CAR DATA ///////----------------------------###
         if self.car_brand_entry.get() == "":
             messagebox.showwarning("Alert!","Please enter the car brand")
 
@@ -192,7 +193,6 @@ class SellCarPage:
             messagebox.showwarning("Alert!","Please enter car price")
 
         
-
         else:
             carBrand =  self.car_brand_entry.get()
             carModel =  self.car_model_entry.get()
@@ -207,6 +207,7 @@ class SellCarPage:
 
             a = ("Used", carBrand,carModel, carVariant,kmDriven,registrationYear,carOwnership,sellerName, sellerContact,sellerAddress,carPrice)
             print(a)
+
 
             ###----------------------//////// CONNECTING WITH DATABASE ///////-----------------------------#
 
@@ -275,7 +276,7 @@ class SellCarPage:
             if result:
                     messagebox.showinfo("Message","Car & Seller details updated successfully")
                     self.root.destroy()
-                    suc = manage_database.DisplayCars()
+                    suc = manage_catalogue_page.DisplayCars()
                     suc.display_secondhand_cars_bought()
                     suc.button_frame()
                 
@@ -284,8 +285,9 @@ class SellCarPage:
 
     def open_home_page(self):
         self.root.destroy()
-        n = mainpage.HomePage()
+        n = home_page.HomePage()
         n.homepage_widgets()
+
 
 if __name__=="__main__":
     s = SellCarPage()

@@ -1,11 +1,16 @@
-from tkinter import *
-from tkinter import ttk, messagebox
-import database, new_bought_car_page, car_services_page, sell_car_page, mainpage
+import tkinter as tk
+from tkinter import CENTER, HORIZONTAL, VERTICAL, Frame, ttk, messagebox
+from app.database import database
+from app.pages import new_bought_car_page
+from app.pages import car_services_page
+from app.pages import sell_car_page
+from app.pages import home_page
+
 
 class DisplayCars:
     def __init__(self):
-        self.root = Tk()
-        self.root.iconbitmap("assets/myIcon.ico")
+        self.root = tk.Tk()
+        self.root.iconbitmap("app/assets/myIcon.ico")
         self.root.title("carObar -- Manage Database")
         self.width_of_window = 1200
         self.height_of_window = 700
@@ -24,7 +29,7 @@ class DisplayCars:
 
     def button_frame(self):
 
-        self.f = Frame(self.root, background="light blue")
+        self.f = tk.Frame(self.root, background="light blue")
         self.f.place(x=20, y=10, width=1160, height=120)
 
         self.database1 = ttk.Button(self.f,width=32, text='Manage Brand-new Cars Bought',command=self.display_brand_new_cars)
@@ -88,11 +93,11 @@ class DisplayCars:
             self.tree_view.insert("",0,text = i[0], values=(i[1], i[2], i[3], i[4], i[5],i[6], "Delete", "Update","Add In Stock"))
         self.tree_view.bind("<Double-Button-1>", self.perform_action1)  
 
-        vertical_scrollbar = ttk.Scrollbar(self.f, orient=VERTICAL, command=self.tree_view.yview)
+        vertical_scrollbar = ttk.Scrollbar(self.f, orient=tk.VERTICAL, command=self.tree_view.yview)
         self.tree_view.configure(yscrollcommand=vertical_scrollbar.set)
         vertical_scrollbar.place(x=1128, y=21, height=498)
 
-        horizontal_scrollbar = ttk.Scrollbar(self.f, orient=HORIZONTAL, command=self.tree_view.xview)
+        horizontal_scrollbar = ttk.Scrollbar(self.f, orient=tk.HORIZONTAL, command=self.tree_view.xview)
         self.tree_view.configure(xscrollcommand=horizontal_scrollbar.set)
         horizontal_scrollbar.place(x=16, y=501, width=1115)
         
@@ -171,7 +176,7 @@ class DisplayCars:
         self.f = Frame(self.root, background="light blue")
         self.f.place(x=20,y=150,width=1160,height=535)
 
-        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I","J","K","L","M","N"), selectmode= EXTENDED)
+        self.tree_view = ttk.Treeview(self.f,columns=("A","B","C","D","E","F","G","H","I","J","K","L","M","N"), selectmode=tk.EXTENDED)
 
         self.tree_view.heading("#0",text="ID")
         self.tree_view.column("#0", width=60)
@@ -575,7 +580,7 @@ class DisplayCars:
 
     def open_home_page(self):
         self.root.destroy()
-        n = mainpage.HomePage()
+        n = home_page.HomePage()
         n.homepage_widgets()
         n.open_sidebar()
         n.open_dashboard() 

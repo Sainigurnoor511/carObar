@@ -1,13 +1,17 @@
-from tkinter import *
-from tkinter import ttk, messagebox
-from PIL import Image, ImageTk
-import database, invoice_generator, mainpage
+import tkinter as tk
+from tkinter import CENTER, N, ttk
+# from PIL import Image, ImageTk
+from app.database import database
+from app.pages import home_page
+from app.pages import invoice_generator_page
+
 
 class BuyCarPage:
 
+
     def __init__(self):
-        self.root = Tk()
-        self.root.iconbitmap("assets/myIcon.ico")
+        self.root = tk.Tk()
+        self.root.iconbitmap("app/assets/myIcon.ico")
         self.root.title("carObar -- Buy Car")
         self.width_of_window = 1000
         self.height_of_window = 700
@@ -22,13 +26,13 @@ class BuyCarPage:
 
 
         #* Create the first frame
-        self.frame1 = Frame(self.root, bg="white")
+        self.frame1 = tk.Frame(self.root, bg="white")
         self.label1 = ttk.Label(self.frame1, text='buy car', foreground='#57A1F8', background="white", font=('Harlow Solid Italic', 40, 'normal'))
         self.label1.place(x=420, y=5)
         self.frame1.pack(fill="both", expand=True)
 
+
         #! Labels and comboboxes for selecting car preferences
-        #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         self.car_brand = ttk.Label(self.frame1, text='Select Brand', foreground='#57A1F8', background="white", font=('Harlow Solid Italic', 16, 'normal'))
         self.car_brand.place(x=80, y=110)
 
@@ -41,9 +45,7 @@ class BuyCarPage:
         self.selectbrand.set("Select Brand")
         self.selectbrand.place(x=80, y=140)
 
-
-
-        #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         self.budget = ttk.Label(self.frame1, text='Select Budget', foreground='#57A1F8', background="white", font=('Harlow Solid Italic', 16, 'normal'))
         self.budget.place(x=398, y=110)
 
@@ -56,8 +58,7 @@ class BuyCarPage:
         self.selectbudget.place(x=398, y=140)
 
 
-
-        #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         self.new_used = ttk.Label(self.frame1,text='New / Used', foreground='#57A1F8', background="white", font=('Harlow Solid Italic', 16, 'normal'))
         self.new_used.place(x=705, y=110)
 
@@ -67,7 +68,7 @@ class BuyCarPage:
         self.select_new_used.set("Select New/Used")
         self.select_new_used.place(x=705, y=140)
 
-        #!_________________________________________________________________________________________________________
+        #!__________________________________________________________________________________________
 
         self.divider = ttk.Label(self.frame1,text= '__________________________________________________________________________________________________________________', width=100, foreground='black', background="white", font=('Bahnschrift SemiBold Condensed', 20, 'normal'))
         self.divider.place(x=0, y=186)
@@ -77,12 +78,12 @@ class BuyCarPage:
 
 
         # Create the second frame as a scrollable frame
-        self.canvas = Canvas(self.root, borderwidth=0, bg="white")
+        self.canvas = tk.Canvas(self.root, borderwidth=0, bg="white")
         self.scrollbar = ttk.Scrollbar(self.root, orient="vertical", command=self.canvas.yview)
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
 
 
-        self.frame2 = Frame(self.canvas, bg="white", padx=10)
+        self.frame2 = tk.Frame(self.canvas, bg="white", padx=10)
         self.frame2.pack(fill="both", expand=True)
 
 
@@ -119,7 +120,7 @@ class BuyCarPage:
             self.c1 = ttk.Button(self.frame2, text=' BUY ', command= self.buybutton)
             self.c1.pack(ipadx=10, pady=15, anchor= N)
 
-            self.space = ttk.Label(self.frame2, text=f"", width=100, background="white", font=('Bahnschrift SemiBold Condensed', 17, 'normal'))
+            self.space = ttk.Label(self.frame2, text="", width=100, background="white", font=('Bahnschrift SemiBold Condensed', 17, 'normal'))
             self.space.pack( anchor= N)
 
 
@@ -144,13 +145,13 @@ class BuyCarPage:
         self.canvas.yview_scroll(-int(event.delta / 120), "units")
 
     def buybutton(self):
-        buy1 = invoice_generator.InvoiceGenerator()
+        buy1 = invoice_generator_page.InvoiceGenerator()
         buy1.widgets()
 
 
     def open_home_page(self):
         self.root.destroy()
-        n = mainpage.HomePage()
+        n = home_page.HomePage()
         n.homepage_widgets() 
 
 

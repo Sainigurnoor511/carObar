@@ -1,14 +1,14 @@
-from tkinter import *
-from tkinter import messagebox
+from tkinter import Toplevel, Frame, Label, Entry, Button, messagebox
 from PIL import Image, ImageTk
-import database, login_admin
+from  app.database import database
+
 
 class UpdatePass:
     
 
     def __init__(self):
         self.root = Toplevel()
-        self.root.iconbitmap("assets/myIcon.ico")
+        self.root.iconbitmap("app/assets/myIcon.ico")
         self.root.title("carObar -- Update Password")
         self.width_of_window = 900
         self.height_of_window = 450
@@ -23,7 +23,7 @@ class UpdatePass:
     
 
     def update_passw_frame(self):
-        self.image_path = Image.open('assets/mainpage/main.png').resize((350,300))
+        self.image_path = Image.open('assets/home_page/main.png').resize((350,300))
         self.imgTk = ImageTk.PhotoImage(self.image_path)
         self.image_label = Label(self.root, image=self.imgTk, width=350, height=300,bg='white')
         self.image_label.place(x=50, y=80)
@@ -95,6 +95,7 @@ class UpdatePass:
 
 
         self.root.mainloop()
+
 
     def updated_password(self):
         if self.Username.get() == "":

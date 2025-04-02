@@ -1,12 +1,12 @@
-import tkinter, datetime
-from tkinter import *
-from tkinter import ttk, messagebox
+import tkinter
+import datetime
+from tkinter import Toplevel, Frame, ttk, messagebox
 from docxtpl import DocxTemplate
 
 class InvoiceGenerator:
     def __init__(self):
         self.root = Toplevel()
-        self.root.iconbitmap("assets\myIcon.ico")
+        self.root.iconbitmap("app/assets/myIcon.ico")
         self.root.title("carObar -- Invoice Generator")
         self.width_of_root = 900
         self.height_of_root = 460
@@ -99,7 +99,7 @@ class InvoiceGenerator:
         self.invoice_list.clear()
         
     def generate_invoice(self):
-        self.doc = DocxTemplate("invoice_template.docx")
+        self.doc = DocxTemplate("app/assets/invoice_template.docx")
         self.name = self.first_name_entry.get()+self.last_name_entry.get()
         self.phone = self.phone_entry.get()
         self.subtotal = sum(item[3] for item in self.invoice_list) 
