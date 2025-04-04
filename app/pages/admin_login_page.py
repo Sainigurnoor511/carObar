@@ -1,127 +1,76 @@
-from tkinter import Tk, Frame, Label, Entry, Button, messagebox
-from PIL import Image, ImageTk
+import customtkinter as ctk
+from tkinter import messagebox
 from app.database import database
 from app.pages import home_page
 
 class Login:
     def __init__(self):
-        self.root = Tk()
-        self.root.iconbitmap("app/assets/myIcon.ico")
-        self.root.title("carObar -- Login Screen")
-        self.width_of_window = 900
-        self.height_of_window = 450
+        ctk.set_appearance_mode("light")  # "dark" or "light"
+        ctk.set_default_color_theme("blue")
+
+        self.root = ctk.CTk()
+        self.root.title("carObar - Login Page")
+        self.root.iconbitmap("app/assets/myIcon.ico")  # Icon
+        self.width_of_window = 1000
+        self.height_of_window = 700
         self.screen_width = self.root.winfo_screenwidth()
         self.screen_height = self.root.winfo_screenheight()
-        self.x_coordinate = (self.screen_width/2)-(self.width_of_window/2)
-        self.y_coordinate = (self.screen_height/2)-(self.height_of_window/1.8)
-        self.root.geometry("%dx%d+%d+%d" %(self.width_of_window,self.height_of_window,self.x_coordinate,self.y_coordinate))
-        self.root.configure(bg ='#fff')
-        self.root.title("carObar -- Login Page")
-        self.root.resizable(width =False, height= False)
-        self.root.bind('<Return>', self.log_in)
-        
+        self.x_coordinate = (self.screen_width / 2) - (self.width_of_window / 2)
+        self.y_coordinate = (self.screen_height / 2) - (self.height_of_window / 2)
+        self.root.geometry(f"{self.width_of_window}x{self.height_of_window}+{int(self.x_coordinate)}+{int(self.y_coordinate)}")
+        self.root.configure(bg='#f5f5f5')
+        self.root.resizable(width=False, height=False)
+        self.root.overrideredirect(1)  # Remove title bar
 
     def login_frame(self):
-        self.image_path = Image.open('app/assets/home_page/main5.png').resize((350,300))
-        self.imgTk = ImageTk.PhotoImage(self.image_path)
-        self.image_label = Label(self.root, image=self.imgTk, width=350, height=300,bg='white')
-        self.image_label.place(x=50, y=80)
-        
+        # Centered login frame
+        self.frame = ctk.CTkFrame(self.root, width=350, height=280, fg_color="white", corner_radius=15)
+        self.frame.place(relx=0.5, rely=0.5, anchor="center")
 
-        self.frame = Frame(self.root,width=350,height=350,bg='white')
-        self.frame.place(x=480,y=70)
+        self.heading = ctk.CTkLabel(self.frame, text='Log in', text_color='#57a1f8', fg_color="white", font=('Microsoft YaHei UI Light', 18, 'bold'))
+        self.heading.place(relx=0.5, rely=0.1, anchor="center")
 
-        self.heading = Label(self.frame,text ='Log in' , fg='#57a1f8',bg = 'white',font=('Microsoft YaHei UI Light',18,'bold'))
-        self.heading.place(x=130,y=5)
-        #------------------------------------------------------------
-    
-        def on_enter(e):
-            self.user.delete(0,'end')
+        # --- Username Entry ---
+        self.user = ctk.CTkEntry(self.frame, width=250, height=40, fg_color="white", border_width=2, corner_radius=10, text_color="black", placeholder_text="Username")
+        self.user.place(relx=0.5, rely=0.3, anchor="center")
+        self.user.bind('<Return>', lambda e: self.passwd.focus())  # Move to password on Enter
 
-        def on_leave(name):
-            name == self.user.get()
-            if name=='':
-                self.user.insert(0,'Username')
+        # --- Password Entry ---
+        self.passwd = ctk.CTkEntry(self.frame, width=250, height=40, fg_color="white", border_width=2, corner_radius=10, text_color="black", placeholder_text="Password", show="*")
+        self.passwd.place(relx=0.5, rely=0.5, anchor="center")
+        self.passwd.bind('<Return>', lambda e: self.log_in())  # Trigger login on Enter
 
-        def go_to_next_element(event):
-            event.widget.tk_focusNext().focus()
-                
-        self.user = Entry(self.frame,width =25,fg ='black',border=0,font=('Microsoft YaHei UI Light',11))
-        self.user.place(x=30,y=80)
-        self.user.insert(0,'Username')
-        self.user.bind('<Return>', go_to_next_element)
-        self.user.bind('<FocusIn>', on_enter)
-        self.user.bind('<FocusOut>', on_leave)
-
-        Frame(self.frame,width=295,height=2,bg='black').place(x=25,y=107)
-
-        #---------------------------------------------------------
-
-        def on_enter(e):
-            self.passwd.delete(0,'end')
-
-        def on_leave(name):
-            name == self.user.get()
-            if name=='':
-                self.passwd.insert(0,'Password')
-
-        def go_to_next_element(event):
-            event.widget.tk_focusNext().focus()
-
-        self.passwd = Entry(self.frame,width =25,fg ='black',border=0,font=('Microsoft YaHei UI Light',11),show="*")
-        self.passwd.place(x=30,y=150)
-        self.passwd.insert(0,'Password')
-        self.user.bind('<Return>', go_to_next_element)
-        self.passwd.bind('<FocusIn>', on_enter)
-        self.passwd.bind('<FocusOut>', on_leave)
-        Frame(self.frame,width=295,height=2,bg='black').place(x=25,y=177)
-
-        #------------------------------------------------------------
-
-        self.b1 = Button(self.frame,width =39,pady=7,text="Sign in",bg='#57a1f8',fg='white',border=0, command=self.log_in).place(x=35,y=204)
-        
-
-        # self.sign_up = Button(self.frame,width=20,text='Forgot password?', border=0,bg='white',cursor='hand1',fg='#57a1f8')#,command=self. open_update_password_window
-        # self.sign_up.place(x=195,y=250)
-
+        # --- Login Button ---
+        self.b1 = ctk.CTkButton(self.frame, text="Sign in", fg_color='#57a1f8', text_color='white', corner_radius=10, command=self.log_in, width=250, height=40)
+        self.b1.place(relx=0.5, rely=0.7, anchor="center")
 
         self.root.mainloop()
 
-    def log_in(self):
-            
-            if self.user.get() == "": 
-                messagebox.showwarning("Alert!","Please enter the username")
+    def log_in(self, event=None):
+        if self.user.get().strip() == "":
+            messagebox.showwarning("Alert!", "Please enter the username")
+            self.user.focus()
+            return
 
-            elif self.passwd.get() =="":
-                messagebox.showwarning("Alert!","Please enter the password")
+        if self.passwd.get().strip() == "":
+            messagebox.showwarning("Alert!", "Please enter the password")
+            self.passwd.focus()
+            return
 
-            else:
-            
-                Username = self.user.get()
-                password = self.passwd.get()
+        Username = self.user.get()
+        password = self.passwd.get()
+        credentials = (Username, password)
 
-                a = (Username,password)
+        result = database.register_data(credentials)
+        if result:
+            self.root.destroy()  # Close the login window
 
-                result = database.register_data(a)    
-                if result:
-                            
-                        # messagebox.showinfo("Message"," Logged in")
-                        self.root.destroy()
-                        np = home_page.HomePage()
-                        np.homepage_widgets()
-                        
-                else:
-
-                    messagebox.showerror("Alert!", "Incorrect username & password")
-
-        
-        
-
-    # def open_update_password_window(self):
-    
-    #     self.root.destroy()
-    #     up = update_password.UpdatePass()
-    #     up.update_passw_frame()
+            # Launch the HomePage
+            np = home_page.HomePage()
+            np.homepage_widgets()
+            np.root.mainloop()  # <-- This is required to show the HomePage window
+        else:
+            messagebox.showerror("Alert!", "Incorrect username & password")
 
 
 if __name__ == "__main__":
